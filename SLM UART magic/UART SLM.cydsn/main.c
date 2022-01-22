@@ -115,7 +115,7 @@ uint16 vert = HAMA_VERT_DEFAULT;
 uint8 capMode = CAP_MODE_NORMAL;
 double horzPeriod = HAMA_NORM_HORZ;
 double readOutTime = 0;
-volatile uint8 mode = 0;
+volatile uint8 mode = FREE_RUN;
 volatile uint16 zSteps = 0;
 volatile uint32 frameTicks = THIRTY_FPS;
 volatile uint32 exposureTicks = THIRTY_EXP;
@@ -135,20 +135,12 @@ CY_ISR(T_ISR){
     // Controls the trigger periods and
     // which device gets the trigger pulse
     if (phases < 15) {
-        //if (deMux == CAMERA_TRIGGER) {
+
             TRG_CNT_WritePeriod(exposureTicks);
-            //DEMUX_REG_Write(deMux);
-            //deMux = SLM_TRIGGER;
-            DEMUX_REG_Write(CAMERA_TRIGGER);
+
             TRIG_CNT_RST_Write(REG_ON);
             TRIG_CNT_RST_Write(REG_OFF);
-
-        //} else {
-            //TRG_CNT_WritePeriod(SLM_TRG_TICKS);
-            //DEMUX_REG_Write(deMux);
-            //deMux = CAMERA_TRIGGER; 
-            //TRIG_CNT_RST_Write(REG_ON);
-            //TRIG_CNT_RST_Write(REG_OFF);  
+ 
 
             phases++;
             if(mode == TIMED_MODE){
@@ -161,28 +153,35 @@ CY_ISR(T_ISR){
                 }
             }
         //}
-    }
-    if (phases > 14){
+    } else {
+    //if (phases > 14){
         phases = 0;
+        //strcpy(msg, "\nphases = 0\n");
+        /* Wait until component is ready to send data to host. */
+        //while (0u == USBUART_CDCIsReady())
+        //{
+        //}
+        /* Send MSG back to host. */
+        //USBUART_PutData((uint8*)msg, strlen(msg));
+        
         if(mode == Z_MODE){
             
             if (zCount < zSteps) {
                 
-                TRG_CNT_WritePeriod(STAGE_TICKS);
-                DEMUX_REG_Write(STAGE_TRIGGER);
-                TRIG_CNT_RST_Write(REG_ON);
-                TRIG_CNT_RST_Write(REG_OFF);
+                STAGE_REG_Write(REG_ON);
+                STAGE_REG_Write(REG_OFF);
                 zCount++;
             } else {
                 ENBL_TRIG_ISR_Write(REG_OFF); 
                 zCount = 0;
                 msgFlag |= Z_FIN;
             }
+        } else {
+            ENBL_TRIG_ISR_Write(REG_OFF);
+            ENBL_TRIG_ISR_Write(REG_ON);
         }
+       
     }
-    /*if(phases == 17){
-        phases = 0;
-    }*/
 
 }
 // read input prototype
@@ -212,8 +211,7 @@ int main()
     SLM_WAIT_Start();
     SLM_TRIG_Start();
     BLANKING_DELAY_Start();
-    STAGE_WAIT_Start();
-    
+    STAGE_TRIG_Start();
     TRIG_ISR_StartEx(T_ISR);
 
     /* Start USBFS operation with 5-V operation. */
@@ -232,9 +230,11 @@ int main()
     SLM_WAIT_WritePeriod(wait_time_ticks);
     TRIG_CNT_RST_Write(REG_ON);
     ACTIVATE_SLM_Write(REG_ON);
+    STAGE_REG_Write(REG_ON);
     CyDelay(100);
     TRIG_CNT_RST_Write(REG_OFF);
     ACTIVATE_SLM_Write(REG_OFF);
+    STAGE_REG_Write(REG_OFF);
     BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
 
     for(;;)
@@ -730,7 +730,14 @@ void setExposure(void){
 }
 
 void setWaitTime(void){
-    wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2;
+    double float_ticks = (readOutTime / COUNT_PERIOD) - (double)SLM_CNTR_TICKS / 2.0f;
+    
+    if(float_ticks <= 0){
+        wait_time_ticks = SLM_CNTR_TICKS;
+    } else {
+        wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2;
+    }
+    
     uint32 remain_ticks = frameTicks - exposureTicks - SLM_TRG_TICKS;
     if(wait_time_ticks < remain_ticks){
          wait_time_ticks = remain_ticks;   
