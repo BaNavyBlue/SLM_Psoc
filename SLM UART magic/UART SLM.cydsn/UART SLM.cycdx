@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="BLANKING_DELAY" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -9,15 +10,15 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="BLANKING_DELAY_COUNTER" address="0x40006402" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="BLANKING_DELAY_PERIOD" address="0x40006422" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="BLANKING_DELAY_COMPARE" address="0x40006432" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="BLANKING_DELAY_Control_Reg" address="0x40006476" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="BLANKING_DELAY_COUNTER" address="0x40006508" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="BLANKING_DELAY_PERIOD" address="0x40006528" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="BLANKING_DELAY_COMPARE" address="0x40006538" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="BLANKING_DELAY_Control_Reg" address="0x40006579" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
       <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
       <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
     </register>
-    <register name="BLANKING_DELAY_STATUS_MASK" address="0x40006485" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="BLANKING_DELAY_STATUS_MASK" address="0x4000658B" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -26,7 +27,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
     </register>
-    <register name="BLANKING_DELAY_STATUS_AUX_CTRL" address="0x40006495" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="BLANKING_DELAY_STATUS_AUX_CTRL" address="0x4000659B" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -53,12 +54,12 @@
       </field>
     </register>
   </block>
-  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Sync_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Laser_On" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_OUT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SLM_WAIT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -68,15 +69,15 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="SLM_WAIT_COUNTER" address="0x4000640A" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="SLM_WAIT_PERIOD" address="0x4000642A" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="SLM_WAIT_COMPARE" address="0x4000643A" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="SLM_WAIT_Control_Reg" address="0x40006478" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="SLM_WAIT_COUNTER" address="0x40006504" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="SLM_WAIT_PERIOD" address="0x40006524" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="SLM_WAIT_COMPARE" address="0x40006534" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="SLM_WAIT_Control_Reg" address="0x40006574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
       <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
       <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
     </register>
-    <register name="SLM_WAIT_STATUS_MASK" address="0x40006484" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="SLM_WAIT_STATUS_MASK" address="0x40006587" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -85,7 +86,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
     </register>
-    <register name="SLM_WAIT_STATUS_AUX_CTRL" address="0x40006494" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="SLM_WAIT_STATUS_AUX_CTRL" address="0x40006597" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -112,16 +113,6 @@
       </field>
     </register>
   </block>
-  <block name="Sync_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ACTIVATE_SLM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="ACTIVATE_SLM_CONTROL_REG" address="0x40006477" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SLM_TRIG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -131,15 +122,10 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="SLM_TRIG_COUNTER" address="0x40006406" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="SLM_TRIG_PERIOD" address="0x40006426" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="SLM_TRIG_COMPARE" address="0x40006436" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="SLM_TRIG_Control_Reg" address="0x4000647B" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
-      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
-      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
-      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
-    </register>
-    <register name="SLM_TRIG_STATUS_MASK" address="0x40006489" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="SLM_TRIG_COUNTER" address="0x4000640A" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="SLM_TRIG_PERIOD" address="0x4000642A" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="SLM_TRIG_COMPARE" address="0x4000643A" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="SLM_TRIG_STATUS_MASK" address="0x4000648D" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -148,7 +134,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
     </register>
-    <register name="SLM_TRIG_STATUS_AUX_CTRL" address="0x40006499" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="SLM_TRIG_STATUS_AUX_CTRL" address="0x4000649D" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -174,17 +160,34 @@
         <value name="E_CNT_START1" value="1" desc="Enable counter" />
       </field>
     </register>
+    <register name="SLM_TRIG_Control_Reg" address="0x40006577" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
+      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
+      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
+    </register>
   </block>
-  <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="BLANK_TOGGLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="BLANK_TOGGLE_CONTROL_REG" address="0x40006578" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ACTIVATE_SLM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="ACTIVATE_SLM_CONTROL_REG" address="0x40006477" bitWidth="8" desc="" hidden="false" />
+  </block>
   <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_OUT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SLM_Trigger" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Camera_Trigger" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="TRIG_CNT_RST" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="TRIG_CNT_RST_CONTROL_REG" address="0x40006574" bitWidth="8" desc="" hidden="false" />
+    <register name="TRIG_CNT_RST_CONTROL_REG" address="0x40006475" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="Stage_Trigger" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="STAGE_REG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="STAGE_REG_CONTROL_REG" address="0x40006578" bitWidth="8" desc="" hidden="false" />
+    <register name="STAGE_REG_CONTROL_REG" address="0x40006472" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="USBUART" BASE="0x0" SIZE="0x0" desc="USBFS" visible="true" hidden="false">
     <block name="ep_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1055,15 +1058,15 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="STAGE_TRIG_COUNTER" address="0x40006508" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="STAGE_TRIG_PERIOD" address="0x40006528" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="STAGE_TRIG_COMPARE" address="0x40006538" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="STAGE_TRIG_Control_Reg" address="0x40006577" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="STAGE_TRIG_COUNTER" address="0x40006402" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="STAGE_TRIG_PERIOD" address="0x40006422" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="STAGE_TRIG_COMPARE" address="0x40006432" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="STAGE_TRIG_Control_Reg" address="0x40006474" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
       <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
       <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
     </register>
-    <register name="STAGE_TRIG_STATUS_MASK" address="0x4000658B" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="STAGE_TRIG_STATUS_MASK" address="0x40006485" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -1072,7 +1075,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
     </register>
-    <register name="STAGE_TRIG_STATUS_AUX_CTRL" address="0x4000659B" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="STAGE_TRIG_STATUS_AUX_CTRL" address="0x40006495" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -1108,15 +1111,15 @@
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="TRG_CNT_COUNTER" address="0x40006504" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="TRG_CNT_PERIOD" address="0x40006524" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="TRG_CNT_COMPARE" address="0x40006534" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="TRG_CNT_Control_Reg" address="0x40006576" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="TRG_CNT_COUNTER" address="0x40006406" bitWidth="32" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="TRG_CNT_PERIOD" address="0x40006426" bitWidth="32" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="TRG_CNT_COMPARE" address="0x40006436" bitWidth="32" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="TRG_CNT_Control_Reg" address="0x4000647B" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
       <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
       <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
     </register>
-    <register name="TRG_CNT_STATUS_MASK" address="0x40006587" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="TRG_CNT_STATUS_MASK" address="0x40006489" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
       <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
       <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -1125,7 +1128,7 @@
       <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
       <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
     </register>
-    <register name="TRG_CNT_STATUS_AUX_CTRL" address="0x40006597" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="TRG_CNT_STATUS_AUX_CTRL" address="0x40006499" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -1162,7 +1165,7 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <register name="PWM_COMPARE_Reg" address="0x4000642E" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="PWM_Control_Reg" address="0x4000647F" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="PWM_Control_Reg" address="0x4000647E" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
@@ -1235,6 +1238,6 @@
   <block name="TRIG_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ENBL_TRIG_ISR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="ENBL_TRIG_ISR_CONTROL_REG" address="0x4000647C" bitWidth="8" desc="" hidden="false" />
+    <register name="ENBL_TRIG_ISR_CONTROL_REG" address="0x40006473" bitWidth="8" desc="" hidden="false" />
   </block>
 </blockRegMap>
