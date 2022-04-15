@@ -28,6 +28,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+
 #if defined (__GNUC__)
     /* Add an explicit reference to the floating point printf library */
     /* to allow usage of the floating point conversion specifiers. */
@@ -63,6 +64,9 @@
 #define CAP_MODE_NORMAL (0u)
 #define CAP_MODE_SLOW (1u)
 
+#define BLANK_ON (0u)
+#define BLANK_OFF (1u)
+
 #define ENTR_FRAME_RATE "\n\nEnter FPS float: "
 #define ENTR_Z_STEPS "\n\nEnter Z-Steps: "
 #define ENTER_TIME_SECS "\n\nEnter Time(secs) float: "
@@ -71,7 +75,9 @@
 #define SELECT_MODE "\n\nSet Mode:\n 0) Free Run\n 1) Z-mode\n 2) Timed\nEnter Choice: "
 #define OPTIONS "\n\n\n\n a) set FPS\n b) set z-steps\n c) time to capture"
 #define OPTIONS2 "\n d) vert dim\n e) capture mode"
-#define OPTIONS3 "\n f) run mode\n g) start\n h) stop\nEnter Choice: "
+#define OPTIONS3 "\n f) run mode\n g) start\n h) stop\n i) blanking\nEnter Choice: "
+#define TRIGG_ON "Trig: ON "
+#define TRIGG_OFF "Trig: OFF"
 #define CAMERA_TRIGGER (0u)
 //#define SLM_TRIGGER (1u)
 #define STAGE_TRIGGER (1u)
@@ -124,6 +130,10 @@ uint32 time_ticks = 0;
 uint32 wait_time_ticks = 0;
 volatile uint8 msgFlag = 0;
 
+char line0[20];
+char line1[20];
+char line2[20];
+char line3[20];
 
 double fps_in = THIRTY;
 
@@ -236,7 +246,17 @@ int main()
     ACTIVATE_SLM_Write(REG_OFF);
     STAGE_REG_Write(REG_OFF);
     BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
-
+    BLANK_TOGGLE_Write(BLANK_OFF);
+    
+    LCD_Char_Position(0u, 0u);
+    LCD_Char_PrintString("Mode: Free");
+    LCD_Char_Position(0u, 11u);
+    LCD_Char_PrintString("FPS: 30.0");
+    LCD_Char_Position(1u, 0u);
+    LCD_Char_PrintString(TRIGG_OFF);
+    LCD_Char_Position(1u, 10u);
+    LCD_Char_PrintString("Blank: Off");
+    
     for(;;)
     {
         /* Host can send double SET_INTERFACE request. */
@@ -390,6 +410,8 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         time_ticks_rem = time_ticks;
                         ENBL_TRIG_ISR_Write(REG_ON);
+                        LCD_Char_Position(1u,0u);
+                        LCD_Char_PrintString(TRIGG_ON);
                         break;
                     case 'h':
                         strcpy(msg, "\n\n****Ending Capture****\n\n");
@@ -400,6 +422,27 @@ int main()
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         ENBL_TRIG_ISR_Write(REG_OFF);
+                        LCD_Char_Position(1u,0u);
+                        LCD_Char_PrintString(TRIGG_OFF);
+                        break;
+                    case 'i':
+                        if(BLANK_TOGGLE_Read()){
+                            BLANK_TOGGLE_Write(BLANK_ON);
+                            strcpy(msg, "\n\n****Blanking On****\n\n");
+                            LCD_Char_Position(1u,10u);
+                            LCD_Char_PrintString("Blank: On ");
+                        } else {
+                            BLANK_TOGGLE_Write(BLANK_OFF);
+                            strcpy(msg, "\n\n****Blanking Off****\n\n");
+                            LCD_Char_Position(1u,10u);
+                            LCD_Char_PrintString("Blank: Off");
+                        }
+                        
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
                         break;
                     case '\n':
                         strcpy(msg, OPTIONS);
@@ -557,7 +600,11 @@ void read_input(uint8* buf, const char cmd){
                 }
                 //exposureTicks = frameTicks - SLM_CNTR_TICKS - HAMA_SLOW_READ - SLM_TRG_TICKS;
                 setExposure();
-                sprintf(msg, "\n\nSetting: %s, frameTicks: %lu, expTicks: %lu\n\n", val_str, frameTicks, exposureTicks);
+                sprintf(msg, "\n\nSetting: %.1f, frameTicks: %lu, expTicks: %lu\n\n", fps_in, frameTicks, exposureTicks);
+                
+                sprintf(line0, "FPS: %.1f", fps_in);
+                LCD_Char_Position(0u, 11u);
+                LCD_Char_PrintString(line0);
                 break;
             case 'b':
                 zSteps = (uint16)atoi(val_str);
@@ -641,6 +688,16 @@ void set_mode(uint8* buf){
     {
     }
     USBUART_PutData((uint8*)msg, strlen(msg));
+    if(mode == 0){
+        sprintf(line0, "Mode: Free FPS: %.1f", fps_in);
+    } else if(mode == 1){
+        sprintf(line0, "Mode: Z-St FPS: %.1f", fps_in);
+    } else {
+       sprintf(line0, "Mode: Timed FPS: %.1f", fps_in);   
+    }
+    LCD_Char_Position(0u, 0u);
+    LCD_Char_PrintString(line0);
+    
 }
 
 void set_capMode(uint8* buf){
