@@ -19,21 +19,7 @@
 <v>SLM UART magic\UART SLM</v>
 <v>SLM UART magic\UART SLM\TopDesign</v>
 <v>SLM UART magic\UART SLM\UART SLM.cydwr</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Pins</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Analog</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Clocks</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Interrupts</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\DMA</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\System</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Directives</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Flash Security</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\EEPROM</v>
-<v>SLM UART magic\UART SLM\Header Files</v>
-<v>SLM UART magic\UART SLM\Header Files\cyapicallbacks.h</v>
 <v>SLM UART magic\UART SLM\Source Files</v>
-<v>SLM UART magic\UART SLM\Source Files\main.c</v>
-<v>SLM UART magic\UART SLM\Generated_Source</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\USBFS_UART01.cydwr</v>
 <v>SLM UART magic\USBFS_UART01\USBFS_UART01.cydwr\Pins</v>
@@ -68,26 +54,16 @@
 <v>SLM UART magic\UART SLM\UART SLM.cydwr\Flash Security</v>
 <v>SLM UART magic\UART SLM\UART SLM.cydwr\EEPROM</v>
 <v>SLM UART magic\UART SLM\Header Files</v>
-<v>SLM UART magic\UART SLM\Header Files\cyapicallbacks.h</v>
 <v>SLM UART magic\UART SLM\Source Files</v>
 <v>SLM UART magic\UART SLM\Source Files\main.c</v>
 <v>SLM UART magic\UART SLM\Generated_Source</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\ACTIVATE_SLM</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\BLANKING_DELAY</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\CAM_TRIG_INV</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\CAM_TRIG_NON_INV</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\Clock_1</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\Clock_3</v>
-<v>SLM UART magic\UART SLM\Generated_Source\PSoC5\Clock_4</v>
+<v>SLM UART magic\USBFS_UART01</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
-<v>SLM UART magic\UART SLM\TopDesign</v>
-<v>SLM UART magic\UART SLM\TopDesign\TopDesign.cysch</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign\PSoC3</v>
@@ -105,7 +81,6 @@
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
 <v>SLM UART magic\UART SLM\TopDesign</v>
-<v>SLM UART magic\UART SLM\TopDesign\TopDesign.cysch</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign\PSoC3</v>
@@ -130,10 +105,11 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE_PM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY_PM.lst</v>
-<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_TRIG_INV.lst</v>
-<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_TRIG_NON_INV.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Camera_Trigger.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_4.lst</v>
@@ -194,8 +170,6 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\UART SLM.hex</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\UART SLM.map</v>
 <v>SLM UART magic\UART SLM\UART SLM.gpdsc</v>
-<v>SLM UART magic\UART SLM\UART SLM.rpt</v>
-<v>SLM UART magic\UART SLM\UART SLM_timing.html</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\CortexM3</v>
 <v>SLM UART magic\USBFS_UART01\CortexM3\ARM_GCC_541</v>
@@ -249,10 +223,11 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE_PM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY_PM.lst</v>
-<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_TRIG_INV.lst</v>
-<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_TRIG_NON_INV.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Camera_Trigger.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_4.lst</v>
@@ -267,6 +242,25 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Laser_On.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_LCDPort.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_OUT.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_Trigger.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -277,7 +271,6 @@
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
 <v>SLM UART magic</v>
-<v>SLM UART magic\UART SLM</v>
 <v>SLM UART magic\UART SLM\PSoC 5LP Architecture TRM</v>
 <v>SLM UART magic\UART SLM\CY8C58LP Family Datasheet</v>
 <v>SLM UART magic\UART SLM\System Reference Guides</v>
@@ -314,30 +307,13 @@
 <VisibleNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
-<v>SLM UART magic\UART SLM\PSoC 5LP Architecture TRM</v>
-<v>SLM UART magic\UART SLM\CY8C58LP Family Datasheet</v>
-<v>SLM UART magic\UART SLM\System Reference Guides</v>
-<v>SLM UART magic\UART SLM\System Reference Guides\cy_boot_v6_10</v>
-<v>SLM UART magic\UART SLM\and_v1_0</v>
-<v>SLM UART magic\UART SLM\and_v1_0\and_v1_0.pdf</v>
-<v>SLM UART magic\UART SLM\CharLCD_v2_20.pdf</v>
-<v>SLM UART magic\UART SLM\Counter_v3_0</v>
-<v>SLM UART magic\UART SLM\Counter_v3_0\Counter_v3_0.pdf</v>
-<v>SLM UART magic\UART SLM\cy_clock_v2_20</v>
-<v>SLM UART magic\UART SLM\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>SLM UART magic\UART SLM\cy_constant_v1_0.pdf</v>
-<v>SLM UART magic\UART SLM\cy_isr_v1_71.pdf</v>
-<v>SLM UART magic\UART SLM\cy_pins_v2_20</v>
-<v>SLM UART magic\UART SLM\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>SLM UART magic\UART SLM\cy_sync_v1_0</v>
-<v>SLM UART magic\UART SLM\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
-<v>SLM UART magic\UART SLM\CyControlReg_v1_80</v>
-<v>SLM UART magic\UART SLM\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
-<v>SLM UART magic\UART SLM\not_v1_0</v>
-<v>SLM UART magic\UART SLM\not_v1_0\not_v1_0.pdf</v>
-<v>SLM UART magic\UART SLM\or_v1_0</v>
-<v>SLM UART magic\UART SLM\or_v1_0\or_v1_0.pdf</v>
-<v>SLM UART magic\UART SLM\PWM_v3_30.pdf</v>
+<v>SLM UART magic\USBFS_UART01</v>
+<v>SLM UART magic\USBFS_UART01\PSoC 5LP Architecture TRM</v>
+<v>SLM UART magic\USBFS_UART01\CY8C58LP Family Datasheet</v>
+<v>SLM UART magic\USBFS_UART01\System Reference Guides</v>
+<v>SLM UART magic\USBFS_UART01\System Reference Guides\cy_boot_v6_10</v>
+<v>SLM UART magic\USBFS_UART01\CharLCD_v2_20.pdf</v>
+<v>SLM UART magic\USBFS_UART01\USBFS_v3_20.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -352,8 +328,8 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\UART SLM.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\UART SLM.cydsn\main.c" />
+<name v=".\UART SLM.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\UART SLM.cydsn\UART SLM.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
@@ -362,7 +338,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="877, 461" SelectedTabbedMdiWindow="d62594fe-8b5d-4ccf-9c8e-f13fe9a44f0f"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="4418367e-f364-49ca-ad40-e17b3ababbee" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\TopDesign\TopDesign.cysch" Guid="4562db2b-63a4-40fe-93b5-d0cc69aabcf1" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\main.c" Guid="aa612845-d0df-400d-9f54-e3c4cb71d4d9" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM.cydwr" Guid="d62594fe-8b5d-4ccf-9c8e-f13fe9a44f0f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1199, 573" SelectedTabbedMdiWindow="f61bc795-1199-44ca-8315-07dd50f74d42"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="4418367e-f364-49ca-ad40-e17b3ababbee" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\main.c" Guid="f61bc795-1199-44ca-8315-07dd50f74d42" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\TopDesign\TopDesign.cysch" Guid="36764038-b8cb-4f37-8d68-5421abbde9be" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM.cydwr" Guid="e14e1e97-ca73-46a2-b9cd-b61972e9a700" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
