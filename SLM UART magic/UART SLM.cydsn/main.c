@@ -74,8 +74,9 @@
 #define ENTER_CAP_MODE "\n\nSet Capture Mode:\n 0) Normal\n 1) Slow\nEnter Choice: "
 #define SELECT_MODE "\n\nSet Mode:\n 0) Free Run\n 1) Z-mode\n 2) Timed\nEnter Choice: "
 #define OPTIONS "\n\n\n\n a) set FPS\n b) set z-steps\n c) time to capture"
-#define OPTIONS2 "\n d) vert dim\n e) capture mode"
-#define OPTIONS3 "\n f) run mode\n g) start\n h) stop\n i) blanking\nEnter Choice: "
+#define OPTIONS2 "\n d) vert dim\n e) capture mode\n f) run mode"
+#define OPTIONS3 "\n g) start\n h) stop\n i) blanking\n j) SLM mode"
+#define OPTIONS4 "\n k) Show Config\nEnter Choice:"
 #define TRIGG_ON "Trig: ON "
 #define TRIGG_OFF "Trig: OFF"
 #define CAMERA_TRIGGER (0u)
@@ -288,7 +289,14 @@ int main()
             {
             }
             strcpy(msg, OPTIONS3);
+            USBUART_PutData((uint8*)msg, strlen(msg)); 
+                        /* Wait until component is ready to send data to host. */
+            while (0u == USBUART_CDCIsReady())
+            {
+            }
+            strcpy(msg, OPTIONS4);
             USBUART_PutData((uint8*)msg, strlen(msg));            
+
 
         }
 
@@ -409,6 +417,7 @@ int main()
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         time_ticks_rem = time_ticks;
+                        phases = 0;
                         ENBL_TRIG_ISR_Write(REG_ON);
                         LCD_Char_Position(1u,0u);
                         LCD_Char_PrintString(TRIGG_ON);
@@ -444,6 +453,12 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         
                         break;
+                    case 'j':
+                        
+                        break;
+                    case 'k':
+                        
+                        break;    
                     case '\n':
                         strcpy(msg, OPTIONS);
                         /* Send  OPTIONS. */
@@ -465,6 +480,14 @@ int main()
                         }
                         strcpy(msg, OPTIONS3);
                         USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        strcpy(msg, OPTIONS4);
+                        USBUART_PutData((uint8*)msg, strlen(msg));            
+
                         
                         break;
                     default:
