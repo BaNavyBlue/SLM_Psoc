@@ -124,7 +124,7 @@ char8* stop[]   = {"1", "1.5", "2"};
 /******** The Land Of Globals ********/
 uint8 deMux = CAMERA_TRIGGER;
 volatile uint8 phases = 0;
-uint16 zCount = 0;
+volatile uint16 zCount = 0;
 uint16 vert = HAMA_VERT_DEFAULT;
 uint8 capMode = CAP_MODE_NORMAL;
 double horzPeriod = HAMA_NORM_HORZ;
@@ -431,8 +431,11 @@ int main()
                         {
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
-                        time_ticks_rem = time_ticks;
-                        phases = 0;
+                        if(!ENBL_TRIG_ISR_Read()){
+                            time_ticks_rem = time_ticks;
+                            phases = 0;
+                            zCount = 0;
+                        }
                         ENBL_TRIG_ISR_Write(REG_ON);
                         LCD_Char_Position(1u,0u);
                         LCD_Char_PrintString(TRIGG_ON);
