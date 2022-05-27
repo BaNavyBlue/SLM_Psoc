@@ -64,6 +64,11 @@
 #define CAP_MODE_NORMAL (0u)
 #define CAP_MODE_SLOW (1u)
 
+#define THREE_BEAM (0u)
+#define TWO_BEAM (1u)
+#define THREE_BEAM_MAX (15u)
+#define TWO_BEAM_MAX (9u)
+
 #define BLANK_ON (0u)
 #define BLANK_OFF (1u)
 
@@ -73,10 +78,12 @@
 #define ENTER_VERT_VALUE "\n\nEnter Vertical Pixels: "
 #define ENTER_CAP_MODE "\n\nSet Capture Mode:\n 0) Normal\n 1) Slow\nEnter Choice: "
 #define SELECT_MODE "\n\nSet Mode:\n 0) Free Run\n 1) Z-mode\n 2) Timed\nEnter Choice: "
+#define SIM_SELECT "\n\nSet SIM Mode:\n 0) Three beam\n 1) Two beam\nEnter Choice: "
+#define SET_EXPOSURE "\n\nEnter Exposure float: "
 #define OPTIONS "\n\n\n\n a) set FPS\n b) set z-steps\n c) time to capture"
 #define OPTIONS2 "\n d) vert dim\n e) capture mode\n f) run mode"
-#define OPTIONS3 "\n g) start\n h) stop\n i) blanking\n j) SLM mode"
-#define OPTIONS4 "\n k) Show Config\nEnter Choice:"
+#define OPTIONS3 "\n g) start\n h) stop\n i) blanking\n j) SIM Beams"
+#define OPTIONS4 "\n k) Show Config\n l) Set exposure time\nEnter Choice:"
 #define TRIGG_ON "Trig: ON "
 #define TRIGG_OFF "Trig: OFF"
 #define CAMERA_TRIGGER (0u)
@@ -116,20 +123,26 @@ char8* stop[]   = {"1", "1.5", "2"};
 *******************************************************************************/
 /******** The Land Of Globals ********/
 uint8 deMux = CAMERA_TRIGGER;
-uint8 phases = 0;
+volatile uint8 phases = 0;
 uint16 zCount = 0;
 uint16 vert = HAMA_VERT_DEFAULT;
 uint8 capMode = CAP_MODE_NORMAL;
 double horzPeriod = HAMA_NORM_HORZ;
 double readOutTime = 0;
 volatile uint8 mode = FREE_RUN;
+volatile uint8 simMode = THREE_BEAM;
 volatile uint16 zSteps = 0;
 volatile uint32 frameTicks = THIRTY_FPS;
 volatile uint32 exposureTicks = THIRTY_EXP;
+volatile float exposureSeconds = 0.0333f;
+volatile double exposure = 0.0333f;
+volatile double exposureMax = 0.0333f;
 volatile uint32 time_ticks_rem = 0;
 uint32 time_ticks = 0;
 uint32 wait_time_ticks = 0;
 volatile uint8 msgFlag = 0;
+volatile uint8 phase_max = THREE_BEAM_MAX;
+
 
 char line0[20];
 char line1[20];
@@ -145,7 +158,7 @@ CY_ISR(T_ISR){
     
     // Controls the trigger periods and
     // which device gets the trigger pulse
-    if (phases < 15) {
+    if (phases < phase_max) {
 
             TRG_CNT_WritePeriod(exposureTicks);
 
@@ -198,8 +211,10 @@ CY_ISR(T_ISR){
 // read input prototype
 void read_input(uint8* buf, const char cmd);
 void set_mode(uint8* buf);
+void set_sim_mode(uint8* buf);
 void set_capMode(uint8* buf);
 void setExposure(void);
+void userSetExposure(void);
 void setWaitTime(void);
 void readTime(void);
 
@@ -454,11 +469,118 @@ int main()
                         
                         break;
                     case 'j':
-                        
+                        strcpy(msg, SIM_SELECT);
+                        /* Send MSG back to host. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        set_sim_mode(buffer);                        
                         break;
                     case 'k':
+                        if(ENBL_TRIG_ISR_Read()){
+                            sprintf(msg, "\n\nTrigger: Running\n");   
+                        } else {
+                            sprintf(msg, "\n\nTrigger: Stopped\n");                             
+                        }
                         
-                        break;    
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));                        
+                        
+                        if(capMode == CAP_MODE_NORMAL){
+                            sprintf(msg, "Camera Readout Mode: Normal\n");
+                        } else {
+                             sprintf(msg, "Camera Readout Mode: SLOW\n");   
+                        }
+                        /* Send  OPTIONS. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        if(mode == 0){
+                            sprintf(msg, "Mode: Free Run\n");
+                        } else if (mode == 1){
+                            sprintf(msg, "Mode: Z-Stack\n");
+                        } else {
+                            sprintf(msg, "Mode: Timed\n");
+                        }
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        if(simMode == 0){
+                            sprintf(msg, "SIM Mode: Three Beam\n");
+                        } else {
+                            sprintf(msg, "SIM Mode: Two Beam\n");    
+                        }
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        if(BLANK_TOGGLE_Read()){
+                            sprintf(msg, "Blanking: Off\n");
+                        } else {
+                            sprintf(msg, "Blanking: On\n");
+                        }
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));                        
+                        
+                        sprintf(msg, "FPS: %.3f\n", fps_in);
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        sprintf(msg, "exposure time: %.6f (sec)\n", exposure);                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        sprintf(msg, "Z-steps: %u\n", zSteps);
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        break;   
+                    case 'l':
+                        sprintf(msg, "\n\nCan not exceed %.6f (sec) exposure to maintain fps\n", exposureMax);
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        
+                        strcpy(msg, SET_EXPOSURE);
+                        /* Send MSG back to host. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        read_input(buffer,'l');
+                        SLM_WAIT_WritePeriod(wait_time_ticks);
+                        break;                        
                     case '\n':
                         strcpy(msg, OPTIONS);
                         /* Send  OPTIONS. */
@@ -623,7 +745,7 @@ void read_input(uint8* buf, const char cmd){
                 }
                 //exposureTicks = frameTicks - SLM_CNTR_TICKS - HAMA_SLOW_READ - SLM_TRG_TICKS;
                 setExposure();
-                sprintf(msg, "\n\nSetting: %.1f, frameTicks: %lu, expTicks: %lu\n\n", fps_in, frameTicks, exposureTicks);
+                sprintf(msg, "\n\nSetting: %.1f, frameTicks: %lu, exposure: %.6f (sec)\n\n", fps_in, frameTicks, exposure);
                 
                 sprintf(line0, "FPS: %.1f", fps_in);
                 LCD_Char_Position(0u, 11u);
@@ -641,7 +763,12 @@ void read_input(uint8* buf, const char cmd){
             case 'd':
                 vert = (uint16)atoi(val_str);
                 setExposure();
-                sprintf(msg, "\n\nSetting: %s, time_ticks: %lu\n\n", val_str, time_ticks);
+                sprintf(msg, "\n\nSetting: %s, exposure_ticks: %lu\n\n", val_str, exposureTicks);
+                break;
+            case 'l':
+                exposure = strtof(val_str, NULL);
+                userSetExposure();
+                sprintf(msg, "\n\nSetting exposure: %.6f, exposureTicks: %lu\n\n", exposure, exposureTicks);
                 break;
             default:
                 sprintf(msg, "\n\n****something wrong has happened****\n\n");
@@ -718,8 +845,93 @@ void set_mode(uint8* buf){
     } else {
        sprintf(line0, "Mode: Timed FPS: %.1f", fps_in);   
     }
+    
+    while (0u == USBUART_CDCIsReady())
+    {
+    }
+    USBUART_PutData((uint8*)msg, strlen(msg));
+    
     LCD_Char_Position(0u, 0u);
     LCD_Char_PrintString(line0);
+    
+}
+
+void set_sim_mode(uint8* buf){
+   char val_str[32] = {0};
+   uint8 i = 0;
+   uint8 count = 0;
+   while(i < 1){
+               /* Service USB CDC when device is configured. */
+        if (0u != USBUART_GetConfiguration())
+        {
+            /* Check for input data from host. */
+            if (0u != USBUART_DataIsReady())
+            {
+                /* Read received data and re-enable OUT endpoint. */
+                count = USBUART_GetAll(buf);
+
+                if (0u != count)
+                {
+                    /* Wait until component is ready to send data to host. */
+                    while (0u == USBUART_CDCIsReady())
+                    {
+                    }
+
+                    /* Send data back to host. */
+                    if ( (buf[0] >= '0' && buf[0] <= '1')|| buf[0] == '\n'){
+                        USBUART_PutData(buf, count);
+                        // append value to float string
+                        val_str[i++] = buf[0];                        
+                    }
+
+                    /* If the last sent packet is exactly the maximum packet 
+                    *  size, it is followed by a zero-length packet to assure
+                    *  that the end of the segment is properly identified by 
+                    *  the terminal.
+                    */
+                    if (USBUART_BUFFER_SIZE == count)
+                    {
+                        /* Wait until component is ready to send data to PC. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        /* Send zero-length packet to PC. */
+                        USBUART_PutData(NULL, 0u);
+                    }
+                }
+            }
+        }
+    }
+    if(val_str[0] != '\n'){
+        simMode = (uint8)atoi(val_str);   
+    }
+    if(simMode == TWO_BEAM){
+        phase_max = TWO_BEAM_MAX;
+        sprintf(msg, "\n\nSIM Mode: TWO BEAM\n");
+    } else {
+        phase_max = THREE_BEAM_MAX;
+        sprintf(msg, "\n\nSIM Mode: THREE BEAM\n");           
+    }
+
+    while (0u == USBUART_CDCIsReady())
+    {
+    }
+    USBUART_PutData((uint8*)msg, strlen(msg));
+    /*if(mode == 0){
+        sprintf(line0, "Mode: Free FPS: %.1f", fps_in);
+    } else if(mode == 1){
+        sprintf(line0, "Mode: Z-St FPS: %.1f", fps_in);
+    } else {
+       sprintf(line0, "Mode: Timed FPS: %.1f", fps_in);   
+    }
+    
+    while (0u == USBUART_CDCIsReady())
+    {
+    }
+    USBUART_PutData((uint8*)msg, strlen(msg));
+    
+    LCD_Char_Position(0u, 0u);
+    LCD_Char_PrintString(line0);*/
     
 }
 
@@ -781,10 +993,10 @@ void set_capMode(uint8* buf){
 
 void setExposure(void){
     readTime();
-    double exposure = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-    if(exposure < 0){
+    exposureMax = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+    if(exposureMax < 0){
         if(capMode == CAP_MODE_NORMAL){
-            exposure = 1 / THIRTY - readOutTime;
+            exposureMax = 1 / THIRTY - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
             fps_in = THIRTY;
             sprintf(msg, "\n***Timing error setting to 30fps***\n");
             while (0u == USBUART_CDCIsReady())
@@ -793,7 +1005,7 @@ void setExposure(void){
             /* Send Messege */
             USBUART_PutData((uint8*)msg, strlen(msg));
         } else {
-            exposure = 1 / TWENTY_SIX - readOutTime;
+            exposureMax = 1 / TWENTY_SIX - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
             fps_in = TWENTY_SIX;
             sprintf(msg, "\n***Timing error setting to 26fps***\n");
             while (0u == USBUART_CDCIsReady())
@@ -803,7 +1015,25 @@ void setExposure(void){
             USBUART_PutData((uint8*)msg, strlen(msg));
         }
     }
+    exposure = exposureMax;
+    exposureTicks = (uint32)(exposure/COUNT_PERIOD);
+    setWaitTime();
     
+}
+
+void userSetExposure(void){
+    //readTime();
+    //exposureMax = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+    if(exposureMax < exposure){
+        exposure = exposureMax;
+        sprintf(msg, "\n\nExposure too long setting to exposureMax\n");
+        while (0u == USBUART_CDCIsReady())
+        {
+        }
+        /* Send Messege */
+        USBUART_PutData((uint8*)msg, strlen(msg));
+    }
+
     exposureTicks = (uint32)(exposure/COUNT_PERIOD);
     setWaitTime();
     
@@ -825,7 +1055,7 @@ void setWaitTime(void){
     if(wait_time_ticks < SLM_CNTR_TICKS){
         wait_time_ticks = SLM_CNTR_TICKS;
     }
-    sprintf(msg, "\nwait_time_ticks: %lu\nexposureTicks: %lu\n", wait_time_ticks, exposureTicks);
+    sprintf(msg, "\nwait_time_ticks: %lu\nexposure: %.6f\n", wait_time_ticks, exposure);
     while (0u == USBUART_CDCIsReady())
     {
     }
