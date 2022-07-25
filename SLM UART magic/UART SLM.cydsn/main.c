@@ -66,8 +66,10 @@
 
 #define THREE_BEAM (0u)
 #define TWO_BEAM (1u)
+#define NO_SIM_Z_ONLY (2u)
 #define THREE_BEAM_MAX (15u)
 #define TWO_BEAM_MAX (9u)
+#define NO_BEAM_MAX (1u)
 
 #define BLANK_ON (0u)
 #define BLANK_OFF (1u)
@@ -78,12 +80,16 @@
 #define ENTER_VERT_VALUE "\n\nEnter Vertical Pixels: "
 #define ENTER_CAP_MODE "\n\nSet Capture Mode:\n 0) Normal\n 1) Slow\nEnter Choice: "
 #define SELECT_MODE "\n\nSet Mode:\n 0) Free Run\n 1) Z-mode\n 2) Timed\nEnter Choice: "
-#define SIM_SELECT "\n\nSet SIM Mode:\n 0) Three beam\n 1) Two beam\nEnter Choice: "
+#define SIM_SELECT "\n\nSet SIM Mode:\n 0) Three beam\n 1) Two beam\n "
+#define SIM_SELECT2 "2) Z only\nEnter Choice: "
 #define SET_EXPOSURE "\n\nEnter Exposure float: "
+#define LASER_SELECT "\n\n Laser(s) to use:\n 0) 588nm\n 1) 561nm\n )2 Both alternating"
+#define LASER_SELECT2 "\nEnter Choice: "
 #define OPTIONS "\n\n\n\n a) set FPS\n b) set z-steps\n c) time to capture"
 #define OPTIONS2 "\n d) vert dim\n e) capture mode\n f) run mode"
 #define OPTIONS3 "\n g) start\n h) stop\n i) blanking\n j) SIM Beams"
-#define OPTIONS4 "\n k) Show Config\n l) Set exposure time\nEnter Choice:"
+#define OPTIONS4 "\n k) Show Config\n l) Set exposure time"
+#define OPTIONS5 "\n m) LASERS\nEnter Choice:"
 #define TRIGG_ON "Trig: ON "
 #define TRIGG_OFF "Trig: OFF"
 #define CAMERA_TRIGGER (0u)
@@ -94,6 +100,9 @@
 #define FREE_RUN (0u)
 #define Z_MODE (1u)
 #define TIMED_MODE (2u)
+#define BLUE_LASER (0u)
+#define GREEN_LASER (1u)
+#define BOTH_LASERS (2u)
 
 #define TIMED_FIN 0x01
 #define Z_FIN     0x02
@@ -142,6 +151,7 @@ uint32 time_ticks = 0;
 uint32 wait_time_ticks = 0;
 volatile uint8 msgFlag = 0;
 volatile uint8 phase_max = THREE_BEAM_MAX;
+volatile uint8 laser_conf = BLUE_LASER;
 
 
 char line0[20];
@@ -159,14 +169,23 @@ CY_ISR(T_ISR){
     // Controls the trigger periods and
     // which device gets the trigger pulse
     if (phases < phase_max) {
-
+            if(laser_conf == BOTH_LASERS){
+                /* First Laser Should be set to Green @ start*/
+                /* Just to make sure switches to Blue */
+                uint8 val = CAM_SEL_REG_Read();
+                CAM_SEL_REG_Write(!val);
+                if (val == GREEN_LASER){
+                    phases++;
+                }
+            } else {
+                phases++;
+            }
             TRG_CNT_WritePeriod(exposureTicks);
 
             TRIG_CNT_RST_Write(REG_ON);
             TRIG_CNT_RST_Write(REG_OFF);
  
 
-            phases++;
             if(mode == TIMED_MODE){
                 if(time_ticks_rem > frameTicks){
                     time_ticks_rem -= frameTicks;
@@ -212,6 +231,7 @@ CY_ISR(T_ISR){
 void read_input(uint8* buf, const char cmd);
 void set_mode(uint8* buf);
 void set_sim_mode(uint8* buf);
+void set_laser_mode(uint8* buf);
 void set_capMode(uint8* buf);
 void setExposure(void);
 void userSetExposure(void);
@@ -232,7 +252,7 @@ int main()
     
     CyGlobalIntEnable;
 
-    PWM_Start();
+    //PWM_Start();  No more PWM
     TRG_CNT_Start();
     SLM_WAIT_Start();
     SLM_TRIG_Start();
@@ -305,12 +325,18 @@ int main()
             }
             strcpy(msg, OPTIONS3);
             USBUART_PutData((uint8*)msg, strlen(msg)); 
-                        /* Wait until component is ready to send data to host. */
+            /* Wait until component is ready to send data to host. */
             while (0u == USBUART_CDCIsReady())
             {
             }
             strcpy(msg, OPTIONS4);
-            USBUART_PutData((uint8*)msg, strlen(msg));            
+            USBUART_PutData((uint8*)msg, strlen(msg));
+            /* Wait until component is ready to send data to host. */
+            while (0u == USBUART_CDCIsReady())
+            {
+            }
+            strcpy(msg, OPTIONS5);
+            USBUART_PutData((uint8*)msg, strlen(msg));     
 
 
         }
@@ -435,6 +461,9 @@ int main()
                             time_ticks_rem = time_ticks;
                             phases = 0;
                             zCount = 0;
+                            if(laser_conf == BOTH_LASERS){
+                                CAM_SEL_REG_Write(GREEN_LASER);
+                            }
                         }
                         ENBL_TRIG_ISR_Write(REG_ON);
                         LCD_Char_Position(1u,0u);
@@ -479,6 +508,13 @@ int main()
                         {
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
+                        strcpy(msg, SIM_SELECT2);
+                        /* Send MSG back to host. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));                        
                         set_sim_mode(buffer);                        
                         break;
                     case 'k':
@@ -522,8 +558,10 @@ int main()
                         
                         if(simMode == 0){
                             sprintf(msg, "SIM Mode: Three Beam\n");
-                        } else {
+                        } else if(simMode == TWO_BEAM) {
                             sprintf(msg, "SIM Mode: Two Beam\n");    
+                        } else {
+                            sprintf(msg, "SIM Mode: Z-only\n");   
                         }
                         
                         /* Wait until component is ready to send data to host. */
@@ -565,7 +603,21 @@ int main()
                         {
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
-                        break;   
+                        break;
+                        if(laser_conf == BLUE_LASER){
+                            sprintf(msg, "Blue Laser");  
+                        } else if (laser_conf == GREEN_LASER){
+                            sprintf(msg, "Green Laser");
+                        } else {
+                            sprintf(msg, "Both Lasers Alternateing");   
+                        }
+                        
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        break;
                     case 'l':
                         sprintf(msg, "\n\nCan not exceed %.6f (sec) exposure to maintain fps\n", exposureMax);
                         /* Wait until component is ready to send data to host. */
@@ -584,6 +636,23 @@ int main()
                         read_input(buffer,'l');
                         SLM_WAIT_WritePeriod(wait_time_ticks);
                         break;                        
+                    case 'm':
+                        strcpy(msg, LASER_SELECT);
+                        /* Send MSG back to host. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        strcpy(msg, LASER_SELECT2);
+                        /* Send MSG back to host. */
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        USBUART_PutData((uint8*)msg, strlen(msg));
+                        set_laser_mode(buffer);
+                        break;
                     case '\n':
                         strcpy(msg, OPTIONS);
                         /* Send  OPTIONS. */
@@ -611,7 +680,14 @@ int main()
                         {
                         }
                         strcpy(msg, OPTIONS4);
-                        USBUART_PutData((uint8*)msg, strlen(msg));            
+                        USBUART_PutData((uint8*)msg, strlen(msg)); 
+
+                        /* Wait until component is ready to send data to host. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        strcpy(msg, OPTIONS5);
+                        USBUART_PutData((uint8*)msg, strlen(msg));
 
                         
                         break;
@@ -881,7 +957,7 @@ void set_sim_mode(uint8* buf){
                     }
 
                     /* Send data back to host. */
-                    if ( (buf[0] >= '0' && buf[0] <= '1')|| buf[0] == '\n'){
+                    if ( (buf[0] >= '0' && buf[0] <= '2')|| buf[0] == '\n'){
                         USBUART_PutData(buf, count);
                         // append value to float string
                         val_str[i++] = buf[0];                        
@@ -911,9 +987,12 @@ void set_sim_mode(uint8* buf){
     if(simMode == TWO_BEAM){
         phase_max = TWO_BEAM_MAX;
         sprintf(msg, "\n\nSIM Mode: TWO BEAM\n");
-    } else {
+    } else if(simMode == THREE_BEAM) {
         phase_max = THREE_BEAM_MAX;
         sprintf(msg, "\n\nSIM Mode: THREE BEAM\n");           
+    } else {
+        phase_max = NO_BEAM_MAX;
+        sprintf(msg, "\n\nSIM Mode: Z-Only\n");
     }
 
     while (0u == USBUART_CDCIsReady())
@@ -937,6 +1016,77 @@ void set_sim_mode(uint8* buf){
     LCD_Char_PrintString(line0);*/
     
 }
+
+
+void set_laser_mode(uint8* buf){
+   char val_str[32] = {0};
+   uint8 i = 0;
+   uint8 count = 0;
+   while(i < 1){
+               /* Service USB CDC when device is configured. */
+        if (0u != USBUART_GetConfiguration())
+        {
+            /* Check for input data from host. */
+            if (0u != USBUART_DataIsReady())
+            {
+                /* Read received data and re-enable OUT endpoint. */
+                count = USBUART_GetAll(buf);
+
+                if (0u != count)
+                {
+                    /* Wait until component is ready to send data to host. */
+                    while (0u == USBUART_CDCIsReady())
+                    {
+                    }
+
+                    /* Send data back to host. */
+                    if ( (buf[0] >= '0' && buf[0] <= '2')|| buf[0] == '\n'){
+                        USBUART_PutData(buf, count);
+                        // append value to float string
+                        val_str[i++] = buf[0];                        
+                    }
+
+                    /* If the last sent packet is exactly the maximum packet 
+                    *  size, it is followed by a zero-length packet to assure
+                    *  that the end of the segment is properly identified by 
+                    *  the terminal.
+                    */
+                    if (USBUART_BUFFER_SIZE == count)
+                    {
+                        /* Wait until component is ready to send data to PC. */
+                        while (0u == USBUART_CDCIsReady())
+                        {
+                        }
+                        /* Send zero-length packet to PC. */
+                        USBUART_PutData(NULL, 0u);
+                    }
+                }
+            }
+        }
+    }
+    if(val_str[0] != '\n'){
+        laser_conf = (uint8)atoi(val_str);   
+    }
+    if(laser_conf == BLUE_LASER){
+        CAM_SEL_REG_Write(BLUE_LASER);
+        sprintf(msg, "\n\nLaser Mode: 488nm\n");
+    } else if(laser_conf == BLUE_LASER){
+        CAM_SEL_REG_Write(GREEN_LASER);
+        sprintf(msg, "\n\nLaser Mode: 561nm\n");           
+    } else {
+        sprintf(msg, "\n\nLaser Mode: 488nm and 561nm Alternating\n");
+        CAM_SEL_REG_Write(GREEN_LASER);
+    }
+    
+    setWaitTime();
+
+    while (0u == USBUART_CDCIsReady())
+    {
+    }
+    USBUART_PutData((uint8*)msg, strlen(msg));
+    
+}
+
 
 void set_capMode(uint8* buf){
    char val_str[32] = {0};
@@ -1045,18 +1195,20 @@ void userSetExposure(void){
 void setWaitTime(void){
     double float_ticks = (readOutTime / COUNT_PERIOD) - (double)SLM_CNTR_TICKS / 2.0f;
     
-    if(float_ticks <= 0){
+    if(float_ticks <= 0 || laser_conf == BOTH_LASERS){
         wait_time_ticks = SLM_CNTR_TICKS;
     } else {
         wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2;
     }
     
-    uint32 remain_ticks = frameTicks - exposureTicks - SLM_TRG_TICKS;
-    if(wait_time_ticks < remain_ticks){
-         wait_time_ticks = remain_ticks;   
-    }
-    if(wait_time_ticks < SLM_CNTR_TICKS){
-        wait_time_ticks = SLM_CNTR_TICKS;
+    if(laser_conf == BOTH_LASERS){
+        uint32 remain_ticks = frameTicks - exposureTicks - SLM_TRG_TICKS;
+        if(wait_time_ticks < remain_ticks){
+             wait_time_ticks = remain_ticks;   
+        }
+        if(wait_time_ticks < SLM_CNTR_TICKS){
+            wait_time_ticks = SLM_CNTR_TICKS;
+        }
     }
     sprintf(msg, "\nwait_time_ticks: %lu\nexposure: %.6f\n", wait_time_ticks, exposure);
     while (0u == USBUART_CDCIsReady())
