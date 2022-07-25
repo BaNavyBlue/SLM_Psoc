@@ -83,7 +83,7 @@
 #define SIM_SELECT "\n\nSet SIM Mode:\n 0) Three beam\n 1) Two beam\n "
 #define SIM_SELECT2 "2) Z only\nEnter Choice: "
 #define SET_EXPOSURE "\n\nEnter Exposure float: "
-#define LASER_SELECT "\n\n Laser(s) to use:\n 0) 588nm\n 1) 561nm\n )2 Both alternating"
+#define LASER_SELECT "\n\n Laser(s) to use:\n 0) 588nm\n 1) 561nm\n 2) Both alternating"
 #define LASER_SELECT2 "\nEnter Choice: "
 #define OPTIONS "\n\n\n\n a) set FPS\n b) set z-steps\n c) time to capture"
 #define OPTIONS2 "\n d) vert dim\n e) capture mode\n f) run mode"
@@ -174,7 +174,7 @@ CY_ISR(T_ISR){
                 /* Just to make sure switches to Blue */
                 uint8 val = CAM_SEL_REG_Read();
                 CAM_SEL_REG_Write(!val);
-                if (val == GREEN_LASER){
+                if (val == BLUE_LASER){
                     phases++;
                 }
             } else {
@@ -603,13 +603,13 @@ int main()
                         {
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
-                        break;
+
                         if(laser_conf == BLUE_LASER){
-                            sprintf(msg, "Blue Laser");  
+                            sprintf(msg, "Blue Laser\n");  
                         } else if (laser_conf == GREEN_LASER){
-                            sprintf(msg, "Green Laser");
+                            sprintf(msg, "Green Laser\n");
                         } else {
-                            sprintf(msg, "Both Lasers Alternateing");   
+                            sprintf(msg, "Both Lasers Alternateing\n");   
                         }
                         
                         /* Wait until component is ready to send data to host. */
@@ -1195,13 +1195,13 @@ void userSetExposure(void){
 void setWaitTime(void){
     double float_ticks = (readOutTime / COUNT_PERIOD) - (double)SLM_CNTR_TICKS / 2.0f;
     
-    if(float_ticks <= 0 || laser_conf == BOTH_LASERS){
+    if(float_ticks <= 0 /*|| laser_conf == BOTH_LASERS*/){
         wait_time_ticks = SLM_CNTR_TICKS;
     } else {
         wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2;
     }
     
-    if(laser_conf == BOTH_LASERS){
+    //if(laser_conf == BOTH_LASERS){
         uint32 remain_ticks = frameTicks - exposureTicks - SLM_TRG_TICKS;
         if(wait_time_ticks < remain_ticks){
              wait_time_ticks = remain_ticks;   
@@ -1209,7 +1209,7 @@ void setWaitTime(void){
         if(wait_time_ticks < SLM_CNTR_TICKS){
             wait_time_ticks = SLM_CNTR_TICKS;
         }
-    }
+    //}
     sprintf(msg, "\nwait_time_ticks: %lu\nexposure: %.6f\n", wait_time_ticks, exposure);
     while (0u == USBUART_CDCIsReady())
     {
