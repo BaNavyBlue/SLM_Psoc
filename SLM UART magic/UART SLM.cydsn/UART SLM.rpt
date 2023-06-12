@@ -4,10 +4,10 @@ cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabd
 </CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.632ms
+Elaboration phase: Elapsed time ==> 1s.648ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.056ms
+HDL generation phase: Elapsed time ==> 0s.052ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Adopt
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Mon Jul 25 04:00:25 2022
+Wed Aug 03 11:46:39 2022
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 UART SLM.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Mon Jul 25 04:00:25 2022
+Wed Aug 03 11:46:39 2022
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -96,7 +96,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Adopt
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Mon Jul 25 04:00:25 2022
+Wed Aug 03 11:46:40 2022
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -134,7 +134,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Adopt
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Mon Jul 25 04:00:26 2022
+Wed Aug 03 11:46:41 2022
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -275,9 +275,19 @@ Detecting unused logic.
 	Net_451
 	Net_452
 	Net_453
+	Net_472
+	\STAGE_WAIT:Net_82\
+	\STAGE_WAIT:Net_95\
+	\STAGE_WAIT:Net_91\
+	\STAGE_WAIT:Net_102\
+	\STAGE_WAIT:CounterUDB:ctrl_cmod_2\
+	\STAGE_WAIT:CounterUDB:ctrl_cmod_1\
+	\STAGE_WAIT:CounterUDB:ctrl_cmod_0\
+	Net_468
+	\STAGE_WAIT:CounterUDB:reload_tc\
 
 
-Deleted 108 User equations/components.
+Deleted 118 User equations/components.
 Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -330,6 +340,10 @@ Aliasing \BLANK_TOGGLE:rst\ to zero
 Aliasing tmpOE__CAM2_TRIGG_net_0 to \LCD_Char:tmpOE__LCDPort_net_6\
 Aliasing \CAM_SEL_REG:clk\ to zero
 Aliasing \CAM_SEL_REG:rst\ to zero
+Aliasing \STAGE_WAIT:Net_89\ to \LCD_Char:tmpOE__LCDPort_net_6\
+Aliasing \STAGE_WAIT:CounterUDB:ctrl_capmode_1\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:ctrl_capmode_0\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:capt_rising\ to zero
 Aliasing \TRG_CNT:CounterUDB:prevCapture\\D\ to zero
 Aliasing \TRG_CNT:CounterUDB:cmp_out_reg_i\\D\ to \TRG_CNT:CounterUDB:prevCompare\\D\
 Aliasing \STAGE_TRIG:CounterUDB:prevCapture\\D\ to zero
@@ -343,6 +357,9 @@ Aliasing \BLANKING_DELAY:CounterUDB:count_stored_i\\D\ to \TRG_CNT:CounterUDB:co
 Aliasing \SLM_TRIG:CounterUDB:prevCapture\\D\ to zero
 Aliasing \SLM_TRIG:CounterUDB:cmp_out_reg_i\\D\ to \SLM_TRIG:CounterUDB:prevCompare\\D\
 Aliasing \SLM_TRIG:CounterUDB:count_stored_i\\D\ to \SLM_WAIT:CounterUDB:count_stored_i\\D\
+Aliasing \STAGE_WAIT:CounterUDB:prevCapture\\D\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:cmp_out_reg_i\\D\ to \STAGE_WAIT:CounterUDB:prevCompare\\D\
+Aliasing \STAGE_WAIT:CounterUDB:count_stored_i\\D\ to \TRG_CNT:CounterUDB:count_stored_i\\D\
 Removing Lhs of wire \LCD_Char:tmpOE__LCDPort_net_5\[2] = \LCD_Char:tmpOE__LCDPort_net_6\[1]
 Removing Lhs of wire \LCD_Char:tmpOE__LCDPort_net_4\[3] = \LCD_Char:tmpOE__LCDPort_net_6\[1]
 Removing Lhs of wire \LCD_Char:tmpOE__LCDPort_net_3\[4] = \LCD_Char:tmpOE__LCDPort_net_6\[1]
@@ -403,7 +420,6 @@ Removing Lhs of wire \STAGE_TRIG:CounterUDB:cs_addr_0\[402] = Net_389[366]
 Removing Lhs of wire \STAGE_REG:clk\[575] = zero[8]
 Removing Lhs of wire \STAGE_REG:rst\[576] = zero[8]
 Removing Lhs of wire tmpOE__CAM1_TRIGG_net_0[602] = one[24]
-Removing Rhs of wire Net_309[603] = \demux_2:tmp__demux_2_0_reg\[1490]
 Removing Lhs of wire tmpOE__SLM_Trigger_net_0[609] = one[24]
 Removing Lhs of wire tmpOE__Stage_Trigger_net_0[616] = one[24]
 Removing Lhs of wire \TRIG_CNT_RST:clk\[622] = zero[8]
@@ -415,9 +431,9 @@ Removing Rhs of wire SLM_WAIT_WIRE[652] = \SLM_WAIT:CounterUDB:tc_reg_i\[759]
 Removing Lhs of wire \ENBL_TRIG_ISR:clk\[654] = zero[8]
 Removing Lhs of wire \ENBL_TRIG_ISR:rst\[655] = zero[8]
 Removing Lhs of wire tmpOE__LASER_561_net_0[685] = one[24]
-Removing Rhs of wire Net_424[686] = \demux_1:tmp__demux_1_1_reg\[1489]
+Removing Rhs of wire Net_424[686] = \demux_1:tmp__demux_1_1_reg\[1490]
 Removing Lhs of wire tmpOE__LASER_488_net_0[692] = one[24]
-Removing Rhs of wire Net_423[693] = \demux_1:tmp__demux_1_0_reg\[1487]
+Removing Rhs of wire Net_423[693] = \demux_1:tmp__demux_1_0_reg\[1488]
 Removing Lhs of wire \SLM_WAIT:Net_89\[705] = one[24]
 Removing Lhs of wire \SLM_WAIT:CounterUDB:ctrl_capmode_1\[714] = zero[8]
 Removing Lhs of wire \SLM_WAIT:CounterUDB:ctrl_capmode_0\[715] = zero[8]
@@ -438,8 +454,8 @@ Removing Rhs of wire \SLM_WAIT:CounterUDB:cmp_out_i\[760] = \SLM_WAIT:CounterUDB
 Removing Lhs of wire \SLM_WAIT:CounterUDB:cs_addr_2\[768] = one[24]
 Removing Lhs of wire \SLM_WAIT:CounterUDB:cs_addr_1\[769] = \SLM_WAIT:CounterUDB:count_enable\[766]
 Removing Lhs of wire \SLM_WAIT:CounterUDB:cs_addr_0\[770] = Net_254[734]
-Removing Rhs of wire Net_380[944] = \ACTIVATE_SLM:control_out_0\[1437]
-Removing Rhs of wire Net_380[944] = \ACTIVATE_SLM:control_0\[1460]
+Removing Rhs of wire ACTIVATE[944] = \ACTIVATE_SLM:control_out_0\[1437]
+Removing Rhs of wire ACTIVATE[944] = \ACTIVATE_SLM:control_0\[1460]
 Removing Rhs of wire Net_268[947] = \BLANKING_DELAY:Net_49\[948]
 Removing Rhs of wire Net_268[947] = \BLANKING_DELAY:CounterUDB:tc_reg_i\[1003]
 Removing Lhs of wire \BLANKING_DELAY:Net_89\[950] = one[24]
@@ -462,8 +478,8 @@ Removing Rhs of wire \BLANKING_DELAY:CounterUDB:cmp_out_i\[1004] = \BLANKING_DEL
 Removing Lhs of wire \BLANKING_DELAY:CounterUDB:cs_addr_2\[1012] = one[24]
 Removing Lhs of wire \BLANKING_DELAY:CounterUDB:cs_addr_1\[1013] = \BLANKING_DELAY:CounterUDB:count_enable\[1010]
 Removing Lhs of wire \BLANKING_DELAY:CounterUDB:cs_addr_0\[1014] = TRIG_CNT_TC[89]
-Removing Rhs of wire Net_400[1189] = \BLANK_TOGGLE:control_out_0\[1463]
-Removing Rhs of wire Net_400[1189] = \BLANK_TOGGLE:control_0\[1486]
+Removing Rhs of wire Net_400[1189] = \BLANK_TOGGLE:control_out_0\[1464]
+Removing Rhs of wire Net_400[1189] = \BLANK_TOGGLE:control_0\[1487]
 Removing Rhs of wire Net_306[1192] = \SLM_TRIG:Net_49\[1193]
 Removing Rhs of wire Net_306[1192] = \SLM_TRIG:CounterUDB:tc_reg_i\[1249]
 Removing Lhs of wire \SLM_TRIG:Net_89\[1195] = one[24]
@@ -486,54 +502,84 @@ Removing Rhs of wire \SLM_TRIG:CounterUDB:cmp_out_i\[1250] = \SLM_TRIG:CounterUD
 Removing Lhs of wire \SLM_TRIG:CounterUDB:cs_addr_2\[1258] = one[24]
 Removing Lhs of wire \SLM_TRIG:CounterUDB:cs_addr_1\[1259] = \SLM_TRIG:CounterUDB:count_enable\[1256]
 Removing Lhs of wire \SLM_TRIG:CounterUDB:cs_addr_0\[1260] = Net_257[1224]
+Removing Rhs of wire Net_309[1434] = \demux_2:tmp__demux_2_0_reg\[1491]
 Removing Lhs of wire \ACTIVATE_SLM:clk\[1435] = zero[8]
 Removing Lhs of wire \ACTIVATE_SLM:rst\[1436] = zero[8]
-Removing Lhs of wire \BLANK_TOGGLE:clk\[1461] = zero[8]
-Removing Lhs of wire \BLANK_TOGGLE:rst\[1462] = zero[8]
-Removing Rhs of wire CAM_SEL_WIRE[1488] = \CAM_SEL_REG:control_out_0\[1501]
-Removing Rhs of wire CAM_SEL_WIRE[1488] = \CAM_SEL_REG:control_0\[1524]
-Removing Rhs of wire Net_439[1492] = \demux_2:tmp__demux_2_1_reg\[1491]
-Removing Lhs of wire tmpOE__CAM2_TRIGG_net_0[1494] = one[24]
-Removing Lhs of wire \CAM_SEL_REG:clk\[1499] = zero[8]
-Removing Lhs of wire \CAM_SEL_REG:rst\[1500] = zero[8]
-Removing Lhs of wire \TRG_CNT:CounterUDB:prevCapture\\D\[1525] = zero[8]
-Removing Lhs of wire \TRG_CNT:CounterUDB:overflow_reg_i\\D\[1527] = \TRG_CNT:CounterUDB:overflow\[140]
-Removing Lhs of wire \TRG_CNT:CounterUDB:underflow_reg_i\\D\[1528] = \TRG_CNT:CounterUDB:underflow\[143]
-Removing Lhs of wire \TRG_CNT:CounterUDB:tc_reg_i\\D\[1529] = \TRG_CNT:CounterUDB:tc_i\[146]
-Removing Lhs of wire \TRG_CNT:CounterUDB:prevCompare\\D\[1530] = \TRG_CNT:CounterUDB:cmp_out_i\[148]
-Removing Lhs of wire \TRG_CNT:CounterUDB:cmp_out_reg_i\\D\[1531] = \TRG_CNT:CounterUDB:cmp_out_i\[148]
-Removing Lhs of wire \TRG_CNT:CounterUDB:count_stored_i\\D\[1532] = Net_6[154]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:prevCapture\\D\[1533] = zero[8]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:overflow_reg_i\\D\[1535] = \STAGE_TRIG:CounterUDB:overflow\[384]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:underflow_reg_i\\D\[1536] = \STAGE_TRIG:CounterUDB:underflow\[387]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:tc_reg_i\\D\[1537] = \STAGE_TRIG:CounterUDB:tc_i\[390]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:prevCompare\\D\[1538] = \STAGE_TRIG:CounterUDB:cmp_out_i\[392]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:cmp_out_reg_i\\D\[1539] = \STAGE_TRIG:CounterUDB:cmp_out_i\[392]
-Removing Lhs of wire \STAGE_TRIG:CounterUDB:count_stored_i\\D\[1540] = Net_6[154]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:prevCapture\\D\[1541] = zero[8]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:overflow_reg_i\\D\[1543] = \SLM_WAIT:CounterUDB:overflow\[752]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:underflow_reg_i\\D\[1544] = \SLM_WAIT:CounterUDB:underflow\[755]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:tc_reg_i\\D\[1545] = \SLM_WAIT:CounterUDB:tc_i\[758]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:prevCompare\\D\[1546] = \SLM_WAIT:CounterUDB:cmp_out_i\[760]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:cmp_out_reg_i\\D\[1547] = \SLM_WAIT:CounterUDB:cmp_out_i\[760]
-Removing Lhs of wire \SLM_WAIT:CounterUDB:count_stored_i\\D\[1548] = Net_246[700]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:prevCapture\\D\[1549] = zero[8]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:overflow_reg_i\\D\[1551] = \BLANKING_DELAY:CounterUDB:overflow\[996]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:underflow_reg_i\\D\[1552] = \BLANKING_DELAY:CounterUDB:underflow\[999]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:tc_reg_i\\D\[1553] = \BLANKING_DELAY:CounterUDB:tc_i\[1002]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:prevCompare\\D\[1554] = \BLANKING_DELAY:CounterUDB:cmp_out_i\[1004]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:cmp_out_reg_i\\D\[1555] = \BLANKING_DELAY:CounterUDB:cmp_out_i\[1004]
-Removing Lhs of wire \BLANKING_DELAY:CounterUDB:count_stored_i\\D\[1556] = Net_6[154]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:prevCapture\\D\[1557] = zero[8]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:overflow_reg_i\\D\[1559] = \SLM_TRIG:CounterUDB:overflow\[1242]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:underflow_reg_i\\D\[1560] = \SLM_TRIG:CounterUDB:underflow\[1245]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:tc_reg_i\\D\[1561] = \SLM_TRIG:CounterUDB:tc_i\[1248]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:prevCompare\\D\[1562] = \SLM_TRIG:CounterUDB:cmp_out_i\[1250]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:cmp_out_reg_i\\D\[1563] = \SLM_TRIG:CounterUDB:cmp_out_i\[1250]
-Removing Lhs of wire \SLM_TRIG:CounterUDB:count_stored_i\\D\[1564] = Net_246[700]
+Removing Rhs of wire Net_478[1461] = \STAGE_WAIT:Net_49\[1528]
+Removing Rhs of wire Net_478[1461] = \STAGE_WAIT:CounterUDB:tc_reg_i\[1584]
+Removing Lhs of wire \BLANK_TOGGLE:clk\[1462] = zero[8]
+Removing Lhs of wire \BLANK_TOGGLE:rst\[1463] = zero[8]
+Removing Rhs of wire CAM_SEL_WIRE[1489] = \CAM_SEL_REG:control_out_0\[1502]
+Removing Rhs of wire CAM_SEL_WIRE[1489] = \CAM_SEL_REG:control_0\[1525]
+Removing Rhs of wire Net_439[1493] = \demux_2:tmp__demux_2_1_reg\[1492]
+Removing Lhs of wire tmpOE__CAM2_TRIGG_net_0[1495] = one[24]
+Removing Lhs of wire \CAM_SEL_REG:clk\[1500] = zero[8]
+Removing Lhs of wire \CAM_SEL_REG:rst\[1501] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:Net_89\[1530] = one[24]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:ctrl_capmode_1\[1539] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:ctrl_capmode_0\[1540] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:ctrl_enable\[1552] = \STAGE_WAIT:CounterUDB:control_7\[1544]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:capt_rising\[1554] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:capt_falling\[1555] = \STAGE_WAIT:CounterUDB:prevCapture\[1553]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:reload\[1558] = Net_473[1559]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:final_enable\[1560] = \STAGE_WAIT:CounterUDB:control_7\[1544]
+Removing Rhs of wire \STAGE_WAIT:CounterUDB:status_0\[1565] = \STAGE_WAIT:CounterUDB:cmp_out_status\[1566]
+Removing Rhs of wire \STAGE_WAIT:CounterUDB:status_1\[1567] = \STAGE_WAIT:CounterUDB:per_zero\[1568]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:status_2\[1569] = \STAGE_WAIT:CounterUDB:overflow_status\[1562]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:status_3\[1570] = \STAGE_WAIT:CounterUDB:underflow_status\[1563]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:status_4\[1571] = \STAGE_WAIT:CounterUDB:hwCapture\[1557]
+Removing Rhs of wire \STAGE_WAIT:CounterUDB:status_5\[1572] = \STAGE_WAIT:CounterUDB:fifo_full\[1573]
+Removing Rhs of wire \STAGE_WAIT:CounterUDB:status_6\[1574] = \STAGE_WAIT:CounterUDB:fifo_nempty\[1575]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:dp_dir\[1578] = one[24]
+Removing Rhs of wire \STAGE_WAIT:CounterUDB:cmp_out_i\[1585] = \STAGE_WAIT:CounterUDB:cmp_less\[1586]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:cs_addr_2\[1593] = one[24]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:cs_addr_1\[1594] = \STAGE_WAIT:CounterUDB:count_enable\[1591]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:cs_addr_0\[1595] = Net_473[1559]
+Removing Lhs of wire \TRG_CNT:CounterUDB:prevCapture\\D\[1768] = zero[8]
+Removing Lhs of wire \TRG_CNT:CounterUDB:overflow_reg_i\\D\[1770] = \TRG_CNT:CounterUDB:overflow\[140]
+Removing Lhs of wire \TRG_CNT:CounterUDB:underflow_reg_i\\D\[1771] = \TRG_CNT:CounterUDB:underflow\[143]
+Removing Lhs of wire \TRG_CNT:CounterUDB:tc_reg_i\\D\[1772] = \TRG_CNT:CounterUDB:tc_i\[146]
+Removing Lhs of wire \TRG_CNT:CounterUDB:prevCompare\\D\[1773] = \TRG_CNT:CounterUDB:cmp_out_i\[148]
+Removing Lhs of wire \TRG_CNT:CounterUDB:cmp_out_reg_i\\D\[1774] = \TRG_CNT:CounterUDB:cmp_out_i\[148]
+Removing Lhs of wire \TRG_CNT:CounterUDB:count_stored_i\\D\[1775] = CLOCK_3_WIRE[154]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:prevCapture\\D\[1776] = zero[8]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:overflow_reg_i\\D\[1778] = \STAGE_TRIG:CounterUDB:overflow\[384]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:underflow_reg_i\\D\[1779] = \STAGE_TRIG:CounterUDB:underflow\[387]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:tc_reg_i\\D\[1780] = \STAGE_TRIG:CounterUDB:tc_i\[390]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:prevCompare\\D\[1781] = \STAGE_TRIG:CounterUDB:cmp_out_i\[392]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:cmp_out_reg_i\\D\[1782] = \STAGE_TRIG:CounterUDB:cmp_out_i\[392]
+Removing Lhs of wire \STAGE_TRIG:CounterUDB:count_stored_i\\D\[1783] = CLOCK_3_WIRE[154]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:prevCapture\\D\[1784] = zero[8]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:overflow_reg_i\\D\[1786] = \SLM_WAIT:CounterUDB:overflow\[752]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:underflow_reg_i\\D\[1787] = \SLM_WAIT:CounterUDB:underflow\[755]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:tc_reg_i\\D\[1788] = \SLM_WAIT:CounterUDB:tc_i\[758]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:prevCompare\\D\[1789] = \SLM_WAIT:CounterUDB:cmp_out_i\[760]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:cmp_out_reg_i\\D\[1790] = \SLM_WAIT:CounterUDB:cmp_out_i\[760]
+Removing Lhs of wire \SLM_WAIT:CounterUDB:count_stored_i\\D\[1791] = Net_246[700]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:prevCapture\\D\[1792] = zero[8]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:overflow_reg_i\\D\[1794] = \BLANKING_DELAY:CounterUDB:overflow\[996]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:underflow_reg_i\\D\[1795] = \BLANKING_DELAY:CounterUDB:underflow\[999]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:tc_reg_i\\D\[1796] = \BLANKING_DELAY:CounterUDB:tc_i\[1002]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:prevCompare\\D\[1797] = \BLANKING_DELAY:CounterUDB:cmp_out_i\[1004]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:cmp_out_reg_i\\D\[1798] = \BLANKING_DELAY:CounterUDB:cmp_out_i\[1004]
+Removing Lhs of wire \BLANKING_DELAY:CounterUDB:count_stored_i\\D\[1799] = CLOCK_3_WIRE[154]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:prevCapture\\D\[1800] = zero[8]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:overflow_reg_i\\D\[1802] = \SLM_TRIG:CounterUDB:overflow\[1242]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:underflow_reg_i\\D\[1803] = \SLM_TRIG:CounterUDB:underflow\[1245]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:tc_reg_i\\D\[1804] = \SLM_TRIG:CounterUDB:tc_i\[1248]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:prevCompare\\D\[1805] = \SLM_TRIG:CounterUDB:cmp_out_i\[1250]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:cmp_out_reg_i\\D\[1806] = \SLM_TRIG:CounterUDB:cmp_out_i\[1250]
+Removing Lhs of wire \SLM_TRIG:CounterUDB:count_stored_i\\D\[1807] = Net_246[700]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:prevCapture\\D\[1808] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:overflow_reg_i\\D\[1810] = \STAGE_WAIT:CounterUDB:overflow\[1577]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:underflow_reg_i\\D\[1811] = \STAGE_WAIT:CounterUDB:underflow\[1580]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:tc_reg_i\\D\[1812] = \STAGE_WAIT:CounterUDB:tc_i\[1583]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:prevCompare\\D\[1813] = \STAGE_WAIT:CounterUDB:cmp_out_i\[1585]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:cmp_out_reg_i\\D\[1814] = \STAGE_WAIT:CounterUDB:cmp_out_i\[1585]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:count_stored_i\\D\[1815] = CLOCK_3_WIRE[154]
 
 ------------------------------------------------------
-Aliased 0 equations, 188 wires.
+Aliased 0 equations, 217 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -575,11 +621,14 @@ Note:  Expanding virtual equation for '\STAGE_TRIG:CounterUDB:counter_enable\' (
 Note:  Expanding virtual equation for 'Net_314' (cost = 0):
 Net_314 <= (not Net_306);
 
-Note:  Expanding virtual equation for 'Net_319' (cost = 0):
-Net_319 <= (not TRIG_CNT_TC);
+Note:  Expanding virtual equation for 'STAGE_T' (cost = 0):
+STAGE_T <= (not Net_348);
+
+Note:  Expanding virtual equation for 'CAM_TRIG_WIRE' (cost = 0):
+CAM_TRIG_WIRE <= (not TRIG_CNT_TC);
 
 Note:  Expanding virtual equation for 'Net_396' (cost = 1):
-Net_396 <= ((Net_348 and Net_306));
+Net_396 <= ((Net_306 and Net_478));
 
 Note:  Expanding virtual equation for '\SLM_WAIT:CounterUDB:capt_either_edge\' (cost = 0):
 \SLM_WAIT:CounterUDB:capt_either_edge\ <= (\SLM_WAIT:CounterUDB:prevCapture\);
@@ -612,7 +661,7 @@ Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:capt_either_edge\' (
 \SLM_TRIG:CounterUDB:capt_either_edge\ <= (\SLM_TRIG:CounterUDB:prevCapture\);
 
 Note:  Expanding virtual equation for 'Net_257' (cost = 3):
-Net_257 <= (Net_380
+Net_257 <= (ACTIVATE
 	OR not TRIG_CNT_TC);
 
 Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:overflow\' (cost = 0):
@@ -623,6 +672,22 @@ Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:underflow\' (cost = 
 
 Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:counter_enable\' (cost = 1):
 \SLM_TRIG:CounterUDB:counter_enable\ <= ((not \SLM_TRIG:CounterUDB:disable_run_i\ and \SLM_TRIG:CounterUDB:control_7\));
+
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:capt_either_edge\' (cost = 0):
+\STAGE_WAIT:CounterUDB:capt_either_edge\ <= (\STAGE_WAIT:CounterUDB:prevCapture\);
+
+Note:  Expanding virtual equation for 'Net_473' (cost = 3):
+Net_473 <= (ACTIVATE
+	OR not Net_348);
+
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:overflow\' (cost = 0):
+\STAGE_WAIT:CounterUDB:overflow\ <= (\STAGE_WAIT:CounterUDB:per_equal\);
+
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:underflow\' (cost = 0):
+\STAGE_WAIT:CounterUDB:underflow\ <=  ('0') ;
+
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:counter_enable\' (cost = 1):
+\STAGE_WAIT:CounterUDB:counter_enable\ <= ((not \STAGE_WAIT:CounterUDB:disable_run_i\ and \STAGE_WAIT:CounterUDB:control_7\));
 
 
 Substituting virtuals - pass 2:
@@ -639,8 +704,8 @@ Note:  Expanding virtual equation for '\STAGE_TRIG:CounterUDB:overflow_status\' 
 Note:  Expanding virtual equation for '\STAGE_TRIG:CounterUDB:underflow_status\' (cost = 0):
 \STAGE_TRIG:CounterUDB:underflow_status\ <=  ('0') ;
 
-Note:  Expanding virtual equation for 'CAM_TRIG_WIRE' (cost = 0):
-CAM_TRIG_WIRE <= (TRIG_CNT_TC);
+Note:  Expanding virtual equation for 'Net_309' (cost = 2):
+Net_309 <= ((not TRIG_CNT_TC and not CAM_SEL_WIRE));
 
 Note:  Expanding virtual equation for 'SLM_TRIG_WIRE' (cost = 1):
 SLM_TRIG_WIRE <= ((not Net_306 and TRIG_CNT_TC));
@@ -650,7 +715,7 @@ Net_430 <= (Net_400
 	OR (not TRIG_CNT_TC and Net_268));
 
 Note:  Expanding virtual equation for 'Net_254' (cost = 6):
-Net_254 <= (Net_380
+Net_254 <= (ACTIVATE
 	OR (not Net_306 and TRIG_CNT_TC));
 
 Note:  Expanding virtual equation for '\SLM_WAIT:CounterUDB:overflow_status\' (cost = 2):
@@ -671,6 +736,12 @@ Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:overflow_status\' (c
 Note:  Expanding virtual equation for '\SLM_TRIG:CounterUDB:underflow_status\' (cost = 0):
 \SLM_TRIG:CounterUDB:underflow_status\ <=  ('0') ;
 
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:overflow_status\' (cost = 1):
+\STAGE_WAIT:CounterUDB:overflow_status\ <= ((not \STAGE_WAIT:CounterUDB:overflow_reg_i\ and \STAGE_WAIT:CounterUDB:per_equal\));
+
+Note:  Expanding virtual equation for '\STAGE_WAIT:CounterUDB:underflow_status\' (cost = 0):
+\STAGE_WAIT:CounterUDB:underflow_status\ <=  ('0') ;
+
 
 Substituting virtuals - pass 3:
 
@@ -678,7 +749,7 @@ Substituting virtuals - pass 3:
 ----------------------------------------------------------
 Circuit simplification results:
 
-	Expanded 41 signals.
+	Expanded 49 signals.
 	Turned 0 signals into soft nodes.
 	Maximum default expansion cost was set at 3.
 ----------------------------------------------------------
@@ -701,6 +772,9 @@ Aliasing \BLANKING_DELAY:CounterUDB:underflow\ to zero
 Aliasing \SLM_TRIG:CounterUDB:hwCapture\ to zero
 Aliasing \SLM_TRIG:CounterUDB:underflow_status\ to zero
 Aliasing \SLM_TRIG:CounterUDB:underflow\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:hwCapture\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:underflow_status\ to zero
+Aliasing \STAGE_WAIT:CounterUDB:underflow\ to zero
 Removing Lhs of wire \TRG_CNT:CounterUDB:hwCapture\[120] = zero[8]
 Removing Lhs of wire \TRG_CNT:CounterUDB:underflow_status\[126] = zero[8]
 Removing Lhs of wire \TRG_CNT:CounterUDB:underflow\[143] = zero[8]
@@ -721,9 +795,13 @@ Removing Lhs of wire \SLM_TRIG:CounterUDB:hwCapture\[1222] = zero[8]
 Removing Lhs of wire \SLM_TRIG:CounterUDB:underflow_status\[1228] = zero[8]
 Removing Lhs of wire \SLM_TRIG:CounterUDB:underflow\[1245] = zero[8]
 Removing Lhs of wire \SLM_TRIG:CounterUDB:tc_i\[1248] = \SLM_TRIG:CounterUDB:per_equal\[1244]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:hwCapture\[1557] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:underflow_status\[1563] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:underflow\[1580] = zero[8]
+Removing Lhs of wire \STAGE_WAIT:CounterUDB:tc_i\[1583] = \STAGE_WAIT:CounterUDB:per_equal\[1579]
 
 ------------------------------------------------------
-Aliased 0 equations, 20 wires.
+Aliased 0 equations, 24 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -753,14 +831,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM.cyprj" -dcpsoc3 "UART SLM.v" -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.055ms
+Warp synthesis phase: Elapsed time ==> 2s.193ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Monday, 25 July 2022 04:00:26
+cyp3fit: V4.4.0.80, Family: PSoC3, Started at: Wednesday, 03 August 2022 11:46:41
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM.cyprj -d CY8C5888LTI-LP097 UART SLM.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.023ms
+Design parsing phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -774,8 +852,10 @@ Design parsing phase: Elapsed time ==> 0s.023ms
     Converted constant MacroCell: \BLANKING_DELAY:CounterUDB:underflow_reg_i\ from registered to combinatorial
     Converted constant MacroCell: \SLM_TRIG:CounterUDB:prevCapture\ from registered to combinatorial
     Converted constant MacroCell: \SLM_TRIG:CounterUDB:underflow_reg_i\ from registered to combinatorial
+    Converted constant MacroCell: \STAGE_WAIT:CounterUDB:prevCapture\ from registered to combinatorial
+    Converted constant MacroCell: \STAGE_WAIT:CounterUDB:underflow_reg_i\ from registered to combinatorial
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
-    Digital Clock 0: Automatic-assigning  clock 'Clock_1'. Fanout=12, Signal=Net_249
+    Digital Clock 0: Automatic-assigning  clock 'Clock_1'. Fanout=14, Signal=Net_249
     Digital Clock 1: Automatic-assigning  clock 'Clock_3'. Fanout=1, Signal=Net_127
     Digital Clock 2: Automatic-assigning  clock 'Clock_5'. Fanout=1, Signal=Net_233
 </CYPRESSTAG>
@@ -823,6 +903,14 @@ Done removing unused cells.
         ClockIn: Clock_1 was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: Clock_1, EnableOut: Constant 1
+    UDB Clk/Enable \STAGE_WAIT:CounterUDB:clock_enable_block\: with output requested to be synchronous
+        ClockIn: Clock_1 was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: Clock_1, EnableOut: Constant 1
+    UDB Clk/Enable \STAGE_WAIT:CounterUDB:sCTRLReg:cy_psoc3_udb_Ctl_Clk_Sync\: with output requested to be synchronous
+        ClockIn: Clock_1 was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: Clock_1, EnableOut: Constant 1
 </CYPRESSTAG>
 ADD: pft.M0040: information: The following 2 pin(s) will be assigned a location by the fitter: \USBUART:Dm(0)\, \USBUART:Dp(0)\
 
@@ -832,6 +920,19 @@ Done removing unused cells.
 <CYPRESSTAG name="Duplicate Macrocell detection">
 
 Removing duplicate macrocells
+    Removing Net_478, Duplicate of \STAGE_WAIT:CounterUDB:overflow_reg_i\ 
+    MacroCell: Name=Net_478, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_WAIT:CounterUDB:per_equal\
+        );
+        Output = Net_478 (fanout=1)
+
     Removing \SLM_TRIG:CounterUDB:count_stored_i\, Duplicate of \SLM_WAIT:CounterUDB:count_stored_i\ 
     MacroCell: Name=\SLM_TRIG:CounterUDB:count_stored_i\, Mode=(D-Register)
         Total # of inputs        : 1
@@ -884,6 +985,19 @@ Removing duplicate macrocells
         );
         Output = SLM_WAIT_WIRE (fanout=1)
 
+    Removing \STAGE_WAIT:CounterUDB:count_stored_i\, Duplicate of \TRG_CNT:CounterUDB:count_stored_i\ 
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:count_stored_i\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              CLOCK_3_WIRE
+        );
+        Output = \STAGE_WAIT:CounterUDB:count_stored_i\ (fanout=1)
+
     Removing \BLANKING_DELAY:CounterUDB:count_stored_i\, Duplicate of \TRG_CNT:CounterUDB:count_stored_i\ 
     MacroCell: Name=\BLANKING_DELAY:CounterUDB:count_stored_i\, Mode=(D-Register)
         Total # of inputs        : 1
@@ -893,7 +1007,7 @@ Removing duplicate macrocells
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_6
+              CLOCK_3_WIRE
         );
         Output = \BLANKING_DELAY:CounterUDB:count_stored_i\ (fanout=1)
 
@@ -906,7 +1020,7 @@ Removing duplicate macrocells
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_6
+              CLOCK_3_WIRE
         );
         Output = \STAGE_TRIG:CounterUDB:count_stored_i\ (fanout=1)
 
@@ -921,7 +1035,7 @@ Removing duplicate macrocells
         (
               \STAGE_TRIG:CounterUDB:per_equal\
         );
-        Output = Net_348 (fanout=2)
+        Output = Net_348 (fanout=3)
 
     Removing TRIG_CNT_TC, Duplicate of \TRG_CNT:CounterUDB:overflow_reg_i\ 
     MacroCell: Name=TRIG_CNT_TC, Mode=(D-Register)
@@ -1333,7 +1447,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => CAM1_TRIGG(0)__PA ,
-            pin_input => Net_309 ,
+            pin_input => Net_464 ,
             pad => CAM1_TRIGG(0)_PAD );
         Properties:
         {
@@ -1413,7 +1527,7 @@ Design Equations
             IO Voltage: 0
         PORT MAP (
             pa_out => Stage_Trigger(0)__PA ,
-            pin_input => Net_394 ,
+            pin_input => STAGE_T ,
             pad => Stage_Trigger(0)_PAD );
         Properties:
         {
@@ -1575,7 +1689,7 @@ Design Equations
         (
               \TRG_CNT:CounterUDB:control_7\ * 
               !\TRG_CNT:CounterUDB:disable_run_i\ * 
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE
         );
         Output = \TRG_CNT:CounterUDB:count_enable\ (fanout=4)
 
@@ -1607,7 +1721,7 @@ Design Equations
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6 * 
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
               \STAGE_TRIG:CounterUDB:control_7\ * 
               !\STAGE_TRIG:CounterUDB:disable_run_i\
         );
@@ -1619,10 +1733,10 @@ Design Equations
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * Net_290 * 
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * Net_290 * 
               \SLM_WAIT:CounterUDB:overflow_reg_i\ * 
-              \SLM_TRIG:CounterUDB:overflow_reg_i\
+              \SLM_TRIG:CounterUDB:overflow_reg_i\ * 
+              \STAGE_WAIT:CounterUDB:overflow_reg_i\
         );
         Output = Net_355 (fanout=1)
 
@@ -1668,7 +1782,7 @@ Design Equations
         (
               \TRG_CNT:CounterUDB:overflow_reg_i\ * 
               !\SLM_TRIG:CounterUDB:overflow_reg_i\
-            + Net_380
+            + ACTIVATE
         );
         Output = Net_254 (fanout=5)
 
@@ -1700,13 +1814,13 @@ Design Equations
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6 * 
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
               \BLANKING_DELAY:CounterUDB:control_7\ * 
               !\BLANKING_DELAY:CounterUDB:disable_run_i\
         );
         Output = \BLANKING_DELAY:CounterUDB:count_enable\ (fanout=4)
 
-    MacroCell: Name=Net_394, Mode=(Combinatorial)
+    MacroCell: Name=STAGE_T, Mode=(Combinatorial)
         Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
@@ -1714,7 +1828,7 @@ Design Equations
         (
               !\STAGE_TRIG:CounterUDB:overflow_reg_i\
         );
-        Output = Net_394 (fanout=1)
+        Output = STAGE_T (fanout=1)
 
     MacroCell: Name=\SLM_TRIG:CounterUDB:status_0\, Mode=(Combinatorial)
         Total # of inputs        : 2
@@ -1756,7 +1870,7 @@ Design Equations
             Clock Enable: True
         Main Equation            : 1 pterm
         !(
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE
         );
         Output = Net_257 (fanout=5)
 
@@ -1770,6 +1884,16 @@ Design Equations
               !\SLM_TRIG:CounterUDB:overflow_reg_i\
         );
         Output = SLM_TRIG_WIRE (fanout=1)
+
+    MacroCell: Name=Net_464, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
+        );
+        Output = Net_464 (fanout=1)
 
     MacroCell: Name=Net_423, Mode=(Combinatorial)
         Total # of inputs        : 4
@@ -1795,25 +1919,59 @@ Design Equations
         );
         Output = Net_424 (fanout=1)
 
-    MacroCell: Name=Net_309, Mode=(Combinatorial)
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
-        );
-        Output = Net_309 (fanout=1)
-
     MacroCell: Name=Net_439, Mode=(Combinatorial)
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
         );
         Output = Net_439 (fanout=1)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:status_0\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_WAIT:CounterUDB:cmp_out_i\ * 
+              !\STAGE_WAIT:CounterUDB:prevCompare\
+        );
+        Output = \STAGE_WAIT:CounterUDB:status_0\ (fanout=1)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:overflow_status\, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_WAIT:CounterUDB:per_equal\ * 
+              !\STAGE_WAIT:CounterUDB:overflow_reg_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:overflow_status\ (fanout=1)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:count_enable\, Mode=(Combinatorial)
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
+              \STAGE_WAIT:CounterUDB:control_7\ * 
+              !\STAGE_WAIT:CounterUDB:disable_run_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:count_enable\ (fanout=4)
+
+    MacroCell: Name=Net_473, Mode=(Combinatorial)
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE
+        );
+        Output = Net_473 (fanout=5)
 
     MacroCell: Name=__ONE__, Mode=(Combinatorial)
         Total # of inputs        : 0
@@ -1823,7 +1981,7 @@ Design Equations
         !(
             0
         );
-        Output = __ONE__ (fanout=20)
+        Output = __ONE__ (fanout=24)
 
     MacroCell: Name=\TRG_CNT:CounterUDB:disable_run_i\, Mode=(D-Register)
         Total # of inputs        : 4
@@ -1871,9 +2029,9 @@ Design Equations
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_6
+              CLOCK_3_WIRE
         );
-        Output = \TRG_CNT:CounterUDB:count_stored_i\ (fanout=3)
+        Output = \TRG_CNT:CounterUDB:count_stored_i\ (fanout=4)
 
     MacroCell: Name=\STAGE_TRIG:CounterUDB:disable_run_i\, Mode=(D-Register)
         Total # of inputs        : 4
@@ -1899,7 +2057,7 @@ Design Equations
         (
               \STAGE_TRIG:CounterUDB:per_equal\
         );
-        Output = \STAGE_TRIG:CounterUDB:overflow_reg_i\ (fanout=4)
+        Output = \STAGE_TRIG:CounterUDB:overflow_reg_i\ (fanout=5)
 
     MacroCell: Name=\STAGE_TRIG:CounterUDB:prevCompare\, Mode=(D-Register)
         Total # of inputs        : 1
@@ -1922,14 +2080,14 @@ Design Equations
         Main Equation            : 4 pterms
         (
               !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \SLM_WAIT:CounterUDB:disable_run_i\ * !Net_380
+              \SLM_WAIT:CounterUDB:disable_run_i\ * !ACTIVATE
             + !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
               \SLM_WAIT:CounterUDB:per_equal\ * 
-              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !Net_380
-            + \SLM_WAIT:CounterUDB:disable_run_i\ * !Net_380 * 
+              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !ACTIVATE
+            + \SLM_WAIT:CounterUDB:disable_run_i\ * !ACTIVATE * 
               \SLM_TRIG:CounterUDB:overflow_reg_i\
             + \SLM_WAIT:CounterUDB:per_equal\ * 
-              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !Net_380 * 
+              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
               \SLM_TRIG:CounterUDB:overflow_reg_i\
         );
         Output = \SLM_WAIT:CounterUDB:disable_run_i\ (fanout=2)
@@ -2018,9 +2176,9 @@ Design Equations
             Clock Enable: True
         Main Equation            : 2 pterms
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380 * 
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
               \SLM_TRIG:CounterUDB:disable_run_i\
-            + \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380 * 
+            + \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
               \SLM_TRIG:CounterUDB:per_equal\ * 
               !\SLM_TRIG:CounterUDB:overflow_reg_i\
         );
@@ -2049,6 +2207,46 @@ Design Equations
               \SLM_TRIG:CounterUDB:cmp_out_i\
         );
         Output = \SLM_TRIG:CounterUDB:prevCompare\ (fanout=1)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:disable_run_i\, Mode=(D-Register)
+        Total # of inputs        : 5
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \STAGE_WAIT:CounterUDB:disable_run_i\
+            + \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \STAGE_WAIT:CounterUDB:per_equal\ * 
+              !\STAGE_WAIT:CounterUDB:overflow_reg_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:disable_run_i\ (fanout=2)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:overflow_reg_i\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_WAIT:CounterUDB:per_equal\
+        );
+        Output = \STAGE_WAIT:CounterUDB:overflow_reg_i\ (fanout=3)
+
+    MacroCell: Name=\STAGE_WAIT:CounterUDB:prevCompare\, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_WAIT:CounterUDB:cmp_out_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:prevCompare\ (fanout=1)
     </CYPRESSTAG>
     <CYPRESSTAG name="Datapath listing">
 
@@ -2800,6 +2998,155 @@ Design Equations
         Clock Polarity: Active High
         Clock Enable: True
         Previous in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u2\
+
+    datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u0\
+        PORT MAP (
+            clock => Net_249 ,
+            cs_addr_2 => __ONE__ ,
+            cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+            cs_addr_0 => Net_473 ,
+            chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry0\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
+
+    datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
+        PORT MAP (
+            clock => Net_249 ,
+            cs_addr_2 => __ONE__ ,
+            cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+            cs_addr_0 => Net_473 ,
+            chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry0\ ,
+            chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry1\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u0\
+        Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
+
+    datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
+        PORT MAP (
+            clock => Net_249 ,
+            cs_addr_2 => __ONE__ ,
+            cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+            cs_addr_0 => Net_473 ,
+            chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry1\ ,
+            chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
+        Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u3\
+
+    datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u3\
+        PORT MAP (
+            clock => Net_249 ,
+            cs_addr_2 => __ONE__ ,
+            cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+            cs_addr_0 => Net_473 ,
+            ce0_comb => \STAGE_WAIT:CounterUDB:per_equal\ ,
+            z0_comb => \STAGE_WAIT:CounterUDB:status_1\ ,
+            cl1_comb => \STAGE_WAIT:CounterUDB:cmp_out_i\ ,
+            f0_bus_stat_comb => \STAGE_WAIT:CounterUDB:status_6\ ,
+            f0_blk_stat_comb => \STAGE_WAIT:CounterUDB:status_5\ ,
+            chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry2\ );
+        Properties:
+        {
+            a0_init = "00000000"
+            a1_init = "00000000"
+            ce0_sync = 1
+            ce1_sync = 1
+            cl0_sync = 1
+            cl1_sync = 1
+            cmsb_sync = 1
+            co_msb_sync = 1
+            cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+            d0_init = "00000000"
+            d1_init = "00000000"
+            f0_blk_sync = 1
+            f0_bus_sync = 1
+            f1_blk_sync = 1
+            f1_bus_sync = 1
+            ff0_sync = 1
+            ff1_sync = 1
+            ov_msb_sync = 1
+            so_sync = 1
+            z0_sync = 1
+            z1_sync = 1
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+        Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
     </CYPRESSTAG>
     <CYPRESSTAG name="Status register listing">
     </CYPRESSTAG>
@@ -2898,6 +3245,24 @@ Design Equations
         }
         Clock Polarity: Active High
         Clock Enable: True
+
+    statusicell: Name =\STAGE_WAIT:CounterUDB:sSTSReg:stsreg\
+        PORT MAP (
+            reset => Net_473 ,
+            clock => Net_249 ,
+            status_6 => \STAGE_WAIT:CounterUDB:status_6\ ,
+            status_5 => \STAGE_WAIT:CounterUDB:status_5\ ,
+            status_2 => \STAGE_WAIT:CounterUDB:overflow_status\ ,
+            status_1 => \STAGE_WAIT:CounterUDB:status_1\ ,
+            status_0 => \STAGE_WAIT:CounterUDB:status_0\ );
+        Properties:
+        {
+            cy_force_order = 1
+            cy_int_mask = "1111111"
+            cy_md_select = "0011111"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
     </CYPRESSTAG>
     <CYPRESSTAG name="Sync listing">
 
@@ -2909,7 +3274,7 @@ Design Equations
         PORT MAP (
             clock => Net_249 ,
             in => Net_127_local ,
-            out => Net_6 );
+            out => CLOCK_3_WIRE );
         Clock Polarity: Active High
         Clock Enable: True
 
@@ -3106,7 +3471,7 @@ Design Equations
             control_3 => \ACTIVATE_SLM:control_3\ ,
             control_2 => \ACTIVATE_SLM:control_2\ ,
             control_1 => \ACTIVATE_SLM:control_1\ ,
-            control_0 => Net_380 );
+            control_0 => ACTIVATE );
         Properties:
         {
             cy_ctrl_mode_0 = "00000000"
@@ -3155,6 +3520,28 @@ Design Equations
             cy_force_order = 1
             cy_init_value = "00000000"
         }
+        Clock Enable: True
+
+    controlcell: Name =\STAGE_WAIT:CounterUDB:sCTRLReg:ctrlreg\
+        PORT MAP (
+            clock => Net_249 ,
+            control_7 => \STAGE_WAIT:CounterUDB:control_7\ ,
+            control_6 => \STAGE_WAIT:CounterUDB:control_6\ ,
+            control_5 => \STAGE_WAIT:CounterUDB:control_5\ ,
+            control_4 => \STAGE_WAIT:CounterUDB:control_4\ ,
+            control_3 => \STAGE_WAIT:CounterUDB:control_3\ ,
+            control_2 => \STAGE_WAIT:CounterUDB:control_2\ ,
+            control_1 => \STAGE_WAIT:CounterUDB:control_1\ ,
+            control_0 => \STAGE_WAIT:CounterUDB:control_0\ );
+        Properties:
+        {
+            cy_ctrl_mode_0 = "11111111"
+            cy_ctrl_mode_1 = "00000000"
+            cy_ext_reset = 0
+            cy_force_order = 1
+            cy_init_value = "00000000"
+        }
+        Clock Polarity: Active High
         Clock Enable: True
     </CYPRESSTAG>
     <CYPRESSTAG name="Count7 listing">
@@ -3270,15 +3657,15 @@ USB                           :    1 :    0 :    1 : 100.00 %
 DMA Channels                  :    0 :   24 :   24 :  0.00 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   42 :  150 :  192 : 21.88 %
-  Unique P-terms              :   50 :  334 :  384 : 13.02 %
-  Total P-terms               :   51 :      :      :        
-  Datapath Cells              :   20 :    4 :   24 : 83.33 %
-  Status Cells                :    6 :   18 :   24 : 25.00 %
-    StatusI Registers         :    5 :      :      :        
+  Macrocells                  :   49 :  143 :  192 : 25.52 %
+  Unique P-terms              :   58 :  326 :  384 : 15.10 %
+  Total P-terms               :   59 :      :      :        
+  Datapath Cells              :   24 :    0 :   24 : 100.00 %
+  Status Cells                :    7 :   17 :   24 : 29.17 %
+    StatusI Registers         :    6 :      :      :        
     Sync Cells (x2)           :    1 :      :      :        
-  Control Cells               :   11 :   13 :   24 : 45.83 %
-    Control Registers         :   11 :      :      :        
+  Control Cells               :   12 :   12 :   24 : 50.00 %
+    Control Registers         :   12 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
 Comparator                    :    0 :    4 :    4 :  0.00 %
 Delta-Sigma ADC               :    0 :    1 :    1 :  0.00 %
@@ -3288,8 +3675,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.119ms
-Tech Mapping phase: Elapsed time ==> 0s.175ms
+Technology Mapping: Elapsed time ==> 0s.144ms
+Tech Mapping phase: Elapsed time ==> 0s.216ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -3309,7 +3696,7 @@ IO_6@[IOP=(2)][IoId=(6)] : \LCD_Char:LCDPort(6)\ (fixed)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART:Dp(0)\ (fixed)
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
-Analog Placement phase: Elapsed time ==> 0s.031ms
+Analog Placement phase: Elapsed time ==> 0s.023ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -3327,11 +3714,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.277ms
+Analog Code Generation phase: Elapsed time ==> 0s.247ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.2 sec.
+I2076: Total run-time: 1.4 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -3342,15 +3729,15 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   24 :   24 :   48 :  50.00%
+                     PLDs :   26 :   22 :   48 :  54.17%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            3.83
-                   Pterms :            2.13
-               Macrocells :            1.75
+                   Inputs :            4.31
+                   Pterms :            2.27
+               Macrocells :            1.88
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
@@ -3362,7 +3749,7 @@ PLD Packing: Elapsed time ==> 0s.000ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.087ms
+Partitioning: Elapsed time ==> 0s.104ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -3372,7 +3759,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         21 :       3.29 :       2.00
+                 UDB :         24 :       3.42 :       2.04
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -3380,260 +3767,6 @@ Final Placement Summary
 Component Placement Details
 ------------------------------------------------------------
 UDB [UDB=(0,0)] contents:
-datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u2\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_322 ,
-        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry1\ ,
-        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u1\
-    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u3\
-
-UDB [UDB=(0,1)] contents:
-datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u1\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_322 ,
-        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry0\ ,
-        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry1\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u0\
-    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u2\
-
-UDB [UDB=(0,2)] contents:
-LAB@[UDB=(0,2)][LB=0] #macrocells=1, #inputs=4, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=Net_423, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \BLANKING_DELAY:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
-            + Net_400 * !CAM_SEL_WIRE
-        );
-        Output = Net_423 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,2)][LB=1] #macrocells=1, #inputs=4, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=Net_424, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \BLANKING_DELAY:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
-            + Net_400 * CAM_SEL_WIRE
-        );
-        Output = Net_424 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u1\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \SLM_TRIG:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_257 ,
-        chain_in => \SLM_TRIG:CounterUDB:sC32:counterdp:carry0\ ,
-        chain_out => \SLM_TRIG:CounterUDB:sC32:counterdp:carry1\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u0\
-    Next in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u2\
-
-controlcell: Name =\BLANK_TOGGLE:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \BLANK_TOGGLE:control_7\ ,
-        control_6 => \BLANK_TOGGLE:control_6\ ,
-        control_5 => \BLANK_TOGGLE:control_5\ ,
-        control_4 => \BLANK_TOGGLE:control_4\ ,
-        control_3 => \BLANK_TOGGLE:control_3\ ,
-        control_2 => \BLANK_TOGGLE:control_2\ ,
-        control_1 => \BLANK_TOGGLE:control_1\ ,
-        control_0 => Net_400 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000001"
-    }
-    Clock Enable: True
-
-UDB [UDB=(0,3)] contents:
-datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u2\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \SLM_TRIG:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_257 ,
-        chain_in => \SLM_TRIG:CounterUDB:sC32:counterdp:carry1\ ,
-        chain_out => \SLM_TRIG:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u1\
-    Next in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u3\
-
-UDB [UDB=(0,4)] contents:
-datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u1\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_254 ,
-        chain_in => \SLM_WAIT:CounterUDB:sC32:counterdp:carry0\ ,
-        chain_out => \SLM_WAIT:CounterUDB:sC32:counterdp:carry1\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u0\
-    Next in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u2\
-
-UDB [UDB=(0,5)] contents:
 datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u2\
     PORT MAP (
         clock => Net_249 ,
@@ -3671,105 +3804,35 @@ datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u2\
     Previous in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u1\
     Next in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u3\
 
-UDB [UDB=(1,0)] contents:
-LAB@[UDB=(1,0)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+UDB [UDB=(0,1)] contents:
+LAB@[UDB=(0,1)][LB=1] #macrocells=1, #inputs=0, #pterms=0
 {
-    [McSlotId=0]:     MacroCell: Name=\TRG_CNT:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
+    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=0]
+        Total # of inputs        : 0
+        Total # of product terms : 0
             Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:cmp_out_i\
+        Main Equation            : 0 pterms
+        !(
+            0
         );
-        Output = \TRG_CNT:CounterUDB:prevCompare\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\TRG_CNT:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:cmp_out_i\ * 
-              !\TRG_CNT:CounterUDB:prevCompare\
-        );
-        Output = \TRG_CNT:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\TRG_CNT:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:per_equal\ * 
-              !\TRG_CNT:CounterUDB:overflow_reg_i\
-        );
-        Output = \TRG_CNT:CounterUDB:overflow_status\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(1,0)][LB=1] #macrocells=2, #inputs=7, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\TRG_CNT:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (Net_249) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !Net_322 * \TRG_CNT:CounterUDB:disable_run_i\
-            + !Net_322 * \TRG_CNT:CounterUDB:per_equal\ * 
-              !\TRG_CNT:CounterUDB:overflow_reg_i\
-        );
-        Output = \TRG_CNT:CounterUDB:disable_run_i\ (fanout=2)
+        Output = __ONE__ (fanout=24)
         Properties               : 
         {
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\TRG_CNT:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:control_7\ * 
-              !\TRG_CNT:CounterUDB:disable_run_i\ * 
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6
-        );
-        Output = \TRG_CNT:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
+    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
-datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u3\
+datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u1\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_322 ,
-        ce0_comb => \TRG_CNT:CounterUDB:per_equal\ ,
-        z0_comb => \TRG_CNT:CounterUDB:status_1\ ,
-        cl1_comb => \TRG_CNT:CounterUDB:cmp_out_i\ ,
-        f0_bus_stat_comb => \TRG_CNT:CounterUDB:status_6\ ,
-        f0_blk_stat_comb => \TRG_CNT:CounterUDB:status_5\ ,
-        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry2\ );
+        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_254 ,
+        chain_in => \SLM_WAIT:CounterUDB:sC32:counterdp:carry0\ ,
+        chain_out => \SLM_WAIT:CounterUDB:sC32:counterdp:carry1\ );
     Properties:
     {
         a0_init = "00000000"
@@ -3796,37 +3859,117 @@ datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u3\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u2\
+    Previous in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u0\
+    Next in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u2\
 
-statusicell: Name =\TRG_CNT:CounterUDB:sSTSReg:stsreg\
+controlcell: Name =\CAM_SEL_REG:Sync:ctrl_reg\
     PORT MAP (
-        reset => Net_322 ,
-        clock => Net_249 ,
-        status_6 => \TRG_CNT:CounterUDB:status_6\ ,
-        status_5 => \TRG_CNT:CounterUDB:status_5\ ,
-        status_2 => \TRG_CNT:CounterUDB:overflow_status\ ,
-        status_1 => \TRG_CNT:CounterUDB:status_1\ ,
-        status_0 => \TRG_CNT:CounterUDB:status_0\ );
+        control_7 => \CAM_SEL_REG:control_7\ ,
+        control_6 => \CAM_SEL_REG:control_6\ ,
+        control_5 => \CAM_SEL_REG:control_5\ ,
+        control_4 => \CAM_SEL_REG:control_4\ ,
+        control_3 => \CAM_SEL_REG:control_3\ ,
+        control_2 => \CAM_SEL_REG:control_2\ ,
+        control_1 => \CAM_SEL_REG:control_1\ ,
+        control_0 => CAM_SEL_WIRE );
     Properties:
     {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
         cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0011111"
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(0,2)] contents:
+LAB@[UDB=(0,2)][LB=0] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=Net_439, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
+        );
+        Output = Net_439 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,2)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=Net_464, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
+        );
+        Output = Net_464 (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
+        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
+        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry0\ ,
+        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
     }
     Clock Polarity: Active High
     Clock Enable: True
+    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
+    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
 
-controlcell: Name =\TRG_CNT:CounterUDB:sCTRLReg:ctrlreg\
+controlcell: Name =\BLANKING_DELAY:CounterUDB:sCTRLReg:ctrlreg\
     PORT MAP (
         clock => Net_249 ,
-        control_7 => \TRG_CNT:CounterUDB:control_7\ ,
-        control_6 => \TRG_CNT:CounterUDB:control_6\ ,
-        control_5 => \TRG_CNT:CounterUDB:control_5\ ,
-        control_4 => \TRG_CNT:CounterUDB:control_4\ ,
-        control_3 => \TRG_CNT:CounterUDB:control_3\ ,
-        control_2 => \TRG_CNT:CounterUDB:control_2\ ,
-        control_1 => \TRG_CNT:CounterUDB:control_1\ ,
-        control_0 => \TRG_CNT:CounterUDB:control_0\ );
+        control_7 => \BLANKING_DELAY:CounterUDB:control_7\ ,
+        control_6 => \BLANKING_DELAY:CounterUDB:control_6\ ,
+        control_5 => \BLANKING_DELAY:CounterUDB:control_5\ ,
+        control_4 => \BLANKING_DELAY:CounterUDB:control_4\ ,
+        control_3 => \BLANKING_DELAY:CounterUDB:control_3\ ,
+        control_2 => \BLANKING_DELAY:CounterUDB:control_2\ ,
+        control_1 => \BLANKING_DELAY:CounterUDB:control_1\ ,
+        control_0 => \BLANKING_DELAY:CounterUDB:control_0\ );
     Properties:
     {
         cy_ctrl_mode_0 = "11111111"
@@ -3838,11 +3981,127 @@ controlcell: Name =\TRG_CNT:CounterUDB:sCTRLReg:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,1)] contents:
-LAB@[UDB=(1,1)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+UDB [UDB=(0,3)] contents:
+datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
+        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
+        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry1\ ,
+        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u3\
+
+UDB [UDB=(0,4)] contents:
+datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u1\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \SLM_TRIG:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_257 ,
+        chain_in => \SLM_TRIG:CounterUDB:sC32:counterdp:carry0\ ,
+        chain_out => \SLM_TRIG:CounterUDB:sC32:counterdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u0\
+    Next in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u2\
+
+UDB [UDB=(0,5)] contents:
+datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u2\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \SLM_TRIG:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_257 ,
+        chain_in => \SLM_TRIG:CounterUDB:sC32:counterdp:carry1\ ,
+        chain_out => \SLM_TRIG:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u3\
+
+UDB [UDB=(1,0)] contents:
+LAB@[UDB=(1,0)][LB=0] #macrocells=1, #inputs=1, #pterms=1
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\TRG_CNT:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=1]
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SLM_WAIT:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -3850,67 +4109,204 @@ LAB@[UDB=(1,1)][LB=0] #macrocells=3, #inputs=4, #pterms=3
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:per_equal\
+              \SLM_WAIT:CounterUDB:cmp_out_i\
         );
-        Output = \TRG_CNT:CounterUDB:overflow_reg_i\ (fanout=18)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_309, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
-        );
-        Output = Net_309 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=Net_394, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\STAGE_TRIG:CounterUDB:overflow_reg_i\
-        );
-        Output = Net_394 (fanout=1)
+        Output = \SLM_WAIT:CounterUDB:prevCompare\ (fanout=1)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(1,1)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+LAB@[UDB=(1,0)][LB=1] #macrocells=2, #inputs=4, #pterms=2
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=Net_439, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\SLM_WAIT:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
+              \SLM_WAIT:CounterUDB:cmp_out_i\ * 
+              !\SLM_WAIT:CounterUDB:prevCompare\
         );
-        Output = Net_439 (fanout=1)
+        Output = \SLM_WAIT:CounterUDB:status_0\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SLM_WAIT:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SLM_WAIT:CounterUDB:per_equal\ * 
+              !\SLM_WAIT:CounterUDB:overflow_reg_i\
+        );
+        Output = \SLM_WAIT:CounterUDB:overflow_status\ (fanout=1)
+        Properties               : 
+        {
+        }
 }
 
-datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u0\
+datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u3\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_322 ,
-        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry0\ );
+        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_254 ,
+        ce0_comb => \SLM_WAIT:CounterUDB:per_equal\ ,
+        z0_comb => \SLM_WAIT:CounterUDB:status_1\ ,
+        cl1_comb => \SLM_WAIT:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \SLM_WAIT:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \SLM_WAIT:CounterUDB:status_5\ ,
+        chain_in => \SLM_WAIT:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u2\
+
+statusicell: Name =\SLM_WAIT:CounterUDB:sSTSReg:stsreg\
+    PORT MAP (
+        reset => Net_254 ,
+        clock => Net_249 ,
+        status_6 => \SLM_WAIT:CounterUDB:status_6\ ,
+        status_5 => \SLM_WAIT:CounterUDB:status_5\ ,
+        status_2 => \SLM_WAIT:CounterUDB:overflow_status\ ,
+        status_1 => \SLM_WAIT:CounterUDB:status_1\ ,
+        status_0 => \SLM_WAIT:CounterUDB:status_0\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0011111"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+controlcell: Name =\ACTIVATE_SLM:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \ACTIVATE_SLM:control_7\ ,
+        control_6 => \ACTIVATE_SLM:control_6\ ,
+        control_5 => \ACTIVATE_SLM:control_5\ ,
+        control_4 => \ACTIVATE_SLM:control_4\ ,
+        control_3 => \ACTIVATE_SLM:control_3\ ,
+        control_2 => \ACTIVATE_SLM:control_2\ ,
+        control_1 => \ACTIVATE_SLM:control_1\ ,
+        control_0 => ACTIVATE );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(1,1)] contents:
+LAB@[UDB=(1,1)][LB=0] #macrocells=3, #inputs=7, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=Net_254, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              !\SLM_TRIG:CounterUDB:overflow_reg_i\
+            + ACTIVATE
+        );
+        Output = Net_254 (fanout=5)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\SLM_WAIT:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SLM_WAIT:CounterUDB:per_equal\
+        );
+        Output = \SLM_WAIT:CounterUDB:overflow_reg_i\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=Net_424, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \BLANKING_DELAY:CounterUDB:overflow_reg_i\ * CAM_SEL_WIRE
+            + Net_400 * CAM_SEL_WIRE
+        );
+        Output = Net_424 (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,1)][LB=1] #macrocells=1, #inputs=4, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=Net_423, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \BLANKING_DELAY:CounterUDB:overflow_reg_i\ * !CAM_SEL_WIRE
+            + Net_400 * !CAM_SEL_WIRE
+        );
+        Output = Net_423 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_254 ,
+        chain_out => \SLM_WAIT:CounterUDB:sC32:counterdp:carry0\ );
     Properties:
     {
         a0_init = "00000000"
@@ -3937,18 +4333,147 @@ datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u0\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u1\
 
-controlcell: Name =\TRIG_CNT_RST:Sync:ctrl_reg\
+controlcell: Name =\BLANK_TOGGLE:Sync:ctrl_reg\
     PORT MAP (
-        control_7 => \TRIG_CNT_RST:control_7\ ,
-        control_6 => \TRIG_CNT_RST:control_6\ ,
-        control_5 => \TRIG_CNT_RST:control_5\ ,
-        control_4 => \TRIG_CNT_RST:control_4\ ,
-        control_3 => \TRIG_CNT_RST:control_3\ ,
-        control_2 => \TRIG_CNT_RST:control_2\ ,
-        control_1 => \TRIG_CNT_RST:control_1\ ,
-        control_0 => Net_322 );
+        control_7 => \BLANK_TOGGLE:control_7\ ,
+        control_6 => \BLANK_TOGGLE:control_6\ ,
+        control_5 => \BLANK_TOGGLE:control_5\ ,
+        control_4 => \BLANK_TOGGLE:control_4\ ,
+        control_3 => \BLANK_TOGGLE:control_3\ ,
+        control_2 => \BLANK_TOGGLE:control_2\ ,
+        control_1 => \BLANK_TOGGLE:control_1\ ,
+        control_0 => Net_400 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000001"
+    }
+    Clock Enable: True
+
+synccell: Name =\Sync_2:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_249 ,
+        in => Net_127_local ,
+        out => CLOCK_3_WIRE );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,2)] contents:
+LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=4, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \BLANKING_DELAY:CounterUDB:disable_run_i\
+            + !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \BLANKING_DELAY:CounterUDB:per_equal\ * 
+              !\BLANKING_DELAY:CounterUDB:overflow_reg_i\
+        );
+        Output = \BLANKING_DELAY:CounterUDB:disable_run_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(1,2)][LB=1] #macrocells=2, #inputs=9, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=Net_355, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=2]
+        Total # of inputs        : 5
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * Net_290 * 
+              \SLM_WAIT:CounterUDB:overflow_reg_i\ * 
+              \SLM_TRIG:CounterUDB:overflow_reg_i\ * 
+              \STAGE_WAIT:CounterUDB:overflow_reg_i\
+        );
+        Output = Net_355 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
+              \BLANKING_DELAY:CounterUDB:control_7\ * 
+              !\BLANKING_DELAY:CounterUDB:disable_run_i\
+        );
+        Output = \BLANKING_DELAY:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
+        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
+        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
+
+controlcell: Name =\ENBL_TRIG_ISR:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \ENBL_TRIG_ISR:control_7\ ,
+        control_6 => \ENBL_TRIG_ISR:control_6\ ,
+        control_5 => \ENBL_TRIG_ISR:control_5\ ,
+        control_4 => \ENBL_TRIG_ISR:control_4\ ,
+        control_3 => \ENBL_TRIG_ISR:control_3\ ,
+        control_2 => \ENBL_TRIG_ISR:control_2\ ,
+        control_1 => \ENBL_TRIG_ISR:control_1\ ,
+        control_0 => Net_290 );
     Properties:
     {
         cy_ctrl_mode_0 = "00000000"
@@ -3959,43 +4484,237 @@ controlcell: Name =\TRIG_CNT_RST:Sync:ctrl_reg\
     }
     Clock Enable: True
 
-UDB [UDB=(1,2)] contents:
-LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=5, #pterms=1
+UDB [UDB=(1,3)] contents:
+LAB@[UDB=(1,3)][LB=0] #macrocells=2, #inputs=3, #pterms=2
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=Net_355, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=1]
-        Total # of inputs        : 5
+    [McSlotId=1]:     MacroCell: Name=Net_257, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=1]
+        Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
-        (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * Net_290 * 
-              \SLM_WAIT:CounterUDB:overflow_reg_i\ * 
-              \SLM_TRIG:CounterUDB:overflow_reg_i\
+        !(
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE
         );
-        Output = Net_355 (fanout=1)
+        Output = Net_257 (fanout=5)
         Properties               : 
         {
         }
 
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \BLANKING_DELAY:CounterUDB:per_equal\
+        );
+        Output = \BLANKING_DELAY:CounterUDB:overflow_reg_i\ (fanout=4)
+        Properties               : 
+        {
+        }
 }
 
-LAB@[UDB=(1,2)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+LAB@[UDB=(1,3)][LB=1] #macrocells=3, #inputs=4, #pterms=3
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=SLM_TRIG_WIRE, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \BLANKING_DELAY:CounterUDB:per_equal\ * 
+              !\BLANKING_DELAY:CounterUDB:overflow_reg_i\
+        );
+        Output = \BLANKING_DELAY:CounterUDB:overflow_status\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\TRG_CNT:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:per_equal\
+        );
+        Output = \TRG_CNT:CounterUDB:overflow_reg_i\ (fanout=18)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\SLM_TRIG:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SLM_TRIG:CounterUDB:per_equal\
+        );
+        Output = \SLM_TRIG:CounterUDB:overflow_reg_i\ (fanout=6)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u3\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
+        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
+        ce0_comb => \BLANKING_DELAY:CounterUDB:per_equal\ ,
+        z0_comb => \BLANKING_DELAY:CounterUDB:status_1\ ,
+        cl1_comb => \BLANKING_DELAY:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \BLANKING_DELAY:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \BLANKING_DELAY:CounterUDB:status_5\ ,
+        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
+
+statusicell: Name =\BLANKING_DELAY:CounterUDB:sSTSReg:stsreg\
+    PORT MAP (
+        reset => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
+        clock => Net_249 ,
+        status_6 => \BLANKING_DELAY:CounterUDB:status_6\ ,
+        status_5 => \BLANKING_DELAY:CounterUDB:status_5\ ,
+        status_2 => \BLANKING_DELAY:CounterUDB:overflow_status\ ,
+        status_1 => \BLANKING_DELAY:CounterUDB:status_1\ ,
+        status_0 => \BLANKING_DELAY:CounterUDB:status_0\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0011111"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,4)] contents:
+LAB@[UDB=(1,4)][LB=0] #macrocells=3, #inputs=10, #pterms=6
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\SLM_WAIT:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_246
+        );
+        Output = \SLM_WAIT:CounterUDB:count_stored_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SLM_TRIG:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=2]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_246 * !\SLM_WAIT:CounterUDB:count_stored_i\ * 
+              \SLM_TRIG:CounterUDB:control_7\ * 
+              !\SLM_TRIG:CounterUDB:disable_run_i\
+        );
+        Output = \SLM_TRIG:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\SLM_WAIT:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=3]
+        Total # of inputs        : 6
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \SLM_WAIT:CounterUDB:disable_run_i\ * !ACTIVATE
+            + !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              \SLM_WAIT:CounterUDB:per_equal\ * 
+              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !ACTIVATE
+            + \SLM_WAIT:CounterUDB:disable_run_i\ * !ACTIVATE * 
+              \SLM_TRIG:CounterUDB:overflow_reg_i\
+            + \SLM_WAIT:CounterUDB:per_equal\ * 
+              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \SLM_TRIG:CounterUDB:overflow_reg_i\
+        );
+        Output = \SLM_WAIT:CounterUDB:disable_run_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,4)][LB=1] #macrocells=2, #inputs=9, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\SLM_TRIG:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
+        Total # of inputs        : 5
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \SLM_TRIG:CounterUDB:disable_run_i\
+            + \TRG_CNT:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \SLM_TRIG:CounterUDB:per_equal\ * 
               !\SLM_TRIG:CounterUDB:overflow_reg_i\
         );
-        Output = SLM_TRIG_WIRE (fanout=1)
+        Output = \SLM_TRIG:CounterUDB:disable_run_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SLM_WAIT:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_246 * \SLM_WAIT:CounterUDB:control_7\ * 
+              !\SLM_WAIT:CounterUDB:disable_run_i\ * 
+              !\SLM_WAIT:CounterUDB:count_stored_i\
+        );
+        Output = \SLM_WAIT:CounterUDB:count_enable\ (fanout=4)
         Properties               : 
         {
         }
@@ -4039,46 +4758,43 @@ datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u0\
     Clock Enable: True
     Next in chain : \SLM_TRIG:CounterUDB:sC32:counterdp:u1\
 
-controlcell: Name =\ENBL_TRIG_ISR:Sync:ctrl_reg\
+controlcell: Name =\SLM_WAIT:CounterUDB:sCTRLReg:ctrlreg\
     PORT MAP (
-        control_7 => \ENBL_TRIG_ISR:control_7\ ,
-        control_6 => \ENBL_TRIG_ISR:control_6\ ,
-        control_5 => \ENBL_TRIG_ISR:control_5\ ,
-        control_4 => \ENBL_TRIG_ISR:control_4\ ,
-        control_3 => \ENBL_TRIG_ISR:control_3\ ,
-        control_2 => \ENBL_TRIG_ISR:control_2\ ,
-        control_1 => \ENBL_TRIG_ISR:control_1\ ,
-        control_0 => Net_290 );
+        clock => Net_249 ,
+        control_7 => \SLM_WAIT:CounterUDB:control_7\ ,
+        control_6 => \SLM_WAIT:CounterUDB:control_6\ ,
+        control_5 => \SLM_WAIT:CounterUDB:control_5\ ,
+        control_4 => \SLM_WAIT:CounterUDB:control_4\ ,
+        control_3 => \SLM_WAIT:CounterUDB:control_3\ ,
+        control_2 => \SLM_WAIT:CounterUDB:control_2\ ,
+        control_1 => \SLM_WAIT:CounterUDB:control_1\ ,
+        control_0 => \SLM_WAIT:CounterUDB:control_0\ );
     Properties:
     {
-        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_0 = "11111111"
         cy_ctrl_mode_1 = "00000000"
         cy_ext_reset = 0
         cy_force_order = 1
         cy_init_value = "00000000"
     }
+    Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,3)] contents:
-LAB@[UDB=(1,3)][LB=0] #macrocells=3, #inputs=7, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\SLM_TRIG:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_246 * !\SLM_WAIT:CounterUDB:count_stored_i\ * 
-              \SLM_TRIG:CounterUDB:control_7\ * 
-              !\SLM_TRIG:CounterUDB:disable_run_i\
-        );
-        Output = \SLM_TRIG:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
+synccell: Name =\Sync_4:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_249 ,
+        in => Net_233_local ,
+        out => Net_246 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
 
-    [McSlotId=2]:     MacroCell: Name=\SLM_TRIG:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=2]
+UDB [UDB=(1,5)] contents:
+LAB@[UDB=(1,5)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\SLM_TRIG:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,5)][LB=0][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -4093,25 +4809,7 @@ LAB@[UDB=(1,3)][LB=0] #macrocells=3, #inputs=7, #pterms=3
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\SLM_TRIG:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SLM_TRIG:CounterUDB:per_equal\ * 
-              !\SLM_TRIG:CounterUDB:overflow_reg_i\
-        );
-        Output = \SLM_TRIG:CounterUDB:overflow_status\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,3)][LB=1] #macrocells=3, #inputs=8, #pterms=4
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\SLM_TRIG:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\SLM_TRIG:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -4125,39 +4823,42 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=3, #inputs=8, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\SLM_TRIG:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=2]
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (Net_249) => Global
+    [McSlotId=2]:     MacroCell: Name=\SLM_TRIG:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 2 pterms
+        Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380 * 
-              \SLM_TRIG:CounterUDB:disable_run_i\
-            + \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380 * 
               \SLM_TRIG:CounterUDB:per_equal\ * 
               !\SLM_TRIG:CounterUDB:overflow_reg_i\
         );
-        Output = \SLM_TRIG:CounterUDB:disable_run_i\ (fanout=2)
+        Output = \SLM_TRIG:CounterUDB:overflow_status\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\SLM_WAIT:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
-        Total # of inputs        : 1
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(1,5)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=SLM_TRIG_WIRE, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=1]
+        Total # of inputs        : 2
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_246
+              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
+              !\SLM_TRIG:CounterUDB:overflow_reg_i\
         );
-        Output = \SLM_WAIT:CounterUDB:count_stored_i\ (fanout=2)
+        Output = SLM_TRIG_WIRE (fanout=1)
         Properties               : 
         {
         }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
 datapathcell: Name =\SLM_TRIG:CounterUDB:sC32:counterdp:u3\
@@ -4240,67 +4941,57 @@ controlcell: Name =\SLM_TRIG:CounterUDB:sCTRLReg:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=3, #inputs=6, #pterms=7
+UDB [UDB=(2,0)] contents:
+LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=4, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=Net_257, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_473, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         !(
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * !Net_380
+              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE
         );
-        Output = Net_257 (fanout=5)
+        Output = Net_473 (fanout=5)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=Net_254, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 2
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 2 pterms
+        Main Equation            : 1 pterm
         (
-              \TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              !\SLM_TRIG:CounterUDB:overflow_reg_i\
-            + Net_380
+              \STAGE_WAIT:CounterUDB:cmp_out_i\ * 
+              !\STAGE_WAIT:CounterUDB:prevCompare\
         );
-        Output = Net_254 (fanout=5)
+        Output = \STAGE_WAIT:CounterUDB:status_0\ (fanout=1)
         Properties               : 
         {
         }
-
-    [McSlotId=2]:     MacroCell: Name=\SLM_WAIT:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
-        Total # of inputs        : 6
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (Net_249) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \SLM_WAIT:CounterUDB:disable_run_i\ * !Net_380
-            + !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \SLM_WAIT:CounterUDB:per_equal\ * 
-              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !Net_380
-            + \SLM_WAIT:CounterUDB:disable_run_i\ * !Net_380 * 
-              \SLM_TRIG:CounterUDB:overflow_reg_i\
-            + \SLM_WAIT:CounterUDB:per_equal\ * 
-              !\SLM_WAIT:CounterUDB:overflow_reg_i\ * !Net_380 * 
-              \SLM_TRIG:CounterUDB:overflow_reg_i\
-        );
-        Output = \SLM_WAIT:CounterUDB:disable_run_i\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(1,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
+LAB@[UDB=(2,0)][LB=1] #macrocells=2, #inputs=2, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\SLM_TRIG:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=STAGE_T, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\STAGE_TRIG:CounterUDB:overflow_reg_i\
+        );
+        Output = STAGE_T (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -4308,39 +4999,21 @@ LAB@[UDB=(1,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SLM_TRIG:CounterUDB:per_equal\
+              \STAGE_WAIT:CounterUDB:cmp_out_i\
         );
-        Output = \SLM_TRIG:CounterUDB:overflow_reg_i\ (fanout=6)
+        Output = \STAGE_WAIT:CounterUDB:prevCompare\ (fanout=1)
         Properties               : 
         {
         }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SLM_WAIT:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_246 * \SLM_WAIT:CounterUDB:control_7\ * 
-              !\SLM_WAIT:CounterUDB:disable_run_i\ * 
-              !\SLM_WAIT:CounterUDB:count_stored_i\
-        );
-        Output = \SLM_WAIT:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
 }
 
-datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u0\
+datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u0\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_254 ,
-        chain_out => \SLM_WAIT:CounterUDB:sC32:counterdp:carry0\ );
+        cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_473 ,
+        chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry0\ );
     Properties:
     {
         a0_init = "00000000"
@@ -4367,66 +5040,41 @@ datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u0\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Next in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
 
-controlcell: Name =\SLM_WAIT:CounterUDB:sCTRLReg:ctrlreg\
-    PORT MAP (
-        clock => Net_249 ,
-        control_7 => \SLM_WAIT:CounterUDB:control_7\ ,
-        control_6 => \SLM_WAIT:CounterUDB:control_6\ ,
-        control_5 => \SLM_WAIT:CounterUDB:control_5\ ,
-        control_4 => \SLM_WAIT:CounterUDB:control_4\ ,
-        control_3 => \SLM_WAIT:CounterUDB:control_3\ ,
-        control_2 => \SLM_WAIT:CounterUDB:control_2\ ,
-        control_1 => \SLM_WAIT:CounterUDB:control_1\ ,
-        control_0 => \SLM_WAIT:CounterUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_4:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_249 ,
-        in => Net_233_local ,
-        out => Net_246 );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,5)] contents:
-LAB@[UDB=(1,5)][LB=0] #macrocells=1, #inputs=2, #pterms=1
+UDB [UDB=(2,1)] contents:
+LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=6, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\SLM_WAIT:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SLM_WAIT:CounterUDB:per_equal\ * 
-              !\SLM_WAIT:CounterUDB:overflow_reg_i\
+              \STAGE_WAIT:CounterUDB:per_equal\ * 
+              !\STAGE_WAIT:CounterUDB:overflow_reg_i\
         );
-        Output = \SLM_WAIT:CounterUDB:overflow_status\ (fanout=1)
+        Output = \STAGE_WAIT:CounterUDB:overflow_status\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
+    [McSlotId=1]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
+              \STAGE_WAIT:CounterUDB:control_7\ * 
+              !\STAGE_WAIT:CounterUDB:disable_run_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
 
-LAB@[UDB=(1,5)][LB=1] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\SLM_WAIT:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=0]
+    [McSlotId=2]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -4434,38 +5082,9 @@ LAB@[UDB=(1,5)][LB=1] #macrocells=3, #inputs=3, #pterms=3
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SLM_WAIT:CounterUDB:cmp_out_i\
+              \STAGE_WAIT:CounterUDB:per_equal\
         );
-        Output = \SLM_WAIT:CounterUDB:prevCompare\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SLM_WAIT:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SLM_WAIT:CounterUDB:cmp_out_i\ * 
-              !\SLM_WAIT:CounterUDB:prevCompare\
-        );
-        Output = \SLM_WAIT:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\SLM_WAIT:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SLM_WAIT:CounterUDB:per_equal\
-        );
-        Output = \SLM_WAIT:CounterUDB:overflow_reg_i\ (fanout=3)
+        Output = \STAGE_WAIT:CounterUDB:overflow_reg_i\ (fanout=3)
         Properties               : 
         {
         }
@@ -4473,18 +5092,58 @@ LAB@[UDB=(1,5)][LB=1] #macrocells=3, #inputs=3, #pterms=3
     [McSlotId=3]: (empty)
 }
 
-datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u3\
+LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=6, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\STAGE_WAIT:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \STAGE_WAIT:CounterUDB:disable_run_i\
+            + \STAGE_TRIG:CounterUDB:overflow_reg_i\ * !ACTIVATE * 
+              \STAGE_WAIT:CounterUDB:per_equal\ * 
+              !\STAGE_WAIT:CounterUDB:overflow_reg_i\
+        );
+        Output = \STAGE_WAIT:CounterUDB:disable_run_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \STAGE_TRIG:CounterUDB:per_equal\
+        );
+        Output = \STAGE_TRIG:CounterUDB:overflow_reg_i\ (fanout=5)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u3\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \SLM_WAIT:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_254 ,
-        ce0_comb => \SLM_WAIT:CounterUDB:per_equal\ ,
-        z0_comb => \SLM_WAIT:CounterUDB:status_1\ ,
-        cl1_comb => \SLM_WAIT:CounterUDB:cmp_out_i\ ,
-        f0_bus_stat_comb => \SLM_WAIT:CounterUDB:status_6\ ,
-        f0_blk_stat_comb => \SLM_WAIT:CounterUDB:status_5\ ,
-        chain_in => \SLM_WAIT:CounterUDB:sC32:counterdp:carry2\ );
+        cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_473 ,
+        ce0_comb => \STAGE_WAIT:CounterUDB:per_equal\ ,
+        z0_comb => \STAGE_WAIT:CounterUDB:status_1\ ,
+        cl1_comb => \STAGE_WAIT:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \STAGE_WAIT:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \STAGE_WAIT:CounterUDB:status_5\ ,
+        chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry2\ );
     Properties:
     {
         a0_init = "00000000"
@@ -4511,17 +5170,17 @@ datapathcell: Name =\SLM_WAIT:CounterUDB:sC32:counterdp:u3\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Previous in chain : \SLM_WAIT:CounterUDB:sC32:counterdp:u2\
+    Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
 
-statusicell: Name =\SLM_WAIT:CounterUDB:sSTSReg:stsreg\
+statusicell: Name =\STAGE_WAIT:CounterUDB:sSTSReg:stsreg\
     PORT MAP (
-        reset => Net_254 ,
+        reset => Net_473 ,
         clock => Net_249 ,
-        status_6 => \SLM_WAIT:CounterUDB:status_6\ ,
-        status_5 => \SLM_WAIT:CounterUDB:status_5\ ,
-        status_2 => \SLM_WAIT:CounterUDB:overflow_status\ ,
-        status_1 => \SLM_WAIT:CounterUDB:status_1\ ,
-        status_0 => \SLM_WAIT:CounterUDB:status_0\ );
+        status_6 => \STAGE_WAIT:CounterUDB:status_6\ ,
+        status_5 => \STAGE_WAIT:CounterUDB:status_5\ ,
+        status_2 => \STAGE_WAIT:CounterUDB:overflow_status\ ,
+        status_1 => \STAGE_WAIT:CounterUDB:status_1\ ,
+        status_0 => \STAGE_WAIT:CounterUDB:status_0\ );
     Properties:
     {
         cy_force_order = 1
@@ -4531,52 +5190,38 @@ statusicell: Name =\SLM_WAIT:CounterUDB:sSTSReg:stsreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-controlcell: Name =\ACTIVATE_SLM:Sync:ctrl_reg\
+controlcell: Name =\STAGE_WAIT:CounterUDB:sCTRLReg:ctrlreg\
     PORT MAP (
-        control_7 => \ACTIVATE_SLM:control_7\ ,
-        control_6 => \ACTIVATE_SLM:control_6\ ,
-        control_5 => \ACTIVATE_SLM:control_5\ ,
-        control_4 => \ACTIVATE_SLM:control_4\ ,
-        control_3 => \ACTIVATE_SLM:control_3\ ,
-        control_2 => \ACTIVATE_SLM:control_2\ ,
-        control_1 => \ACTIVATE_SLM:control_1\ ,
-        control_0 => Net_380 );
+        clock => Net_249 ,
+        control_7 => \STAGE_WAIT:CounterUDB:control_7\ ,
+        control_6 => \STAGE_WAIT:CounterUDB:control_6\ ,
+        control_5 => \STAGE_WAIT:CounterUDB:control_5\ ,
+        control_4 => \STAGE_WAIT:CounterUDB:control_4\ ,
+        control_3 => \STAGE_WAIT:CounterUDB:control_3\ ,
+        control_2 => \STAGE_WAIT:CounterUDB:control_2\ ,
+        control_1 => \STAGE_WAIT:CounterUDB:control_1\ ,
+        control_0 => \STAGE_WAIT:CounterUDB:control_0\ );
     Properties:
     {
-        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_0 = "11111111"
         cy_ctrl_mode_1 = "00000000"
         cy_ext_reset = 0
         cy_force_order = 1
         cy_init_value = "00000000"
     }
+    Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,0)] contents:
-LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=5, #pterms=2
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=6, #pterms=2
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \STAGE_TRIG:CounterUDB:per_equal\
-        );
-        Output = \STAGE_TRIG:CounterUDB:overflow_reg_i\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=2]
+    [McSlotId=0]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=0]
         Total # of inputs        : 4
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6 * 
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE * 
               \STAGE_TRIG:CounterUDB:control_7\ * 
               !\STAGE_TRIG:CounterUDB:disable_run_i\
         );
@@ -4585,29 +5230,27 @@ LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=5, #pterms=2
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,0)][LB=1] #macrocells=2, #inputs=5, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\TRG_CNT:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=1]
-        Total # of inputs        : 1
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=2]
+        Total # of inputs        : 2
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_6
+              \STAGE_TRIG:CounterUDB:per_equal\ * 
+              !\STAGE_TRIG:CounterUDB:overflow_reg_i\
         );
-        Output = \TRG_CNT:CounterUDB:count_stored_i\ (fanout=3)
+        Output = \STAGE_TRIG:CounterUDB:overflow_status\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=3]
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=7, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=0]
         Total # of inputs        : 4
         Total # of product terms : 2
         List of special equations: 
@@ -4623,81 +5266,8 @@ LAB@[UDB=(2,0)][LB=1] #macrocells=2, #inputs=5, #pterms=3
         Properties               : 
         {
         }
-}
 
-datapathcell: Name =\STAGE_TRIG:CounterUDB:sC32:counterdp:u0\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \STAGE_TRIG:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_389 ,
-        chain_out => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry0\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u1\
-
-controlcell: Name =\STAGE_TRIG:CounterUDB:sCTRLReg:ctrlreg\
-    PORT MAP (
-        clock => Net_249 ,
-        control_7 => \STAGE_TRIG:CounterUDB:control_7\ ,
-        control_6 => \STAGE_TRIG:CounterUDB:control_6\ ,
-        control_5 => \STAGE_TRIG:CounterUDB:control_5\ ,
-        control_4 => \STAGE_TRIG:CounterUDB:control_4\ ,
-        control_3 => \STAGE_TRIG:CounterUDB:control_3\ ,
-        control_2 => \STAGE_TRIG:CounterUDB:control_2\ ,
-        control_1 => \STAGE_TRIG:CounterUDB:control_1\ ,
-        control_0 => \STAGE_TRIG:CounterUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_2:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_249 ,
-        in => Net_127_local ,
-        out => Net_6 );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,1)] contents:
-LAB@[UDB=(2,1)][LB=0] #macrocells=2, #inputs=6, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -4711,27 +5281,7 @@ LAB@[UDB=(2,1)][LB=0] #macrocells=2, #inputs=6, #pterms=2
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\TRG_CNT:CounterUDB:count_stored_i\ * Net_6 * 
-              \BLANKING_DELAY:CounterUDB:control_7\ * 
-              !\BLANKING_DELAY:CounterUDB:disable_run_i\
-        );
-        Output = \BLANKING_DELAY:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=3, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
+    [McSlotId=2]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -4746,18 +5296,17 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=3, #pterms=2
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\STAGE_TRIG:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=1][MC=3]
-        Total # of inputs        : 2
+    [McSlotId=3]:     MacroCell: Name=\TRG_CNT:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=3]
+        Total # of inputs        : 1
         Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \STAGE_TRIG:CounterUDB:per_equal\ * 
-              !\STAGE_TRIG:CounterUDB:overflow_reg_i\
+              CLOCK_3_WIRE
         );
-        Output = \STAGE_TRIG:CounterUDB:overflow_status\ (fanout=1)
+        Output = \TRG_CNT:CounterUDB:count_stored_i\ (fanout=4)
         Properties               : 
         {
         }
@@ -4821,17 +5370,17 @@ statusicell: Name =\STAGE_TRIG:CounterUDB:sSTSReg:stsreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-controlcell: Name =\BLANKING_DELAY:CounterUDB:sCTRLReg:ctrlreg\
+controlcell: Name =\STAGE_TRIG:CounterUDB:sCTRLReg:ctrlreg\
     PORT MAP (
         clock => Net_249 ,
-        control_7 => \BLANKING_DELAY:CounterUDB:control_7\ ,
-        control_6 => \BLANKING_DELAY:CounterUDB:control_6\ ,
-        control_5 => \BLANKING_DELAY:CounterUDB:control_5\ ,
-        control_4 => \BLANKING_DELAY:CounterUDB:control_4\ ,
-        control_3 => \BLANKING_DELAY:CounterUDB:control_3\ ,
-        control_2 => \BLANKING_DELAY:CounterUDB:control_2\ ,
-        control_1 => \BLANKING_DELAY:CounterUDB:control_1\ ,
-        control_0 => \BLANKING_DELAY:CounterUDB:control_0\ );
+        control_7 => \STAGE_TRIG:CounterUDB:control_7\ ,
+        control_6 => \STAGE_TRIG:CounterUDB:control_6\ ,
+        control_5 => \STAGE_TRIG:CounterUDB:control_5\ ,
+        control_4 => \STAGE_TRIG:CounterUDB:control_4\ ,
+        control_3 => \STAGE_TRIG:CounterUDB:control_3\ ,
+        control_2 => \STAGE_TRIG:CounterUDB:control_2\ ,
+        control_1 => \STAGE_TRIG:CounterUDB:control_1\ ,
+        control_0 => \STAGE_TRIG:CounterUDB:control_0\ );
     Properties:
     {
         cy_ctrl_mode_0 = "11111111"
@@ -4843,14 +5392,45 @@ controlcell: Name =\BLANKING_DELAY:CounterUDB:sCTRLReg:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,2)] is empty.
 UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=1, #inputs=1, #pterms=1
+LAB@[UDB=(2,3)][LB=0] #macrocells=2, #inputs=6, #pterms=2
 {
-    [McSlotId=0]: (empty)
+    [McSlotId=0]:     MacroCell: Name=\TRG_CNT:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:control_7\ * 
+              !\TRG_CNT:CounterUDB:disable_run_i\ * 
+              !\TRG_CNT:CounterUDB:count_stored_i\ * CLOCK_3_WIRE
+        );
+        Output = \TRG_CNT:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
     [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \BLANKING_DELAY:CounterUDB:cmp_out_i\ * 
+              !\BLANKING_DELAY:CounterUDB:prevCompare\
+        );
+        Output = \BLANKING_DELAY:CounterUDB:status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,3)][LB=1] #macrocells=2, #inputs=5, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -4858,19 +5438,16 @@ LAB@[UDB=(2,3)][LB=0] #macrocells=1, #inputs=1, #pterms=1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \BLANKING_DELAY:CounterUDB:per_equal\
+              \BLANKING_DELAY:CounterUDB:cmp_out_i\
         );
-        Output = \BLANKING_DELAY:CounterUDB:overflow_reg_i\ (fanout=4)
+        Output = \BLANKING_DELAY:CounterUDB:prevCompare\ (fanout=1)
         Properties               : 
         {
         }
-}
 
-LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=4, #pterms=2
-{
-    [McSlotId=0]: (empty)
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=2]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\TRG_CNT:CounterUDB:disable_run_i\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=3]
         Total # of inputs        : 4
         Total # of product terms : 2
         List of special equations: 
@@ -4878,13 +5455,88 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=4, #pterms=2
             Clock Enable: True
         Main Equation            : 2 pterms
         (
-              !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \BLANKING_DELAY:CounterUDB:disable_run_i\
-            + !\TRG_CNT:CounterUDB:overflow_reg_i\ * 
-              \BLANKING_DELAY:CounterUDB:per_equal\ * 
-              !\BLANKING_DELAY:CounterUDB:overflow_reg_i\
+              !Net_322 * \TRG_CNT:CounterUDB:disable_run_i\
+            + !Net_322 * \TRG_CNT:CounterUDB:per_equal\ * 
+              !\TRG_CNT:CounterUDB:overflow_reg_i\
         );
-        Output = \BLANKING_DELAY:CounterUDB:disable_run_i\ (fanout=2)
+        Output = \TRG_CNT:CounterUDB:disable_run_i\ (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\STAGE_TRIG:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \STAGE_TRIG:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_389 ,
+        chain_out => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u1\
+
+controlcell: Name =\TRG_CNT:CounterUDB:sCTRLReg:ctrlreg\
+    PORT MAP (
+        clock => Net_249 ,
+        control_7 => \TRG_CNT:CounterUDB:control_7\ ,
+        control_6 => \TRG_CNT:CounterUDB:control_6\ ,
+        control_5 => \TRG_CNT:CounterUDB:control_5\ ,
+        control_4 => \TRG_CNT:CounterUDB:control_4\ ,
+        control_3 => \TRG_CNT:CounterUDB:control_3\ ,
+        control_2 => \TRG_CNT:CounterUDB:control_2\ ,
+        control_1 => \TRG_CNT:CounterUDB:control_1\ ,
+        control_0 => \TRG_CNT:CounterUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\TRG_CNT:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:per_equal\ * 
+              !\TRG_CNT:CounterUDB:overflow_reg_i\
+        );
+        Output = \TRG_CNT:CounterUDB:overflow_status\ (fanout=1)
         Properties               : 
         {
         }
@@ -4892,14 +5544,18 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=4, #pterms=2
     [McSlotId=3]: (empty)
 }
 
-datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
+datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u3\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
-        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
-        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry1\ ,
-        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry2\ );
+        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_322 ,
+        ce0_comb => \TRG_CNT:CounterUDB:per_equal\ ,
+        z0_comb => \TRG_CNT:CounterUDB:status_1\ ,
+        cl1_comb => \TRG_CNT:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \TRG_CNT:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \TRG_CNT:CounterUDB:status_5\ ,
+        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry2\ );
     Properties:
     {
         a0_init = "00000000"
@@ -4926,69 +5582,239 @@ datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
-    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u3\
+    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u2\
 
-UDB [UDB=(2,4)] contents:
-datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
+statusicell: Name =\TRG_CNT:CounterUDB:sSTSReg:stsreg\
     PORT MAP (
+        reset => Net_322 ,
         clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
-        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
-        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry0\ ,
-        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry1\ );
+        status_6 => \TRG_CNT:CounterUDB:status_6\ ,
+        status_5 => \TRG_CNT:CounterUDB:status_5\ ,
+        status_2 => \TRG_CNT:CounterUDB:overflow_status\ ,
+        status_1 => \TRG_CNT:CounterUDB:status_1\ ,
+        status_0 => \TRG_CNT:CounterUDB:status_0\ );
     Properties:
     {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0011111"
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
-    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
 
 UDB [UDB=(2,5)] contents:
-LAB@[UDB=(2,5)][LB=1] #macrocells=1, #inputs=0, #pterms=0
+LAB@[UDB=(2,5)][LB=0] #macrocells=1, #inputs=1, #pterms=1
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=1]
-        Total # of inputs        : 0
-        Total # of product terms : 0
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\TRG_CNT:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_249) => Global
             Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:cmp_out_i\
         );
-        Output = __ONE__ (fanout=20)
+        Output = \TRG_CNT:CounterUDB:prevCompare\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,5)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\TRG_CNT:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \TRG_CNT:CounterUDB:cmp_out_i\ * 
+              !\TRG_CNT:CounterUDB:prevCompare\
+        );
+        Output = \TRG_CNT:CounterUDB:status_0\ (fanout=1)
         Properties               : 
         {
         }
 
+    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
+datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_322 ,
+        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u1\
+
+controlcell: Name =\TRIG_CNT_RST:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \TRIG_CNT_RST:control_7\ ,
+        control_6 => \TRIG_CNT_RST:control_6\ ,
+        control_5 => \TRIG_CNT_RST:control_5\ ,
+        control_4 => \TRIG_CNT_RST:control_4\ ,
+        control_3 => \TRIG_CNT_RST:control_3\ ,
+        control_2 => \TRIG_CNT_RST:control_2\ ,
+        control_1 => \TRIG_CNT_RST:control_1\ ,
+        control_0 => Net_322 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
 UDB [UDB=(3,0)] contents:
+datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_473 ,
+        chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry0\ ,
+        chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u0\
+    Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
+
+UDB [UDB=(3,1)] contents:
+datapathcell: Name =\STAGE_WAIT:CounterUDB:sC32:counterdp:u2\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \STAGE_WAIT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_473 ,
+        chain_in => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry1\ ,
+        chain_out => \STAGE_WAIT:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \STAGE_WAIT:CounterUDB:sC32:counterdp:u3\
+
+UDB [UDB=(3,2)] contents:
+datapathcell: Name =\STAGE_TRIG:CounterUDB:sC32:counterdp:u2\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \STAGE_TRIG:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_389 ,
+        chain_in => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry1\ ,
+        chain_out => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u3\
+
+UDB [UDB=(3,3)] contents:
 datapathcell: Name =\STAGE_TRIG:CounterUDB:sC32:counterdp:u1\
     PORT MAP (
         clock => Net_249 ,
@@ -5046,195 +5872,15 @@ controlcell: Name =\STAGE_REG:Sync:ctrl_reg\
     }
     Clock Enable: True
 
-UDB [UDB=(3,1)] contents:
-datapathcell: Name =\STAGE_TRIG:CounterUDB:sC32:counterdp:u2\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \STAGE_TRIG:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_389 ,
-        chain_in => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry1\ ,
-        chain_out => \STAGE_TRIG:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u1\
-    Next in chain : \STAGE_TRIG:CounterUDB:sC32:counterdp:u3\
-
-controlcell: Name =\CAM_SEL_REG:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \CAM_SEL_REG:control_7\ ,
-        control_6 => \CAM_SEL_REG:control_6\ ,
-        control_5 => \CAM_SEL_REG:control_5\ ,
-        control_4 => \CAM_SEL_REG:control_4\ ,
-        control_3 => \CAM_SEL_REG:control_3\ ,
-        control_2 => \CAM_SEL_REG:control_2\ ,
-        control_1 => \CAM_SEL_REG:control_1\ ,
-        control_0 => CAM_SEL_WIRE );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,2)] is empty.
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=1] #macrocells=1, #inputs=2, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:overflow_status\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \BLANKING_DELAY:CounterUDB:per_equal\ * 
-              !\BLANKING_DELAY:CounterUDB:overflow_reg_i\
-        );
-        Output = \BLANKING_DELAY:CounterUDB:overflow_status\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u3\
-    PORT MAP (
-        clock => Net_249 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
-        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
-        ce0_comb => \BLANKING_DELAY:CounterUDB:per_equal\ ,
-        z0_comb => \BLANKING_DELAY:CounterUDB:status_1\ ,
-        cl1_comb => \BLANKING_DELAY:CounterUDB:cmp_out_i\ ,
-        f0_bus_stat_comb => \BLANKING_DELAY:CounterUDB:status_6\ ,
-        f0_blk_stat_comb => \BLANKING_DELAY:CounterUDB:status_5\ ,
-        chain_in => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u2\
-
-statusicell: Name =\BLANKING_DELAY:CounterUDB:sSTSReg:stsreg\
-    PORT MAP (
-        reset => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
-        clock => Net_249 ,
-        status_6 => \BLANKING_DELAY:CounterUDB:status_6\ ,
-        status_5 => \BLANKING_DELAY:CounterUDB:status_5\ ,
-        status_2 => \BLANKING_DELAY:CounterUDB:overflow_status\ ,
-        status_1 => \BLANKING_DELAY:CounterUDB:status_1\ ,
-        status_0 => \BLANKING_DELAY:CounterUDB:status_0\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0011111"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
 UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=0] #macrocells=1, #inputs=1, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_249) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \BLANKING_DELAY:CounterUDB:cmp_out_i\
-        );
-        Output = \BLANKING_DELAY:CounterUDB:prevCompare\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=2, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\BLANKING_DELAY:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \BLANKING_DELAY:CounterUDB:cmp_out_i\ * 
-              !\BLANKING_DELAY:CounterUDB:prevCompare\
-        );
-        Output = \BLANKING_DELAY:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
+datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u2\
     PORT MAP (
         clock => Net_249 ,
         cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \BLANKING_DELAY:CounterUDB:count_enable\ ,
-        cs_addr_0 => \TRG_CNT:CounterUDB:overflow_reg_i\ ,
-        chain_out => \BLANKING_DELAY:CounterUDB:sC32:counterdp:carry0\ );
+        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_322 ,
+        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry1\ ,
+        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry2\ );
     Properties:
     {
         a0_init = "00000000"
@@ -5245,7 +5891,7 @@ datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
         cl1_sync = 1
         cmsb_sync = 1
         co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
         d0_init = "00000000"
         d1_init = "00000000"
         f0_blk_sync = 1
@@ -5261,9 +5907,47 @@ datapathcell: Name =\BLANKING_DELAY:CounterUDB:sC32:counterdp:u0\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Next in chain : \BLANKING_DELAY:CounterUDB:sC32:counterdp:u1\
+    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u1\
+    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u3\
 
-UDB [UDB=(3,5)] is empty.
+UDB [UDB=(3,5)] contents:
+datapathcell: Name =\TRG_CNT:CounterUDB:sC32:counterdp:u1\
+    PORT MAP (
+        clock => Net_249 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \TRG_CNT:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_322 ,
+        chain_in => \TRG_CNT:CounterUDB:sC32:counterdp:carry0\ ,
+        chain_out => \TRG_CNT:CounterUDB:sC32:counterdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u0\
+    Next in chain : \TRG_CNT:CounterUDB:sC32:counterdp:u2\
+
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
     interrupt: Name =TRIG_ISR
@@ -5424,7 +6108,7 @@ Pin : Name = Stage_Trigger(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => Stage_Trigger(0)__PA ,
-        pin_input => Net_394 ,
+        pin_input => STAGE_T ,
         pad => Stage_Trigger(0)_PAD );
     Properties:
     {
@@ -5507,7 +6191,7 @@ Pin : Name = CAM1_TRIGG(0)
         IO Voltage: 0
     PORT MAP (
         pa_out => CAM1_TRIGG(0)__PA ,
-        pin_input => Net_309 ,
+        pin_input => Net_464 ,
         pad => CAM1_TRIGG(0)_PAD );
     Properties:
     {
@@ -6119,10 +6803,10 @@ Port Configuration report
 Port | Pin | Fixed |      Type |       Drive Mode |                  Name | Connections
 -----+-----+-------+-----------+------------------+-----------------------+---------------------------
    0 |   6 |     * |      NONE |         CMOS_OUT |          LASER_561(0) | In(Net_424)
-     |   7 |     * |      NONE |         CMOS_OUT |      Stage_Trigger(0) | In(Net_394)
+     |   7 |     * |      NONE |         CMOS_OUT |      Stage_Trigger(0) | In(STAGE_T)
 -----+-----+-------+-----------+------------------+-----------------------+---------------------------
    1 |   4 |     * |      NONE |         CMOS_OUT |          LASER_488(0) | In(Net_423)
-     |   5 |     * |      NONE |         CMOS_OUT |         CAM1_TRIGG(0) | In(Net_309)
+     |   5 |     * |      NONE |         CMOS_OUT |         CAM1_TRIGG(0) | In(Net_464)
      |   6 |     * |      NONE |         CMOS_OUT |         CAM2_TRIGG(0) | In(Net_439)
      |   7 |     * |      NONE |         CMOS_OUT |        SLM_Trigger(0) | In(SLM_TRIG_WIRE)
 -----+-----+-------+-----------+------------------+-----------------------+---------------------------
@@ -6140,19 +6824,19 @@ Port | Pin | Fixed |      Type |       Drive Mode |                  Name | Conn
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.055ms
-Digital Placement phase: Elapsed time ==> 1s.573ms
+Digital component placer commit/Report: Elapsed time ==> 0s.063ms
+Digital Placement phase: Elapsed time ==> 1s.822ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "UART SLM_r.vh2" --pcf-path "UART SLM.pco" --des-name "UART SLM" --dsf-path "UART SLM.dsf" --sdc-path "UART SLM.sdc" --lib-path "UART SLM_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.652ms
+Digital Routing phase: Elapsed time ==> 1s.922ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
 Bitstream Generation phase: Elapsed time ==> 0s.135ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.023ms
+Bitstream Verification phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0019: UART SLM_timing.html: Warning-1366: Setup time violation found in a path from clock ( CyBUS_CLK ) to clock ( Clock_1 ). (File=C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM_timing.html)
@@ -6164,11 +6848,11 @@ Static timing analysis phase: Elapsed time ==> 0s.423ms
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.183ms
+Design database save phase: Elapsed time ==> 0s.192ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 4s.534ms
+cydsfit: Elapsed time ==> 5s.073ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 4s.534ms
-API generation phase: Elapsed time ==> 1s.647ms
+Fitter phase: Elapsed time ==> 5s.073ms
+API generation phase: Elapsed time ==> 1s.736ms
 Dependency generation phase: Elapsed time ==> 0s.007ms
 Cleanup phase: Elapsed time ==> 0s.000ms

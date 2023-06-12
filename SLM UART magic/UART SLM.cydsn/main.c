@@ -51,13 +51,20 @@
 #define THIRTY_FPS (66667u)       // 33.3ms
 #define THIRTY_EXP (40955u)       // 33.3ms - 1ms - 1.18ms * 2
 #define THIRTY (30.0f)
+#define TWENTY_FOUR (24.0f)
+#define TWENTY_FOUR_FPS (83333u)
+#define FOURTY_EIGHT (48.0f)
+#define FOURTY_EIGHT_FPS (41666u)
 #define TWENTY_SIX_FPS (76923u)
 #define TWENTY_SIX (26.0f)
 #define STAGE_TICKS (180000u)     // Xms for stage trigger
 //#define STAGE_TICKS (12000u)
+#define ANDOR_READOUT (78600u)
+#define ANDOR_DELAY_TICKS (536u)
 #define HAMA_SLOW_TICKS (650u)
 #define HAMA_NORM_TICKS (195u)
 #define HAMA_SLOW_READ (59586u)//(80920)//(58920u)  // 33ms - 1.18ms * 3
+#define ANDOR_30_MHZ_HORZ (.000034133f)
 #define HAMA_SLOW_HORZ (.0000324812f) 
 #define HAMA_NORM_HORZ (.00000974436f)
 #define HAMA_VERT_DEFAULT (2048u)
@@ -67,9 +74,12 @@
 #define THREE_BEAM (0u)
 #define TWO_BEAM (1u)
 #define NO_SIM_Z_ONLY (2u)
+#define SINGLE_ANGLE (3u)
+#define SINGLE_ANGLE_MAX (5u)
 #define THREE_BEAM_MAX (15u)
 #define TWO_BEAM_MAX (9u)
 #define NO_BEAM_MAX (1u)
+#define TWO_CAM_MIN (2u)
 
 #define BLANK_ON (0u)
 #define BLANK_OFF (1u)
@@ -81,7 +91,7 @@
 #define ENTER_CAP_MODE "\n\nSet Capture Mode:\n 0) Normal\n 1) Slow\nEnter Choice: "
 #define SELECT_MODE "\n\nSet Mode:\n 0) Free Run\n 1) Z-mode\n 2) Timed\nEnter Choice: "
 #define SIM_SELECT "\n\nSet SIM Mode:\n 0) Three beam\n 1) Two beam\n "
-#define SIM_SELECT2 "2) Z only\nEnter Choice: "
+#define SIM_SELECT2 "2) Z only\n 3) Single Angle\nEnter Choice: "
 #define SET_EXPOSURE "\n\nEnter Exposure float: "
 #define LASER_SELECT "\n\n Laser(s) to use:\n 0) 588nm\n 1) 561nm\n 2) Both alternating"
 #define LASER_SELECT2 "\nEnter Choice: "
@@ -106,6 +116,7 @@
 
 #define TIMED_FIN 0x01
 #define Z_FIN     0x02
+#define STUPID (0u)//(200000u)
 
 char8* parity[] = {"None", "Odd", "Even", "Mark", "Space"};
 char8* stop[]   = {"1", "1.5", "2"};
@@ -168,6 +179,9 @@ CY_ISR(T_ISR){
     
     // Controls the trigger periods and
     // which device gets the trigger pulse
+    ENBL_TRIG_ISR_Write(REG_OFF);
+    TRIG_ISR_ClearPending();
+    
     if (phases < phase_max) {
             if(laser_conf == BOTH_LASERS){
                 /* First Laser Should be set to Green @ start*/
@@ -176,6 +190,7 @@ CY_ISR(T_ISR){
                 CAM_SEL_REG_Write(!val);
                 if (val == BLUE_LASER){
                     phases++;
+                    
                 }
             } else {
                 phases++;
@@ -184,7 +199,8 @@ CY_ISR(T_ISR){
 
             TRIG_CNT_RST_Write(REG_ON);
             TRIG_CNT_RST_Write(REG_OFF);
- 
+            //TRIG_ISR_ClearPending();
+            ENBL_TRIG_ISR_Write(REG_ON);
 
             if(mode == TIMED_MODE){
                 if(time_ticks_rem > frameTicks){
@@ -214,6 +230,8 @@ CY_ISR(T_ISR){
                 STAGE_REG_Write(REG_ON);
                 STAGE_REG_Write(REG_OFF);
                 zCount++;
+                ENBL_TRIG_ISR_Write(REG_ON);
+                //TRIG_ISR_ClearPending();// Trying to see if this reduces stage movements.
             } else {
                 ENBL_TRIG_ISR_Write(REG_OFF); 
                 zCount = 0;
@@ -258,6 +276,7 @@ int main()
     SLM_TRIG_Start();
     BLANKING_DELAY_Start();
     STAGE_TRIG_Start();
+    STAGE_WAIT_Start();
     TRIG_ISR_StartEx(T_ISR);
 
     /* Start USBFS operation with 5-V operation. */
@@ -282,7 +301,8 @@ int main()
     ACTIVATE_SLM_Write(REG_OFF);
     STAGE_REG_Write(REG_OFF);
     BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
-    BLANK_TOGGLE_Write(BLANK_OFF);
+    STAGE_WAIT_WritePeriod(180000);
+    BLANK_TOGGLE_Write(BLANK_ON);
     
     LCD_Char_Position(0u, 0u);
     LCD_Char_PrintString("Mode: Free");
@@ -377,7 +397,7 @@ int main()
                 }
                 
                 switch ((char)buffer[0]) {
-                    case 'a':
+                    case 'a': /* Set FPS */
                         strcpy(msg, ENTR_FRAME_RATE);
                         /* Wait until component is ready to send data to host. */
                         while (0u == USBUART_CDCIsReady())
@@ -388,7 +408,7 @@ int main()
                         read_input(buffer, 'a');
                         SLM_WAIT_WritePeriod(wait_time_ticks);
                         break;
-                    case 'b':
+                    case 'b': /* Set Z Steps */
                         strcpy(msg, ENTR_Z_STEPS);
                         /* Wait until component is ready to send data to host. */
                         while (0u == USBUART_CDCIsReady())
@@ -398,7 +418,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         read_input(buffer, 'b');
                         break;
-                    case 'c':
+                    case 'c': /* Enter Time To Capture */
                         strcpy(msg, ENTER_TIME_SECS);
                         /* Wait until component is ready to send data to host. */
                         while (0u == USBUART_CDCIsReady())
@@ -408,7 +428,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         read_input(buffer, 'c');
                         break;
-                    case 'd':
+                    case 'd': /* Enter Vertical size of crop */
                         strcpy(msg, ENTER_VERT_VALUE);
                         /* Wait until component is ready to send data to host. */
                         while (0u == USBUART_CDCIsReady())
@@ -420,7 +440,7 @@ int main()
                         readTime();
                         SLM_WAIT_WritePeriod(wait_time_ticks);
                         break;
-                    case 'e':
+                    case 'e': /* Change Hammamatsu Camera readout speed */
                         strcpy(msg, ENTER_CAP_MODE);
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -429,17 +449,25 @@ int main()
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         set_capMode(buffer);
-                        if(capMode == CAP_MODE_NORMAL){
-                            horzPeriod = HAMA_NORM_HORZ;
-                            BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
+                        if(laser_conf == BLUE_LASER){
+                            if(capMode == CAP_MODE_NORMAL){
+                                horzPeriod = HAMA_NORM_HORZ;
+                                BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
+                            } else {
+                                horzPeriod = HAMA_SLOW_HORZ;
+                                BLANKING_DELAY_WritePeriod(HAMA_SLOW_TICKS);
+                            }
+                        } else if (laser_conf == GREEN_LASER){
+                            horzPeriod = ANDOR_30_MHZ_HORZ;
+                            BLANKING_DELAY_WritePeriod(ANDOR_DELAY_TICKS); 
                         } else {
-                            horzPeriod = HAMA_SLOW_HORZ;
+                            //horzPeriod = 0;
                             BLANKING_DELAY_WritePeriod(HAMA_SLOW_TICKS);
                         }
                         setExposure();
                         SLM_WAIT_WritePeriod(wait_time_ticks);
                         break;
-                    case 'f':
+                    case 'f': /* Select between, Free Run, Z-stack and timed mode */
                         strcpy(msg, SELECT_MODE);
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -449,7 +477,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         set_mode(buffer);
                         break;
-                    case 'g':
+                    case 'g': /* Start image Capture */
                         strcpy(msg, "\n\n****Starting Capture****\n\n");
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -469,7 +497,7 @@ int main()
                         LCD_Char_Position(1u,0u);
                         LCD_Char_PrintString(TRIGG_ON);
                         break;
-                    case 'h':
+                    case 'h': /* Stop Image Capture */
                         strcpy(msg, "\n\n****Ending Capture****\n\n");
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -481,7 +509,7 @@ int main()
                         LCD_Char_Position(1u,0u);
                         LCD_Char_PrintString(TRIGG_OFF);
                         break;
-                    case 'i':
+                    case 'i': /* Toggle Laser Blanking */
                         if(BLANK_TOGGLE_Read()){
                             BLANK_TOGGLE_Write(BLANK_ON);
                             strcpy(msg, "\n\n****Blanking On****\n\n");
@@ -500,7 +528,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         
                         break;
-                    case 'j':
+                    case 'j': /* For Z stack capture set 2 beam 3 beam or no sim */
                         strcpy(msg, SIM_SELECT);
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -517,7 +545,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));                        
                         set_sim_mode(buffer);                        
                         break;
-                    case 'k':
+                    case 'k': /* Print Out Current Configuration */
                         if(ENBL_TRIG_ISR_Read()){
                             sprintf(msg, "\n\nTrigger: Running\n");   
                         } else {
@@ -560,8 +588,10 @@ int main()
                             sprintf(msg, "SIM Mode: Three Beam\n");
                         } else if(simMode == TWO_BEAM) {
                             sprintf(msg, "SIM Mode: Two Beam\n");    
-                        } else {
+                        } else if(simMode == NO_SIM_Z_ONLY){
                             sprintf(msg, "SIM Mode: Z-only\n");   
+                        } else {
+                            sprintf(msg, "SIM Mode: Single Angle\n");  
                         }
                         
                         /* Wait until component is ready to send data to host. */
@@ -618,7 +648,7 @@ int main()
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         break;
-                    case 'l':
+                    case 'l': /* Set User specified exposure time */
                         sprintf(msg, "\n\nCan not exceed %.6f (sec) exposure to maintain fps\n", exposureMax);
                         /* Wait until component is ready to send data to host. */
                         while (0u == USBUART_CDCIsReady())
@@ -634,9 +664,9 @@ int main()
                         }
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         read_input(buffer,'l');
-                        SLM_WAIT_WritePeriod(wait_time_ticks);
+                        //SLM_WAIT_WritePeriod(wait_time_ticks);
                         break;                        
-                    case 'm':
+                    case 'm': /* Select Laser Mode */
                         strcpy(msg, LASER_SELECT);
                         /* Send MSG back to host. */
                         /* Wait until component is ready to send data to host. */
@@ -653,7 +683,7 @@ int main()
                         USBUART_PutData((uint8*)msg, strlen(msg));
                         set_laser_mode(buffer);
                         break;
-                    case '\n':
+                    case '\n': /* if Enter key is pushed alone print options */
                         strcpy(msg, OPTIONS);
                         /* Send  OPTIONS. */
                         /* Wait until component is ready to send data to host. */
@@ -957,7 +987,7 @@ void set_sim_mode(uint8* buf){
                     }
 
                     /* Send data back to host. */
-                    if ( (buf[0] >= '0' && buf[0] <= '2')|| buf[0] == '\n'){
+                    if ( (buf[0] >= '0' && buf[0] <= '3')|| buf[0] == '\n'){
                         USBUART_PutData(buf, count);
                         // append value to float string
                         val_str[i++] = buf[0];                        
@@ -990,8 +1020,15 @@ void set_sim_mode(uint8* buf){
     } else if(simMode == THREE_BEAM) {
         phase_max = THREE_BEAM_MAX;
         sprintf(msg, "\n\nSIM Mode: THREE BEAM\n");           
+    } else if (simMode == NO_SIM_Z_ONLY){
+        phase_max = NO_BEAM_MAX;
+        sprintf(msg, "\n\nSIM Mode: Z-Only\n");
+    } else if (simMode == SINGLE_ANGLE) {
+        phase_max = SINGLE_ANGLE_MAX;
+        sprintf(msg, "\n\nSIM Mode: SINGLE ANGLE\n");
     } else {
         phase_max = NO_BEAM_MAX;
+        simMode = NO_SIM_Z_ONLY;
         sprintf(msg, "\n\nSIM Mode: Z-Only\n");
     }
 
@@ -1070,15 +1107,30 @@ void set_laser_mode(uint8* buf){
     if(laser_conf == BLUE_LASER){
         CAM_SEL_REG_Write(BLUE_LASER);
         sprintf(msg, "\n\nLaser Mode: 488nm\n");
-    } else if(laser_conf == BLUE_LASER){
+        if(capMode == CAP_MODE_NORMAL){
+            horzPeriod = HAMA_NORM_HORZ;
+            if(capMode == CAP_MODE_NORMAL){
+                BLANKING_DELAY_WritePeriod(HAMA_NORM_TICKS);
+            } else {
+                BLANKING_DELAY_WritePeriod(HAMA_SLOW_TICKS);    
+            }
+        } else {
+            horzPeriod = HAMA_SLOW_HORZ;
+            BLANKING_DELAY_WritePeriod(ANDOR_DELAY_TICKS);
+        }
+    } else if(laser_conf == GREEN_LASER){
         CAM_SEL_REG_Write(GREEN_LASER);
+        BLANKING_DELAY_WritePeriod(ANDOR_DELAY_TICKS);    
         sprintf(msg, "\n\nLaser Mode: 561nm\n");           
     } else {
         sprintf(msg, "\n\nLaser Mode: 488nm and 561nm Alternating\n");
+        // Try Set Readout Time to 0
+        //horzPeriod = 0;
         CAM_SEL_REG_Write(GREEN_LASER);
+        BLANKING_DELAY_WritePeriod(ANDOR_DELAY_TICKS);    
     }
     
-    setWaitTime();
+    setExposure();
 
     while (0u == USBUART_CDCIsReady())
     {
@@ -1167,7 +1219,31 @@ void setExposure(void){
             /* Send Messege */
             USBUART_PutData((uint8*)msg, strlen(msg));
         }
+        
+        if(laser_conf == GREEN_LASER){
+            exposureMax = 1 / TWENTY_FOUR - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = TWENTY_FOUR;
+            sprintf(msg, "\n***Timing error setting to 24fps***\n");
+            while (0u == USBUART_CDCIsReady())
+            {
+            }
+            /* Send Messege */
+            USBUART_PutData((uint8*)msg, strlen(msg));               
+        } else if (laser_conf == BOTH_LASERS){
+            exposureMax = 1 / FOURTY_EIGHT - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = FOURTY_EIGHT;
+            sprintf(msg, "\n***Timing error setting to 48fps***\n");
+            while (0u == USBUART_CDCIsReady())
+            {
+            }
+            /* Send Messege */
+            USBUART_PutData((uint8*)msg, strlen(msg)); 
+        }
+        
     }
+    
+
+    
     exposure = exposureMax;
     exposureTicks = (uint32)(exposure/COUNT_PERIOD);
     setWaitTime();
@@ -1196,18 +1272,18 @@ void setWaitTime(void){
     double float_ticks = (readOutTime / COUNT_PERIOD) - (double)SLM_CNTR_TICKS / 2.0f;
     
     if(float_ticks <= 0 /*|| laser_conf == BOTH_LASERS*/){
-        wait_time_ticks = SLM_CNTR_TICKS;
+        wait_time_ticks = SLM_CNTR_TICKS + STUPID;
     } else {
-        wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2;
+        wait_time_ticks = (uint32)(readOutTime / COUNT_PERIOD) - SLM_TRG_TICKS / 2 + STUPID;
     }
     
     //if(laser_conf == BOTH_LASERS){
         uint32 remain_ticks = frameTicks - exposureTicks - SLM_TRG_TICKS;
         if(wait_time_ticks < remain_ticks){
-             wait_time_ticks = remain_ticks;   
+             wait_time_ticks = remain_ticks + STUPID;   
         }
         if(wait_time_ticks < SLM_CNTR_TICKS){
-            wait_time_ticks = SLM_CNTR_TICKS;
+            wait_time_ticks = SLM_CNTR_TICKS + STUPID;
         }
     //}
     sprintf(msg, "\nwait_time_ticks: %lu\nexposure: %.6f\n", wait_time_ticks, exposure);
