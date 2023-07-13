@@ -13,13 +13,45 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SLM UART magic">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SLM UART magic\USB SLM_ANDOR_Fusion">
 <ExpandedNodeIds>
 <v>SLM UART magic</v>
-<v>SLM UART magic\UART SLM</v>
 <v>SLM UART magic\UART SLM\TopDesign</v>
 <v>SLM UART magic\UART SLM\UART SLM.cydwr</v>
 <v>SLM UART magic\UART SLM\Source Files</v>
+<v>SLM UART magic\UART SLM_ANDOR\TopDesign</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Pins</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Analog</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Clocks</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Interrupts</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\DMA</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\System</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Directives</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\Flash Security</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.cydwr\EEPROM</v>
+<v>SLM UART magic\UART SLM_ANDOR\Header Files</v>
+<v>SLM UART magic\UART SLM_ANDOR\Header Files\cyapicallbacks.h</v>
+<v>SLM UART magic\UART SLM_ANDOR\Source Files</v>
+<v>SLM UART magic\UART SLM_ANDOR\Source Files\main.c</v>
+<v>SLM UART magic\UART SLM_ANDOR\Generated_Source\PSoC5</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Pins</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Analog</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Clocks</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Interrupts</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\DMA</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\System</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Directives</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Flash Security</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\EEPROM</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Header Files</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Header Files\cyapicallbacks.h</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Source Files</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Source Files\main.c</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Generated_Source\PSoC5</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\USBFS_UART01.cydwr</v>
 <v>SLM UART magic\USBFS_UART01\USBFS_UART01.cydwr\Pins</v>
@@ -42,21 +74,24 @@
 <VisibleNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
-<v>SLM UART magic\UART SLM\TopDesign</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Pins</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Analog</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Clocks</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Interrupts</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\DMA</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\System</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Directives</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\Flash Security</v>
-<v>SLM UART magic\UART SLM\UART SLM.cydwr\EEPROM</v>
-<v>SLM UART magic\UART SLM\Header Files</v>
-<v>SLM UART magic\UART SLM\Source Files</v>
-<v>SLM UART magic\UART SLM\Source Files\main.c</v>
-<v>SLM UART magic\UART SLM\Generated_Source</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Pins</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Analog</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Clocks</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Interrupts</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\DMA</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\System</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Directives</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\Flash Security</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.cydwr\EEPROM</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Header Files</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Header Files\cyapicallbacks.h</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Source Files</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Source Files\main.c</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Generated_Source</v>
 <v>SLM UART magic\USBFS_UART01</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
@@ -64,6 +99,12 @@
 <ExpandedNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\UART SLM_ANDOR\TopDesign</v>
+<v>SLM UART magic\UART SLM_ANDOR\TopDesign\TopDesign.cysch</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign\TopDesign.cysch</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign\PSoC3</v>
@@ -81,6 +122,12 @@
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
 <v>SLM UART magic\UART SLM\TopDesign</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\UART SLM_ANDOR\TopDesign</v>
+<v>SLM UART magic\UART SLM_ANDOR\TopDesign\TopDesign.cysch</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\TopDesign\TopDesign.cysch</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign</v>
 <v>SLM UART magic\USBFS_UART01\TopDesign\PSoC3</v>
@@ -145,6 +192,8 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG_PM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Stage_Trigger.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT_PM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT_PM.lst</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_CNT_RST.lst</v>
@@ -170,6 +219,159 @@
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\UART SLM.hex</v>
 <v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\UART SLM.map</v>
 <v>SLM UART magic\UART SLM\UART SLM.gpdsc</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM2_TRIGG.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_5.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_488.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_561.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_LCDPort.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_Trigger.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\Stage_Trigger.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_CNT_RST.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_CNT_RST_PM.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_ISR.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_audio.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_boot.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cdc.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_cls.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_descr.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dm.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_Dp.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_drv.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_episr.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_hid.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_midi.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_msc.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_pm.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_std.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\Listing Files\USBUART_vnd.lst</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\UART SLM_ANDOR.elf</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\UART SLM_ANDOR.hex</v>
+<v>SLM UART magic\UART SLM_ANDOR\CortexM3\ARM_GCC_541\Debug\UART SLM_ANDOR.map</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.gpdsc</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR.rpt</v>
+<v>SLM UART magic\UART SLM_ANDOR\UART SLM_ANDOR_timing.html</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM1_TRIGG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM2_TRIGG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_5.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_488.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_561.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_LCDPort.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_Trigger.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\Stage_Trigger.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_WAIT_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\TRG_CNT_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_CNT_RST.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_CNT_RST_PM.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\TRIG_ISR.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_audio.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_boot.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_cdc.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_cls.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_descr.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_Dm.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_Dp.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_drv.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_ep1_dma.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_ep2_dma.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_episr.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_hid.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_midi.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_msc.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_pm.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_std.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\Listing Files\USBFS_vnd.lst</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\USB SLM_ANDOR_Fusion.elf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\USB SLM_ANDOR_Fusion.hex</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CortexM3\ARM_GCC_541\Debug\USB SLM_ANDOR_Fusion.map</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.gpdsc</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion.rpt</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USB SLM_ANDOR_Fusion_timing.html</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\CortexM3</v>
 <v>SLM UART magic\USBFS_UART01\CortexM3\ARM_GCC_541</v>
@@ -217,6 +419,52 @@
 <VisibleNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
+<v>SLM UART magic\UART SLM\CortexM3</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ACTIVATE_SLM_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANK_TOGGLE_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\BLANKING_DELAY_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM_SEL_REG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM1_TRIGG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CAM2_TRIGG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_3.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_5.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\ENBL_TRIG_ISR_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_488.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LASER_561.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_LCDPort.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_Char_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_TRIG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_Trigger.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\SLM_WAIT_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_REG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\STAGE_TRIG_PM.lst</v>
+<v>SLM UART magic\UART SLM\CortexM3\ARM_GCC_541\Debug\Listing Files\Stage_Trigger.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -252,6 +500,57 @@
 <v>SLM UART magic\UART SLM\or_v1_0</v>
 <v>SLM UART magic\UART SLM\or_v1_0\or_v1_0.pdf</v>
 <v>SLM UART magic\UART SLM\USBFS_v3_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\UART SLM_ANDOR\PSoC 5LP Architecture TRM</v>
+<v>SLM UART magic\UART SLM_ANDOR\CY8C58LP Family Datasheet</v>
+<v>SLM UART magic\UART SLM_ANDOR\System Reference Guides</v>
+<v>SLM UART magic\UART SLM_ANDOR\System Reference Guides\cy_boot_v6_10</v>
+<v>SLM UART magic\UART SLM_ANDOR\and_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\and_v1_0\and_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\CharLCD_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\Counter_v3_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\Counter_v3_0\Counter_v3_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_clock_v2_20</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_isr_v1_71.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_pins_v2_20</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_sync_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\CyControlReg_v1_80</v>
+<v>SLM UART magic\UART SLM_ANDOR\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\demux_v1_10.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\not_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\not_v1_0\not_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\or_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\or_v1_0\or_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\USBFS_v3_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\PSoC 5LP Architecture TRM</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CY8C58LP Family Datasheet</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\System Reference Guides</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\System Reference Guides\cy_boot_v6_10</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\and_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\and_v1_0\and_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CharLCD_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Counter_v3_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Counter_v3_0\Counter_v3_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_clock_v2_20</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_isr_v1_71.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_pins_v2_20</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_sync_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CyControlReg_v1_80</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\demux_v1_10</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\demux_v1_10\demux_v1_10.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\not_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\not_v1_0\not_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\or_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\or_v1_0\or_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\USBFS_v3_20.pdf</v>
 <v>SLM UART magic\USBFS_UART01</v>
 <v>SLM UART magic\USBFS_UART01\PSoC 5LP Architecture TRM</v>
 <v>SLM UART magic\USBFS_UART01\CY8C58LP Family Datasheet</v>
@@ -263,13 +562,52 @@
 <VisibleNodeIds>
 <v>SLM UART magic</v>
 <v>SLM UART magic\UART SLM</v>
-<v>SLM UART magic\USBFS_UART01</v>
-<v>SLM UART magic\USBFS_UART01\PSoC 5LP Architecture TRM</v>
-<v>SLM UART magic\USBFS_UART01\CY8C58LP Family Datasheet</v>
-<v>SLM UART magic\USBFS_UART01\System Reference Guides</v>
-<v>SLM UART magic\USBFS_UART01\System Reference Guides\cy_boot_v6_10</v>
-<v>SLM UART magic\USBFS_UART01\CharLCD_v2_20.pdf</v>
-<v>SLM UART magic\USBFS_UART01\USBFS_v3_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR</v>
+<v>SLM UART magic\UART SLM_ANDOR\PSoC 5LP Architecture TRM</v>
+<v>SLM UART magic\UART SLM_ANDOR\CY8C58LP Family Datasheet</v>
+<v>SLM UART magic\UART SLM_ANDOR\System Reference Guides</v>
+<v>SLM UART magic\UART SLM_ANDOR\System Reference Guides\cy_boot_v6_10</v>
+<v>SLM UART magic\UART SLM_ANDOR\and_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\and_v1_0\and_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\CharLCD_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\Counter_v3_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\Counter_v3_0\Counter_v3_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_clock_v2_20</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_isr_v1_71.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_pins_v2_20</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_sync_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\CyControlReg_v1_80</v>
+<v>SLM UART magic\UART SLM_ANDOR\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\demux_v1_10.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\not_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\not_v1_0\not_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\or_v1_0</v>
+<v>SLM UART magic\UART SLM_ANDOR\or_v1_0\or_v1_0.pdf</v>
+<v>SLM UART magic\UART SLM_ANDOR\USBFS_v3_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\PSoC 5LP Architecture TRM</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CY8C58LP Family Datasheet</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\System Reference Guides</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\System Reference Guides\cy_boot_v6_10</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\and_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\and_v1_0\and_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CharLCD_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Counter_v3_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\Counter_v3_0\Counter_v3_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_clock_v2_20</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_isr_v1_71.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_pins_v2_20</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_sync_v1_0</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CyControlReg_v1_80</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\demux_v1_10</v>
+<v>SLM UART magic\USB SLM_ANDOR_Fusion\demux_v1_10\demux_v1_10.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -284,9 +622,9 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\UART SLM.cydsn\main.c" />
-<name v=".\UART SLM.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\UART SLM.cydsn\UART SLM.cydwr" />
+<name v=".\USB SLM_ANDOR_Fusion.cydsn\main.c" />
+<name v=".\USB SLM_ANDOR_Fusion.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\USB SLM_ANDOR_Fusion.cydsn\USB SLM_ANDOR_Fusion.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -294,7 +632,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1199, 573" SelectedTabbedMdiWindow="f61bc795-1199-44ca-8315-07dd50f74d42"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="4418367e-f364-49ca-ad40-e17b3ababbee" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\main.c" Guid="f61bc795-1199-44ca-8315-07dd50f74d42" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\TopDesign\TopDesign.cysch" Guid="36764038-b8cb-4f37-8d68-5421abbde9be" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\UART SLM.cydsn\UART SLM.cydwr" Guid="e14e1e97-ca73-46a2-b9cd-b61972e9a700" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1547, 705" SelectedTabbedMdiWindow="1801c68d-aa01-47c2-9b7a-16045d7c8db0"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="4418367e-f364-49ca-ad40-e17b3ababbee" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\USB SLM_ANDOR_Fusion.cydsn\main.c" Guid="20c158f4-f9bc-447c-a1c3-dab754708c09" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\USB SLM_ANDOR_Fusion.cydsn\TopDesign\TopDesign.cysch" Guid="1801c68d-aa01-47c2-9b7a-16045d7c8db0" /><DocumentWindow Key="C:\Users\AdoptedOptics\Documents\GIT\SLM_Psoc\SLM UART magic\USB SLM_ANDOR_Fusion.cydsn\USB SLM_ANDOR_Fusion.cydwr" Guid="f9278fd3-c67b-4aac-b552-1e5bcda0af1b" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
