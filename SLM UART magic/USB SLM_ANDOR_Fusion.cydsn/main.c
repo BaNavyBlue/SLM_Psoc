@@ -78,13 +78,13 @@
 #define BUFFER_SIZE   (64u)
 
 struct usb_data{
-    float fps;
-    float exposure;
-    uint32 flags;
-    uint16 steps;
-    uint8 mode;
-    uint8 bonus;
-    uint64 count;
+    volatile float fps;
+    volatile float exposure;
+    volatile uint32 flags;
+    volatile uint16 steps;
+    volatile uint8 mode;
+    volatile uint8 bonus;
+    volatile uint64 count;
 };
 volatile struct usb_data incoming;
 volatile struct usb_data outgoing;
@@ -126,6 +126,7 @@ volatile struct usb_data outgoing;
 #define TEN (10.0f)
 #define TEN_FPS (200000u)
 #define TEN_EXP (77200u)        // 100ms - 1ms - 1.18ms * 2 - 56.8ms work damn you!
+#define FIFTEEN (15.0f)
 #define TWENTY_FOUR (24.0f)
 #define TWENTY (20.0f)
 #define TWENTY_FPS (100000u)
@@ -190,12 +191,18 @@ volatile struct usb_data outgoing;
 #define FREE_RUN (0u)
 #define Z_MODE (1u)
 #define TIMED_MODE (2u)
+
+#define STOP_BLANKING (0x0)
+#define START_BLANKING (0x1)
+
+#define ARB_EXP (0x4)
 #define BLUE_LASER (0u)
 #define GREEN_LASER (1u)
 #define BOTH_LASERS (2u)
 
 #define TIMED_FIN 0x01
 #define Z_FIN     0x02
+
 #define STUPID (0u)//(200000u)
 
 //char8* parity[] = {"None", "Odd", "Even", "Mark", "Space"};
@@ -226,7 +233,7 @@ uint8 deMux = CAMERA_TRIGGER;
 volatile uint8 phases = 0;
 volatile uint16 zCount = 0;
 uint16 vert = ANDOR_VERT_DEFAULT;
-uint8 capMode = CAP_MODE_NORMAL;
+uint8 capMode = CAP_MODE_SLOW;
 double horzPeriod = ANDOR_30_MHZ_HORZ;
 double readOutTime = 0;
 volatile uint8 mode = FREE_RUN;
@@ -250,7 +257,7 @@ char line1[20];
 char line2[20];
 char line3[20];
 
-double fps_in = TEN;
+volatile float fps_in = TEN;
 
 
 char msg[64];
@@ -444,14 +451,16 @@ int main()
                     incoming.flags &= ~(STAGE_MOVE_COMPLETE);
                 }
                 if(incoming.flags & CHANGE_FPS){
+                    outgoing.fps = incoming.fps;
                     read_input(&incoming, 'a');
                     SLM_WAIT_WritePeriod(wait_time_ticks);
-                    outgoing.fps = incoming.fps;
+                    
                     incoming.flags &= ~(CHANGE_FPS);
                 }
                 if(incoming.flags & CHANGE_Z_STEPS){
-                    read_input(&incoming, 'b');
                     outgoing.steps = incoming.steps;
+                    read_input(&incoming, 'b');
+                    
                     incoming.flags &= ~(CHANGE_Z_STEPS);
                 }
                     //read_input(buffer, 'c');
@@ -511,7 +520,7 @@ int main()
                 }
                 if(incoming.flags & TOGGLE_BLANKING){
                 /* Toggle Laser Blanking */
-                    if(BLANK_TOGGLE_Read()){
+                    if(incoming.mode & START_BLANKING){
                         BLANK_TOGGLE_Write(BLANK_ON);
                         strcpy(msg, "\n\n****Blanking On****\n\n");
                         LCD_Char_Position(1u,10u);
@@ -700,10 +709,14 @@ void read_input(volatile struct usb_data* buf, const char cmd){
     //double time_s;
     switch(cmd){
         case 'a':
-            fps_in = buf->fps;
-            if(fps_in > 0.0f){
+            
+            if(buf->fps > 0.0f){
+               fps_in = buf->fps;
                double period = 1 / fps_in;
                frameTicks = (uint32)(period / COUNT_PERIOD);
+            } else {
+                outgoing.fps = fps_in;
+                outgoing.flags |= CHANGE_FPS;
             }
             //exposureTicks = frameTicks - SLM_CNTR_TICKS - HAMA_SLOW_READ - SLM_TRG_TICKS;
             setExposure();
@@ -727,8 +740,13 @@ void read_input(volatile struct usb_data* buf, const char cmd){
             sprintf(msg, "\n\nSetting: %s, exposure_ticks: %lu\n\n", val_str, exposureTicks);
             break;*/
         case 'l':
-            exposure = buf->exposure;
-            userSetExposure();
+            if(buf->exposure > 0.0f){
+                exposure = buf->exposure;
+                userSetExposure();
+            } else {
+                outgoing.exposure = exposure;
+                outgoing.flags |= SET_EXPOSURE;
+            }
             //sprintf(msg, "\n\nSetting exposure: %.6f, exposureTicks: %lu\n\n", exposure, exposureTicks);
             break;
         default:
@@ -836,8 +854,8 @@ void setExposure(void){
     exposureMax = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
     if(exposureMax < 0){
         if(capMode == CAP_MODE_NORMAL){
-            exposureMax = 1 / TEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-            fps_in = TEN;
+            exposureMax = 1 / FIFTEEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = FIFTEEN;
             //sprintf(msg, "\n***Timing error setting to 10fps***\n");
             //while (0u == USBUART_CDCIsReady())
             //{
@@ -845,8 +863,8 @@ void setExposure(void){
             /* Send Messege */
             //USBUART_PutData((uint8*)msg, strlen(msg));
         } else {
-            exposureMax = 1 / TEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-            fps_in = TEN;
+            exposureMax = 1 / FIFTEEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = FIFTEEN;
             //sprintf(msg, "\n***Timing error setting to 10fps***\n");
             //while (0u == USBUART_CDCIsReady())
             //{
@@ -856,17 +874,17 @@ void setExposure(void){
         }
         
         if(laser_conf == GREEN_LASER){
-            exposureMax = 1 / TEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-            fps_in = TEN;
+            exposureMax = 1 / FIFTEEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = FIFTEEN;
             //sprintf(msg, "\n***Timing error setting to 10fps***\n");
             //while (0u == USBUART_CDCIsReady())
             //{
             //}
             /* Send Messege */
             //USBUART_PutData((uint8*)msg, strlen(msg));               
-        } else if (laser_conf == BOTH_LASERS){
-            exposureMax = 1 / FOURTY_EIGHT - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-            fps_in = FOURTY_EIGHT;
+        } else /*if (laser_conf == BOTH_LASERS)*/{
+            exposureMax = 1 / FIFTEEN - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+            fps_in = FIFTEEN;
             //sprintf(msg, "\n***Timing error setting to 48fps***\n");
             //while (0u == USBUART_CDCIsReady())
             //{
@@ -874,7 +892,8 @@ void setExposure(void){
             /* Send Messege */
             //USBUART_PutData((uint8*)msg, strlen(msg)); 
         }
-        
+        outgoing.fps = fps_in;
+        outgoing.flags |= CHANGE_FPS;
     }
     
 
@@ -892,20 +911,25 @@ void setExposure(void){
 
 void userSetExposure(void){
     //readTime();
-    //exposureMax = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
-    //if(exposureMax < exposure){
-        //exposure = exposureMax;
-        //sprintf(msg, "\n\nExposure too long setting to exposureMax\n");
-        //while (0u == USBUART_CDCIsReady())
-        //{
-        //}
-        /* Send Messege */
-        //USBUART_PutData((uint8*)msg, strlen(msg));
-    //}
-    fps_in = 1/(exposure + readOutTime - ((double)SLM_CNTR_TICKS)*COUNT_PERIOD/2);
-    outgoing.fps = fps_in;
-    outgoing.flags |= CHANGE_FPS;
-    exposureTicks = (uint32)(exposure/COUNT_PERIOD);
+    if(!(incoming.mode&ARB_EXP)){
+        exposureMax = 1 / fps_in - readOutTime - (double)(SLM_CNTR_TICKS + SLM_TRG_TICKS) * COUNT_PERIOD;
+        if(exposureMax < exposure){
+            exposure = exposureMax;
+            outgoing.exposure = exposure;
+            outgoing.flags |= SET_EXPOSURE;
+            //sprintf(msg, "\n\nExposure too long setting to exposureMax\n");
+            //while (0u == USBUART_CDCIsReady())
+            //{
+            //}
+            /* Send Messege */
+            //USBUART_PutData((uint8*)msg, strlen(msg));
+        }
+    } else {
+        fps_in = 1/(exposure + readOutTime - ((double)SLM_CNTR_TICKS)*COUNT_PERIOD/2);
+        outgoing.fps = fps_in;
+        outgoing.flags |= CHANGE_FPS;
+        exposureTicks = (uint32)(exposure/COUNT_PERIOD);
+    }
     TRG_CNT_WritePeriod(exposureTicks);
     TRIG_CNT_RST_Write(REG_ON);
     TRIG_CNT_RST_Write(REG_OFF);
