@@ -84,12 +84,12 @@ struct usb_data{
     volatile uint16 steps;
     volatile uint8 mode;
     volatile uint8 bonus;
-    volatile uint64 count;
+    volatile uint32 count;
 };
 volatile struct usb_data incoming;
 volatile struct usb_data outgoing;
 
-#define DEFAULT_FPS (10.0f)
+#define DEFAULT_FPS (5.0f)
 
 #if (USBFS_16BITS_EP_ACCESS_ENABLE)
     /* To use the 16-bit APIs, the buffer has to be:
@@ -152,15 +152,20 @@ volatile struct usb_data outgoing;
 #define CAP_MODE_NORMAL (0u)
 #define CAP_MODE_SLOW (1u)
 
-#define THREE_BEAM (0u)
-#define TWO_BEAM (1u)
-#define NO_SIM_Z_ONLY (2u)
-#define SINGLE_ANGLE (3u)
+#define THREE_BEAM (0x0)
+#define TWO_BEAM (0x1)
+#define NO_SIM_Z_ONLY (0x2)
+#define SINGLE_ANGLE (0x4)
+#define SEVEN_PHASE (0x8)
+#define SEVEN_FREE (0x10)
 #define SINGLE_ANGLE_MAX (5u)
 #define THREE_BEAM_MAX (15u)
+#define SEVEN_PHASE_MAX (21u)
 #define TWO_BEAM_MAX (9u)
 #define NO_BEAM_MAX (1u)
 #define TWO_CAM_MIN (2u)
+#define ANGLE_MAX (3u)
+#define AXIAL_MAX (6u)
 
 #define BLANK_ON (0u)
 #define BLANK_OFF (1u)
@@ -190,7 +195,7 @@ volatile struct usb_data outgoing;
 #define REG_OFF (0u)
 #define FREE_RUN (0u)
 #define Z_MODE (1u)
-#define TIMED_MODE (2u)
+#define COUNT_MODE (2u)
 
 #define STOP_BLANKING (0x0)
 #define START_BLANKING (0x1)
@@ -200,7 +205,7 @@ volatile struct usb_data outgoing;
 #define GREEN_LASER (1u)
 #define BOTH_LASERS (2u)
 
-#define TIMED_FIN 0x01
+#define COUNT_FIN 0x01
 #define Z_FIN     0x02
 
 #define STUPID (0u)//(200000u)
@@ -231,12 +236,16 @@ volatile struct usb_data outgoing;
 /******** The Land Of Globals ********/
 uint8 deMux = CAMERA_TRIGGER;
 volatile uint8 phases = 0;
+volatile uint8 angles = 0;
+volatile uint8 axCount = 0;
 volatile uint16 zCount = 0;
+volatile uint32 frameCount = 1;
+volatile uint32 count_itt = 0;
 uint16 vert = ANDOR_VERT_DEFAULT;
 uint8 capMode = CAP_MODE_SLOW;
 double horzPeriod = ANDOR_30_MHZ_HORZ;
 double readOutTime = 0;
-volatile uint8 mode = FREE_RUN;
+volatile uint8 mode = COUNT_MODE;
 volatile uint8 simMode = THREE_BEAM;
 volatile uint16 zSteps = 0;
 volatile uint32 frameTicks = TEN_FPS;
@@ -251,6 +260,7 @@ volatile uint8 msgFlag = 0;
 volatile uint8 phase_max = THREE_BEAM_MAX;
 volatile uint8 laser_conf = BLUE_LASER;
 volatile uint8 to_send = 0;
+
 
 char line0[20];
 char line1[20];
@@ -270,73 +280,142 @@ CY_ISR(T_ISR){
     ENBL_TRIG_ISR_Write(REG_OFF);
     TRIG_ISR_ClearPending();
     //outgoing.flags &= ~SEND_TRIGG;
-    
-    if (phases < phase_max) {
-            if(laser_conf == BOTH_LASERS){
-                /* First Laser Should be set to Green @ start*/
-                /* Just to make sure switches to Blue */
-                uint8 val = CAM_SEL_REG_Read();
-                CAM_SEL_REG_Write(!val);
-                if (val == BLUE_LASER){
-                    phases++;
-                    
-                }
-            } else {
-                phases++;
-            }
-            //TRG_CNT_WritePeriod(exposureTicks);
-
-            TRIG_CNT_RST_Write(REG_ON);
-            TRIG_CNT_RST_Write(REG_OFF);
-            //TRIG_ISR_ClearPending();
-            ENBL_TRIG_ISR_Write(REG_ON);
-            //STAGE_WAIT_REG_Write(REG_ON);
-
-            if(mode == TIMED_MODE){
-                if(time_ticks_rem > frameTicks){
-                    time_ticks_rem -= frameTicks;
+    switch(simMode){
+        case SEVEN_PHASE:
+            if (angles < ANGLE_MAX) {
+                if(laser_conf == BOTH_LASERS){
+                    /* First Laser Should be set to Green @ start*/
+                    /* Just to make sure switches to Blue */
+                    uint8 val = CAM_SEL_REG_Read();
+                    CAM_SEL_REG_Write(!val);
+                    if (val == BLUE_LASER){
+                        angles++;
+                        
+                    }
                 } else {
-                    time_ticks_rem = 0;
-                    ENBL_TRIG_ISR_Write(REG_OFF);
-                    msgFlag |= TIMED_FIN;
+                    angles++;
                 }
-            }
-        //}
-    } else {
-    //if (phases > 14){
-        phases = 0;
-        //strcpy(msg, "\nphases = 0\n");
-        /* Wait until component is ready to send data to host. */
-        //while (0u == USBUART_CDCIsReady())
-        //{
-        //}
-        /* Send MSG back to host. */
-        //USBUART_PutData((uint8*)msg, strlen(msg));
-        
-        if(mode == Z_MODE){
-            
-            if (zCount < zSteps) {
-                
+                //TRG_CNT_WritePeriod(exposureTicks);
 
-                //outgoing.flags |= SEND_TRIGG;
-                STAGE_REG_Write(REG_ON);
-                STAGE_REG_Write(REG_OFF);
-                zCount++;
+                TRIG_CNT_RST_Write(REG_ON);
+                TRIG_CNT_RST_Write(REG_OFF);
+                //TRIG_ISR_ClearPending();
                 ENBL_TRIG_ISR_Write(REG_ON);
-                //TRIG_ISR_ClearPending();// Trying to see if this reduces stage movements.
-            } else {
-                ENBL_TRIG_ISR_Write(REG_OFF); 
                 //STAGE_WAIT_REG_Write(REG_ON);
-                zCount = 0;
-                msgFlag |= Z_FIN;
-            }
-        } else {
-            ENBL_TRIG_ISR_Write(REG_OFF);
-            ENBL_TRIG_ISR_Write(REG_ON);
-        }
-       
-    }
 
+
+                   
+                //}
+            } else {
+
+                angles = 0;
+
+                
+                
+                    
+                    if (axCount < AXIAL_MAX) {
+                        
+
+                        outgoing.flags |= SEND_TRIGG;
+                        //STAGE_REG_Write(REG_ON);
+                        //STAGE_REG_Write(REG_OFF);
+                        axCount++;
+                        //ENBL_TRIG_ISR_Write(REG_ON);
+                        //TRIG_ISR_ClearPending();// Trying to see if this reduces stage movements.
+                    } else {
+                        ENBL_TRIG_ISR_Write(REG_OFF); 
+                        //STAGE_WAIT_REG_Write(REG_ON);
+                        axCount = 0;
+                        msgFlag |= Z_FIN;
+                    }
+/*                } else if(mode == COUNT_MODE){
+                    if(count_itt < frameCount){
+                        count_itt += 1;
+                        ENBL_TRIG_ISR_Write(REG_OFF);
+                        ENBL_TRIG_ISR_Write(REG_ON);
+                    } else {
+                        count_itt = 0;
+                        ENBL_TRIG_ISR_Write(REG_OFF);
+                        msgFlag |= COUNT_FIN;
+                    }
+                } else {
+                    ENBL_TRIG_ISR_Write(REG_OFF);
+                    ENBL_TRIG_ISR_Write(REG_ON);
+                }*/
+            
+               
+            }
+            break;
+        default:
+            if (phases < phase_max) {
+                    if(laser_conf == BOTH_LASERS){
+                        /* First Laser Should be set to Green @ start*/
+                        /* Just to make sure switches to Blue */
+                        uint8 val = CAM_SEL_REG_Read();
+                        CAM_SEL_REG_Write(!val);
+                        if (val == BLUE_LASER){
+                            phases++;
+                            
+                        }
+                    } else {
+                        phases++;
+                    }
+                    //TRG_CNT_WritePeriod(exposureTicks);
+
+                    TRIG_CNT_RST_Write(REG_ON);
+                    TRIG_CNT_RST_Write(REG_OFF);
+                    //TRIG_ISR_ClearPending();
+                    ENBL_TRIG_ISR_Write(REG_ON);
+                    //STAGE_WAIT_REG_Write(REG_ON);
+
+
+                   
+                //}
+            } else {
+            //if (phases > 14){
+                phases = 0;
+                //strcpy(msg, "\nphases = 0\n");
+                /* Wait until component is ready to send data to host. */
+                //while (0u == USBUART_CDCIsReady())
+                //{
+                //}
+                /* Send MSG back to host. */
+                //USBUART_PutData((uint8*)msg, strlen(msg));
+                
+                if(mode == Z_MODE){
+                    
+                    if (zCount < zSteps) {
+                        
+
+                        //outgoing.flags |= SEND_TRIGG;
+                        STAGE_REG_Write(REG_ON);
+                        STAGE_REG_Write(REG_OFF);
+                        zCount++;
+                        ENBL_TRIG_ISR_Write(REG_ON);
+                        //TRIG_ISR_ClearPending();// Trying to see if this reduces stage movements.
+                    } else {
+                        ENBL_TRIG_ISR_Write(REG_OFF); 
+                        //STAGE_WAIT_REG_Write(REG_ON);
+                        zCount = 0;
+                        msgFlag |= Z_FIN;
+                    }
+                } else if(mode == COUNT_MODE){
+                    if(count_itt < frameCount){
+                        count_itt += 1;
+                        ENBL_TRIG_ISR_Write(REG_OFF);
+                        ENBL_TRIG_ISR_Write(REG_ON);
+                    } else {
+                        count_itt = 0;
+                        ENBL_TRIG_ISR_Write(REG_OFF);
+                        msgFlag |= COUNT_FIN;
+                    }
+                } else {
+                    ENBL_TRIG_ISR_Write(REG_OFF);
+                    ENBL_TRIG_ISR_Write(REG_ON);
+                }                           
+            }
+            break;
+    }
 }
 // read input prototype
 void read_input(volatile struct usb_data* buf, const char cmd);
@@ -403,14 +482,14 @@ int main()
     ACTIVATE_SLM_Write(REG_OFF);
     STAGE_REG_Write(REG_OFF);
     BLANKING_DELAY_WritePeriod(ANDOR_DELAY_TICKS);
-    STAGE_WAIT_WritePeriod(10000);
-    STAGE_TRIG_WritePeriod(5000);
-    BLANK_TOGGLE_Write(BLANK_ON);
+    STAGE_WAIT_WritePeriod(38000);
+    STAGE_TRIG_WritePeriod(12000);
+    BLANK_TOGGLE_Write(BLANK_OFF);
     
     LCD_Char_Position(0u, 0u);
-    LCD_Char_PrintString("Mode: Free");
+    LCD_Char_PrintString("Mode: Count");
     LCD_Char_Position(0u, 11u);
-    LCD_Char_PrintString("FPS: 10.0");
+    LCD_Char_PrintString("FPS: 5.0");
     LCD_Char_Position(1u, 0u);
     LCD_Char_PrintString(TRIGG_OFF);
     LCD_Char_Position(1u, 10u);
@@ -447,7 +526,7 @@ int main()
             }*/
 
                 if(incoming.flags & STAGE_MOVE_COMPLETE){
-                    //STAGE_WAIT_REG_Write(REG_ON);
+                    ENBL_TRIG_ISR_Write(REG_ON);
                     incoming.flags &= ~(STAGE_MOVE_COMPLETE);
                 }
                 if(incoming.flags & CHANGE_FPS){
@@ -500,9 +579,11 @@ int main()
                 }
                 if(incoming.flags & START_CAPTURE){
                     if(!ENBL_TRIG_ISR_Read()){
-                        time_ticks_rem = time_ticks;
+                        count_itt = 0;
                         phases = 0;
+                        angles = 0;
                         zCount = 0;
+                        axCount = 0;
                         if(laser_conf == BOTH_LASERS){
                             CAM_SEL_REG_Write(GREEN_LASER);
                         }
@@ -677,25 +758,26 @@ int main()
         {
         }
         
-        if(outgoing.flags & (SEND_TRIGG|STOP_Z_STACK|CHANGE_FPS|SET_EXPOSURE)){
+        if(outgoing.flags & (SEND_TRIGG|STOP_Z_STACK|CHANGE_FPS|SET_EXPOSURE|STOP_COUNT)){
             sent = 1;
         }
             USBFS_LoadInEP(IN_EP_NUM, (uint8*)&outgoing, sizeof(struct usb_data));
             /* (USBFS_GEN_16BITS_EP_ACCESS) */
             //outgoing.flags &= ~(NEW_CNT);
         if(sent){    
-            outgoing.flags &= ~(STOP_Z_STACK|SEND_TRIGG|CHANGE_FPS|SET_EXPOSURE);
+            outgoing.flags &= ~(STOP_Z_STACK|SEND_TRIGG|CHANGE_FPS|SET_EXPOSURE|STOP_COUNT);
         }
         //CyDelayUs(250); 
         
-        ++outgoing.count;
+        //++outgoing.count;
         switch(msgFlag){
             case Z_FIN:
                 msgFlag &= ~Z_FIN;
                 outgoing.flags |= STOP_Z_STACK;
                 break;
-            case TIMED_FIN:
-                msgFlag &= ~TIMED_FIN;
+            case COUNT_FIN:
+                msgFlag &= ~COUNT_FIN;
+                outgoing.flags |= STOP_COUNT;
                 break;
             default:
                 break;
@@ -765,7 +847,9 @@ void set_mode(uint8 buf){
     } else if(mode == Z_MODE){
         sprintf(line0, "Mode: Z-St FPS: %.1f", fps_in);
     } else {
-       sprintf(line0, "Mode: Timed FPS: %.1f", fps_in);   
+       frameCount = incoming.count;
+       incoming.mode &= ~COUNT_MODE;
+       sprintf(line0, "Mode: Count FPS: %.1f", fps_in);   
     }
     
     LCD_Char_Position(0u, 0u);
@@ -789,9 +873,16 @@ void set_sim_mode(uint8 buf){
     } else if (simMode == SINGLE_ANGLE) {
         phase_max = SINGLE_ANGLE_MAX;
         sprintf(msg, "\n\nSIM Mode: SINGLE ANGLE\n");
+    } else if (simMode == SEVEN_PHASE){
+        phase_max = 21;
+        sprintf(msg, "\n\nSIM Mode: SEVEN_PHASE\n");
+    } else if (simMode == SEVEN_FREE){
+        phase_max = 21;
+        sprintf(msg, "\n\nSIM Mode: SEVEN_FREE\n");  
     } else {
         phase_max = NO_BEAM_MAX;
         simMode = NO_SIM_Z_ONLY;
+        phase_max = 1;
         sprintf(msg, "\n\nSIM Mode: Z-Only\n");
     }
     /*if(mode == 0){
